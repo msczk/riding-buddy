@@ -7,7 +7,10 @@ use App\Http\Controllers\Auth\AuthController;
 // home
 Route::get('/', [HomeController::class, 'show'])->name('home');
 
-//auth
+// auth
 Route::get('/login', [AuthController::class, 'login'])->name('auth.login')->middleware('guest');
-Route::post('/login', [AuthController::class, 'doLogin'])->middleware('guest');;
-Route::delete('/logout', [AuthController::class, 'doLogout'])->name('auth.logout')->middleware('auth');;
+Route::post('/login', [AuthController::class, 'doLogin'])->middleware('guest');
+Route::delete('/logout', [AuthController::class, 'doLogout'])->name('auth.logout')->middleware('auth');
+
+Route::get('/register', [AuthController::class, 'register'])->name('auth.register')->middleware('guest');
+Route::post('/register', [AuthController::class, 'doRegistration'])->middleware('guest');
