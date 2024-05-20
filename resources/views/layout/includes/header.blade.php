@@ -5,8 +5,9 @@
       </ul>
 
       <div class="col-md-3 text-end">
+        <a href="{{ route('trip.create') }}" class="btn btn-success ">New trip</a>
         @guest
-          <a href="{{ route('auth.login') }}" class="btn btn-outline-primary me-2">Login</a>
+          <a href="{{ route('auth.login') }}" class="btn btn-outline-primary">Login</a>
           <a href="{{ route('auth.register') }}" class="btn btn-primary">Sign-up</a>
         @endguest
         @auth
