@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TripController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\ProfileController;
 
 // home
 Route::get('/', [HomeController::class, 'show'])->name('home');
@@ -21,5 +22,9 @@ Route::get('/trip/create', [TripController::class, 'create'])->name('trip.create
 Route::get('/trip/{trip}/edit', [TripController::class, 'edit'])->name('trip.edit')->middleware('auth');
 Route::post('/trip/create', [TripController::class, 'store'])->middleware('auth');
 Route::put('/trip/{trip}/edit', [TripController::class, 'update'])->middleware('auth');
-
 Route::get('/trip/{trip}/show', [TripController::class, 'show'])->name('trip.show');
+
+// profile
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index')->middleware('auth');
+Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit')->middleware('auth');
+Route::put('/profile/edit', [ProfileController::class, 'update'])->middleware('auth');

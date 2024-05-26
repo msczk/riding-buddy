@@ -63,9 +63,9 @@
                 <div class="mb-3">
                     <label for="level" class="form-label">Level</label>
                     <select name="level" class="form-select @error('level') is-invalid @enderror" id="level">
-                        <option {{ old('level') == 1 ?? 'selected' }} value="1">Easy</option>
-                        <option {{ old('level') == 2 ?? 'selected' }} value="2">Medium</option>
-                        <option {{ old('level') == 3 ?? 'selected' }} value="3">Hard</option>
+                        @foreach (Config::get('app.riding_levels') as $label => $value)
+                            <option @if(old('level') == $value) selected @endif value="{{ $value }}">{{ $label }}</option>
+                        @endforeach
                     </select>
                     @error('level')
                         <div class="invalid-feedback">
