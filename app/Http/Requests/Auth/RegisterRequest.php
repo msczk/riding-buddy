@@ -26,7 +26,9 @@ class RegisterRequest extends FormRequest
         return [
             'username' => ['required', 'unique:users,username'],
             'email' => ['required', 'email'],
-            'password' => ['required', 'confirmed', Password::min(8)->mixedCase()->numbers()]
+            'password' => ['required', 'confirmed', Password::min(8)->mixedCase()->numbers()],
+            'cgu' => ['required'],
+            'optin_newsletter' => ['sometimes', 'required'],
         ];
     }
 }

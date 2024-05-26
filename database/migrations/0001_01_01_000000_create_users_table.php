@@ -15,6 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('username')->unique();
             $table->string('email')->unique();
+            $table->string('firstname')->nullable();
+            $table->string('lastname')->nullable();
+            $table->tinyInteger('riding_level')->default(1);
+            $table->date('birthday')->nullable();
+            $table->boolean('optin_newsletter')->default(false);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

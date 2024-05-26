@@ -20,6 +20,11 @@ class User extends Authenticatable
         'username',
         'email',
         'password',
+        'firstname',
+        'lastname',
+        'optin_newsletter',
+        'riding_level',
+        'birthday',
     ];
 
     /**
@@ -42,6 +47,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'optin_newsletter' => 'boolean',
         ];
     }
 }

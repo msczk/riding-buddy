@@ -42,6 +42,19 @@
                         </div>
                     @enderror
                 </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" name="optin_newsletter" id="optin_newsletter">
+                    <label class="form-check-label" for="optin_newsletter">S'inscrire à la newsletter</label>
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" name="cgu" id="cgu">
+                    <label class="form-check-label  @error('cgu') is-invalid @enderror" for="cgu">J'accepte les CGU</label>
+                    @error('cgu')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
                 <div class="text-center ">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
