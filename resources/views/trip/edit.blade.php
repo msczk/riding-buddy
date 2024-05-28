@@ -29,24 +29,6 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="x_start" class="form-label">Start X</label>
-                    <input name="x_start" value="{{ old('x_start') ?? $trip->x_start }}" type="text" class="form-control @error('x_start') is-invalid @enderror" id="x_start">
-                    @error('x_start')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div>
-                <div class="mb-3">
-                    <label for="y_start" class="form-label">Start Y</label>
-                    <input name="y_start" value="{{ old('y_start') ?? $trip->y_start }}" type="text" class="form-control @error('y_start') is-invalid @enderror" id="y_start">
-                    @error('y_start')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div>
-                <div class="mb-3">
                     <label for="distance" class="form-label">Distance</label>
                     <input name="distance" value="{{ old('distance') ?? $trip->distance }}" type="number" class="form-control @error('distance') is-invalid @enderror" id="distance">
                     @error('distance')
@@ -81,6 +63,16 @@
                     <label for="max_participants" class="form-label">Max participants</label>
                     <input name="max_participants" value="{{ old('max_participants') ?? $trip->max_participants }}" type="number" class="form-control @error('max_participants') is-invalid @enderror" id="max_participants">
                     @error('max_participants')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <div style="width: 100%; height: 300px;" id="new-trip-map"></div>
+                    
+                    <input name="coordinates_start" value="{{ old('coordinates_start') ?? $trip->coordinates_start }}" type="hidden" class="form-control @error('coordinates_start') is-invalid @enderror" id="coordinates_start">
+                    @error('coordinates_start')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>

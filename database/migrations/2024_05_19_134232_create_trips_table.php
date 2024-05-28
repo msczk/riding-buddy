@@ -16,8 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->dateTime('start_at');
-            $table->string('x_start');
-            $table->string('y_start');
+            $table->string('coordinates_start');
             $table->integer('distance');
             $table->string('duration');
             $table->tinyInteger('level');
