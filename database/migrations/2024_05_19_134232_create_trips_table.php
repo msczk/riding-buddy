@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('name');
+            $table->text('description')->nullable();
             $table->dateTime('start_at');
             $table->string('coordinates_start');
             $table->integer('distance');

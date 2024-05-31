@@ -16,6 +16,15 @@
                     @enderror
                 </div>
                 <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description">{{ old('description') }}</textarea>
+                    @error('description')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                <div class="mb-3">
                     <label for="start_at" class="form-label">Start at</label>
                     <input name="start_at" value="{{ old('start_at') }}" type="date" class="form-control @error('start_at') is-invalid @enderror" id="start_at">
                     @error('start_at')

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\Config;
 
 class Trip extends Model
 {
@@ -17,6 +18,7 @@ class Trip extends Model
      */
     protected $fillable = [
         'name',
+        'description',
         'user_id',
         'start_at',
         'coordinates_start',
@@ -45,23 +47,14 @@ class Trip extends Model
 
     public function getLevelLabel() : string
     {
-        switch($this->level)
+        foreach (Config::get('app.riding_levels') as $label => $value)
         {
-            case 1:
-                return 'easy';
-                break;
-
-            case 2:
-                return 'medium';
-                break;
-
-            case 3:
-                return 'hard';
-                break;
-
-            default:
-                return 'unknown';
-                break;
+            if($this->level == $value)
+            {
+                return $label;
+            }
         }
+
+        return 'unknown';
     }
 }

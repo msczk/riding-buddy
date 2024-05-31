@@ -14,6 +14,9 @@
                 By {{ $trip->user->username }}
             </div>
             <hr>
+            <p>
+                {{ $trip->description }}
+            </p>
         </div>
     </div>
     <div class="row">

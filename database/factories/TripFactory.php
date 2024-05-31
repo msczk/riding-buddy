@@ -18,10 +18,10 @@ class TripFactory extends Factory
     {
         return [
             'name' => 'Balade à '.fake()->city(),
+            'description' => fake()->text(400),
             'user_id' => 1,
             'start_at' => fake()->date('Y-m-d', '2099-12-31'),
-            'x_start' => '45.143799455429296',
-            'y_start' => '4.118301338306185',
+            'coordinates_start' => '4.118301338306185',
             'distance' => '200',
             'duration' => '120',
             'level' => random_int(1, 3),

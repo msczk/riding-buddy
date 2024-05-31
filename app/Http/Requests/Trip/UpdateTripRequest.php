@@ -23,6 +23,7 @@ class UpdateTripRequest extends FormRequest
     {
         return [
             'name' => 'required',
+            'description' => 'nullable',
             'start_at' => 'required',
             'coordinates_start' => 'required',
             'distance' => 'required|numeric',

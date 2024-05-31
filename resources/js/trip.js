@@ -4,9 +4,10 @@ import * as maptilersdk from '@maptiler/sdk';
 
 import {maptiler_apikey} from './app.js';
 
-maptilersdk.config.apiKey = maptiler_apikey;
 
 $(document).ready(function() {
+
+    maptilersdk.config.apiKey = maptiler_apikey;
 
     if($('#new-trip-map').length > 0)
     {
