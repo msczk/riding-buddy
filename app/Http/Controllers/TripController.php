@@ -10,25 +10,22 @@ use Illuminate\Support\Facades\Auth;
 class TripController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Return the trip creation view
+     *
+     * @return \Illuminate\Contracts\View\View
      */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function create(): \Illuminate\Contracts\View\View
     {
         return view('trip.create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Do the trip creation action
+     *
+     * @param StoreTripRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(StoreTripRequest $request)
+    public function store(StoreTripRequest $request): \Illuminate\Http\RedirectResponse
     {
         $trip_data = $request->validated();
 
@@ -40,38 +37,40 @@ class TripController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Return the trip public view
+     *
+     * @param Trip $trip
+     * @return \Illuminate\Contracts\View\View
      */
-    public function show(Trip $trip)
+    public function show(Trip $trip): \Illuminate\Contracts\View\View
     {
         return view('trip.show')->with('trip', $trip);
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Return the trip edition view
+     *
+     * @param Trip $trip
+     * @return \Illuminate\Contracts\View\View
      */
-    public function edit(Trip $trip)
+    public function edit(Trip $trip): \Illuminate\Contracts\View\View
     {
         return view('trip.edit')->with('trip', $trip);
     }
 
     /**
-     * Update the specified resource in storage.
+     * Do the Trip update action
+     *
+     * @param UpdateTripRequest $request
+     * @param Trip $trip
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(UpdateTripRequest $request, Trip $trip)
+    public function update(UpdateTripRequest $request, Trip $trip): \Illuminate\Http\RedirectResponse
     {
         $trip_data = $request->validated();
 
         $trip->update($trip_data);
 
         return back()->with('success', 'Trip updated successfully!');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Trip $trip)
-    {
-        //
     }
 }

@@ -19,9 +19,9 @@ class TripThumbnail extends Component
     }
 
     /**
-     * Get the view / contents that represent the component.
+     * Get the view / contents that represent the trip thumbnail.
      */
-    public function render(): View|Closure|string
+    public function render(): View
     {
         return view('components.trip.trip-miniature')->with('trip', $this->trip);
     }

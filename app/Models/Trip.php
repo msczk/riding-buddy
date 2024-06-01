@@ -40,11 +40,21 @@ class Trip extends Model
         ];
     }
 
+    /**
+     * Get the user that created the trip
+     *
+     * @return BelongsTo
+     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * Return the label that corresponds to the level based on the number stored
+     *
+     * @return string
+     */
     public function getLevelLabel() : string
     {
         foreach (Config::get('app.riding_levels') as $label => $value)

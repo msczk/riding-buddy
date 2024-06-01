@@ -10,35 +10,45 @@ use Illuminate\Support\Facades\Auth;
 class ProfileController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Return the profile index of the authed user
+     *
+     * @return \Illuminate\Contracts\View\View
      */
-    public function index()
+    public function index(): \Illuminate\Contracts\View\View
     {
         return view('profile.index');
     }
 
     /**
-     * Display the specified resource.
+     * Return the public profile of a given user
+     *
+     * @param User $user
+     * @return \Illuminate\Contracts\View\View
      */
-    public function show(User $user)
+    public function show(User $user): \Illuminate\Contracts\View\View
     {
         $trips = $user->tripsByStartDate;
         return view('profile.show')->with(['user' => $user, 'trips' => $trips]);
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Return the profile edition view of the authed user
+     *
+     * @return \Illuminate\Contracts\View\View
      */
-    public function edit()
+    public function edit(): \Illuminate\Contracts\View\View
     {
         $user = Auth::user();
         return view('profile.edit')->with('user', $user);
     }
 
     /**
-     * Update the specified resource in storage.
+     * Do the profile update action
+     *
+     * @param UpdateProfileRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(UpdateProfileRequest $request)
+    public function update(UpdateProfileRequest $request): \Illuminate\Http\RedirectResponse
     {
         $user_data = $request->validated();
 
@@ -53,7 +63,12 @@ class ProfileController extends Controller
         return back()->with('success', 'Profile updated successfully!');
     }
 
-    public function trips()
+    /**
+     * Return the trips of the authed user
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function trips(): \Illuminate\Contracts\View\View
     {
         $user = User::findOrfail(Auth::user()->id);
 

@@ -8,7 +8,12 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function show()
+    /**
+     * Return the home view
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function show(): \Illuminate\Contracts\View\View
     {
         $last_users = User::orderBy('created_at', 'DESC')->take(6)->get();
 

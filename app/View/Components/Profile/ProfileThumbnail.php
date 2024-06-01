@@ -19,9 +19,9 @@ class ProfileThumbnail extends Component
     }
 
     /**
-     * Get the view / contents that represent the component.
+     * Get the view / contents that represent the profile thumbnail.
      */
-    public function render(): View|Closure|string
+    public function render(): View
     {
         return view('components.profile.profile-miniature')->with('user', $this->user);
     }

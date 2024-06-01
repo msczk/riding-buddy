@@ -10,12 +10,23 @@ use App\Models\User;
 
 class AuthController extends Controller
 {
-    public function login()
+    /**
+     * Return the login view
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function login(): \Illuminate\Contracts\View\View
     {
         return view('auth.login');
     }
 
-    public function doLogin(LoginRequest $request)
+    /**
+     * Do the login action
+     *
+     * @param LoginRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function doLogin(LoginRequest $request): \Illuminate\Http\RedirectResponse
     {
         $credentials = $request->validated();
         
@@ -35,18 +46,34 @@ class AuthController extends Controller
         ])->onlyInput('email');
     }
 
-    public function doLogout()
+    /**
+     * Do the logout action
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function doLogout(): \Illuminate\Http\RedirectResponse
     {
         Auth::logout();
         return to_route('auth.login');
     }
 
-    public function register()
+    /**
+     * Return the registration view
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function register(): \Illuminate\Contracts\View\View
     {
         return view('auth.register');
     }
 
-    public function doRegistration(RegisterRequest $request)
+    /**
+     * Do the registration action
+     *
+     * @param RegisterRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function doRegistration(RegisterRequest $request): \Illuminate\Http\RedirectResponse
     {
         $user_data = $request->validated();
 
