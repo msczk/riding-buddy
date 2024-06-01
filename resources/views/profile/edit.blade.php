@@ -60,6 +60,15 @@
                     @enderror
                 </div>
                 <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description">{{ $user->description }}</textarea>
+                    @error('description')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                <div class="mb-3">
                     <label for="birthday" class="form-label">Birthday</label>
                     <input name="birthday" value="{{ $user->birthday }}" type="date" class="form-control @error('birthday') is-invalid @enderror"  id="birthday">
                     @error('birthday')

@@ -9,18 +9,7 @@
         </div>
         <div class="row">
             @forelse ($coming_trips as $coming_trip)
-              <a class="col-3" href="{{ route('trip.show', $coming_trip) }}">
-                  <div>
-                      <img class="img-fluid " src="https://placehold.co/300x180" alt="{{ $coming_trip->name }}">
-                  </div>
-                  <div class="text-center ">{{ $coming_trip->name }} ({{ date_format($coming_trip->start_at, 'd-m-Y')  }})</div>
-                  <div class="text-center">
-                      <span>{{ $coming_trip->distance }} km</span> - <span>{{ $coming_trip->duration }} h</span> - <span>1/{{ $coming_trip->max_participants }}</span>
-                  </div>
-                  <div class="text-center">
-                      <span>Créé par {{ $coming_trip->user->username }}</span>
-                  </div>
-              </a>
+              <x-Trip.TripThumbnail :trip=$coming_trip />
             @empty
               <div class="col">
                 <p class="text-center">No coming trips for the moment</p>
@@ -101,15 +90,10 @@
         </div>
         <div class="row">
             @forelse ($last_users as $last_user)
-                <a href="#" class="col-2">
-                    <div>
-                        <img class="img-fluid " src="https://placehold.co/300x300" alt="{{ $last_user->username }}">
-                    </div>
-                    <div class="text-center ">{{ $last_user->username }}</div>
-                  </a>
+            <x-Profile.ProfileThumbnail :user=$last_user />
             @empty
             <div class="col">
-              <p class="text-center">No coming trips for the moment</p>
+              <p class="text-center">No new users for the moment</p>
             </div>
             @endforelse
         </div>

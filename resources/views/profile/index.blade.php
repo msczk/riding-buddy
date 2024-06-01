@@ -6,7 +6,7 @@
         <a href="{{ route('profile.edit') }}" class="col-3 text-center">
             Mon compte
         </a>
-        <a href="#" class="col-3 text-center">
+        <a href="{{ route('profile.trips') }}" class="col-3 text-center">
             Mes voyages
         </a>
         <a href="#" class="col-3 text-center">

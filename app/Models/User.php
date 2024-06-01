@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -19,6 +20,7 @@ class User extends Authenticatable
     protected $fillable = [
         'username',
         'email',
+        'description',
         'password',
         'firstname',
         'lastname',
@@ -49,5 +51,15 @@ class User extends Authenticatable
             'password' => 'hashed',
             'optin_newsletter' => 'boolean',
         ];
+    }
+
+    public function trips(): HasMany
+    {
+        return $this->hasMany(Trip::class);
+    }
+
+    public function tripsByStartDate(): HasMany
+    {
+        return $this->hasMany(Trip::class)->orderBy('start_at', 'ASC');
     }
 }

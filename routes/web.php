@@ -26,5 +26,7 @@ Route::get('/trip/{trip}/show', [TripController::class, 'show'])->name('trip.sho
 
 // profile
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index')->middleware('auth');
+Route::get('/profile/trips', [ProfileController::class, 'trips'])->name('profile.trips')->middleware('auth');
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit')->middleware('auth');
 Route::put('/profile/edit', [ProfileController::class, 'update'])->middleware('auth');
+Route::get('/profile/{user}/show', [ProfileController::class, 'show'])->name('profile.show');

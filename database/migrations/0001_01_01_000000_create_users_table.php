@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('username')->unique();
             $table->string('email')->unique();
+            $table->string('description')->text()->nullable();
             $table->string('firstname')->nullable();
             $table->string('lastname')->nullable();
             $table->tinyInteger('riding_level')->default(1);

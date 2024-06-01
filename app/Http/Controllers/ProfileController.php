@@ -22,7 +22,8 @@ class ProfileController extends Controller
      */
     public function show(User $user)
     {
-        //
+        $trips = $user->tripsByStartDate;
+        return view('profile.show')->with(['user' => $user, 'trips' => $trips]);
     }
 
     /**
@@ -52,11 +53,12 @@ class ProfileController extends Controller
         return back()->with('success', 'Profile updated successfully!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function trips()
     {
-        //
+        $user = User::findOrfail(Auth::user()->id);
+
+        $trips = $user->tripsByStartDate;
+
+        return view('profile.trips')->with('trips', $trips);
     }
 }
