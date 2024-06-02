@@ -36,7 +36,11 @@
                 
                 <div class="mb-3">
                     <label for="distance" class="form-label">Distance</label>
-                    <input name="distance" value="{{ old('distance') }}" type="number" class="form-control @error('distance') is-invalid @enderror" id="distance">
+                    <div class="input-group">
+                        <input name="distance" value="{{ old('distance') }}" type="number" class="form-control @error('distance') is-invalid @enderror" id="distance">
+                        <span class="input-group-text" id="basic-addon2">Kms</span>
+                    </div>
+                    
                     @error('distance')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -45,7 +49,10 @@
                 </div>
                 <div class="mb-3">
                     <label for="duration" class="form-label">Duration</label>
-                    <input name="duration" value="{{ old('duration') }}" type="number" class="form-control @error('duration') is-invalid @enderror" id="duration">
+                    <div class="input-group">
+                        <input name="duration" value="{{ old('duration') }}" type="number" class="form-control @error('duration') is-invalid @enderror" id="duration">
+                        <span class="input-group-text" id="basic-addon2">Heures</span>
+                    </div>
                     @error('duration')
                         <div class="invalid-feedback">
                             {{ $message }}
