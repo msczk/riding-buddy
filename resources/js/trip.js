@@ -11,6 +11,8 @@ $(document).ready(function() {
     if($('#new-trip-map').length > 0)
     {
         maptilersdk.config.apiKey = maptiler_apikey;
+        maptilersdk.config.primaryLanguage = maptilersdk.Language.FRENCH;
+        
 
         // We get the coordinates input value
         const coordinates_start = $('#coordinates_start');
@@ -23,6 +25,7 @@ $(document).ready(function() {
                 style: maptilersdk.MapStyle.STREETS,
                 center: coordinates_start.val().split(','), // starting position [lng, lat]
                 zoom: 4, // starting zoom
+                
               });
         }else{
             var map = new maptilersdk.Map({
