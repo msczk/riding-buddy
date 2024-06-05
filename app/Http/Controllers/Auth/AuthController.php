@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Models\User;
+use App\Notifications\Auth\NewRegistration;
 
 class AuthController extends Controller
 {
@@ -79,7 +80,9 @@ class AuthController extends Controller
 
         $user_data['optin_newsletter'] = $request->input('optin_newsletter') ? 1 : 0;
 
-        User::create($user_data);
+        $user = User::create($user_data);
+
+        $user->notify(new NewRegistration());
 
         return to_route('auth.login')->with('success', 'Félicitations, votre compte a bien été créé !');
     }
