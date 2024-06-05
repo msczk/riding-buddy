@@ -6,8 +6,11 @@ use App\Http\Controllers\TripController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\ProfileController;
 
+// Landing page
+Route::get('/', [HomeController::class, 'landing'])->name('landing');
+
 // home
-Route::get('/', [HomeController::class, 'show'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 // auth
 Route::get('/login', [AuthController::class, 'login'])->name('auth.login')->middleware('guest');

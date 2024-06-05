@@ -9,11 +9,21 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     /**
-     * Return the home view
+     * Return the landing page view
      *
      * @return \Illuminate\Contracts\View\View
      */
-    public function show(): \Illuminate\Contracts\View\View
+    public function landing(): \Illuminate\Contracts\View\View
+    {
+        return view('home.landing');
+    }
+
+    /**
+     * Return the app home view
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function index(): \Illuminate\Contracts\View\View
     {
         $last_users = User::orderBy('created_at', 'DESC')->take(6)->get();
 
