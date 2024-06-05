@@ -34,6 +34,8 @@ class AuthController extends Controller
         if(!empty($request->input('remember')) && $request->input('remember') == 'on')
         {
             $remember = true;
+        }else{
+            $remember = false;
         }
         
         if (Auth::attempt($credentials, $remember)) {
