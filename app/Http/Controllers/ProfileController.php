@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Profile\UpdateProfileRequest;
+use App\Models\Trip;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Profile\UpdateProfileRequest;
 
 class ProfileController extends Controller
 {
@@ -27,8 +28,9 @@ class ProfileController extends Controller
      */
     public function show(User $user): \Illuminate\Contracts\View\View
     {
-        $trips = $user->tripsByStartDate;
-        return view('profile.show')->with(['user' => $user, 'trips' => $trips]);
+        $coming_trips = Trip::where('user_id', $user->id)->whereDate('start_at', '>=', now())->get();
+        $past_trips = Trip::where('user_id', $user->id)->whereDate('start_at', '<', now())->get();
+        return view('profile.show')->with(['user' => $user, 'coming_trips' => $coming_trips, 'past_trips' => $past_trips]);
     }
 
     /**

@@ -3,10 +3,11 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Carbon\Carbon;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
@@ -48,6 +49,7 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
+            'birthday' => 'date',
             'password' => 'hashed',
             'optin_newsletter' => 'boolean',
         ];
@@ -71,5 +73,20 @@ class User extends Authenticatable
     public function tripsByStartDate(): HasMany
     {
         return $this->hasMany(Trip::class)->orderBy('start_at', 'ASC');
+    }
+
+    /**
+     * Get the age of the user if birthday field is not empty
+     *
+     * @return String
+     */
+    public function getAge(): String
+    {
+        if(!empty($this->birthday))
+        {
+            return Carbon::parse($this->birthday)->age.' '.__('ans');
+        }
+
+        return '';
     }
 }

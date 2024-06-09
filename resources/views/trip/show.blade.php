@@ -9,9 +9,9 @@
     </div>
     <div class="row">
         <div class="col">
-            <h1>{{ $trip->name }} - Démarre le {{ date_format($trip->start_at, 'd-m-Y') }}</h1>
+            <h1>{{ $trip->name }} - Démarre le Le {{ date_format($trip->start_at, 'd-m-Y')  }} à {{ date_format($trip->start_at, 'H:i')  }}</h1>
             <div>
-                By {{ $trip->user->username }}
+                By <a href="{{ route('profile.show', $trip->user->id) }}">{{ $trip->user->username }}</a>
             </div>
             <hr>
             <p>

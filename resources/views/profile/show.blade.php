@@ -4,12 +4,13 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h1>{{ $user->username }}</h1>
-            <p>{!! nl2br($user->description) !!}</p>
+            <h1>{{ $user->username }}@if(!empty($user->birthday)) ({{ $user->getAge() }})@endif</h1>
+            <p>{{ nl2br($user->description) }}</p>
         </div>
     </div>
-    <div class="row">
-      @forelse ($trips as $trip)
+    <div class="row mt-2">
+      <h2>{{ __('My coming trips') }}</h2>
+      @forelse ($coming_trips as $trip)
             <x-Trip.TripThumbnail :trip=$trip />
           @empty
             <div class="col">
@@ -17,6 +18,16 @@
             </div>
           @endforelse
    </div>
+   <div class="row mt-2">
+    <h2>{{ __('My past trips') }}</h2>
+    @forelse ($past_trips as $trip)
+          <x-Trip.TripThumbnail :trip=$trip />
+        @empty
+          <div class="col">
+            <p class="text-center">No trips for the moment</p>
+          </div>
+        @endforelse
+ </div>
 </div>
     
 @endsection
