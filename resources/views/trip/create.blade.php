@@ -26,7 +26,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="start_at" class="form-label">Start at</label>
-                    <input name="start_at" value="{{ old('start_at') }}" type="date" class="form-control @error('start_at') is-invalid @enderror" id="start_at">
+                    <input name="start_at" value="{{ old('start_at') }}" type="datetime-local" class="form-control @error('start_at') is-invalid @enderror" id="start_at">
                     @error('start_at')
                         <div class="invalid-feedback">
                             {{ $message }}
