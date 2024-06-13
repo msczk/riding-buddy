@@ -33,7 +33,7 @@ class TripController extends Controller
 
         $trip = Trip::create($trip_data);
 
-        return to_route('trip.edit', $trip)->with('success', 'Trip created successfully!');;
+        return to_route('trip.edit', $trip)->with('success', 'Trip created successfully!');
     }
 
     /**
@@ -51,10 +51,20 @@ class TripController extends Controller
      * Return the trip edition view
      *
      * @param Trip $trip
-     * @return \Illuminate\Contracts\View\View
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Contracts\View\View
      */
-    public function edit(Trip $trip): \Illuminate\Contracts\View\View
+    public function edit(Trip $trip): \Illuminate\Http\RedirectResponse|\Illuminate\Contracts\View\View
     {
+        if($trip->isOver())
+        {
+            return back()->with('error', __('This trip is already over and cannot be modified'));
+        }
+
+        if($trip->isOneDayAway())
+        {
+            return back()->with('error', __('This trip will start soon and cannot be modified'));
+        }
+
         return view('trip.edit')->with('trip', $trip);
     }
 
@@ -67,6 +77,16 @@ class TripController extends Controller
      */
     public function update(UpdateTripRequest $request, Trip $trip): \Illuminate\Http\RedirectResponse
     {
+        if($trip->isOver())
+        {
+            return back()->with('error', __('This trip is already over and cannot be modified'));
+        }
+
+        if($trip->isOneDayAway())
+        {
+            return back()->with('error', __('This trip will start soon and cannot be modified'));
+        }
+        
         $trip_data = $request->validated();
 
         $trip->update($trip_data);

@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Support\Facades\Config;
 
 class Trip extends Model
 {
@@ -66,5 +67,24 @@ class Trip extends Model
         }
 
         return 'unknown';
+    }
+
+    /**
+     * Determine if a trip is over based on its start_at date
+     *
+     * @return boolean
+     */
+    public function isOver(): bool
+    {
+        return $this->start_at < now();
+    }
+
+    public function isOneDayAway()
+    {
+        $date = Carbon::parse($this->start_at);
+        $now = Carbon::now();
+        $diff = $now->diffInDays($date);
+
+        return $diff <= 1;
     }
 }

@@ -12,7 +12,7 @@
                 @csrf
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
-                    <input name="name" value="{{ old('name') ?? $trip->name }}" type="text" class="form-control @error('name') is-invalid @enderror" id="name">
+                    <input name="name" disabled value="{{ old('name') ?? $trip->name }}" type="text" class="form-control @error('name') is-invalid @enderror" id="name">
                     @error('name')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -30,7 +30,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="start_at" class="form-label">Start at</label>
-                    <input name="start_at" value="{{ old('start_at') ?? $trip->start_at }}" type="datetime-local" class="form-control @error('start_at') is-invalid @enderror" id="start_at">
+                    <input name="start_at" disabled value="{{ old('start_at') ?? $trip->start_at }}" type="datetime-local" class="form-control @error('start_at') is-invalid @enderror" id="start_at">
                     @error('start_at')
                         <div class="invalid-feedback">
                             {{ $message }}
