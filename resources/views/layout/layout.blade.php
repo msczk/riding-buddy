@@ -2,8 +2,9 @@
 <html class="h-100" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         @vite(['resources/sass/app.scss'])
+        @yield('javascript')
     </head>
-    <body class="d-flex flex-column h-100">
+    <body id="@yield('body_id')" class="d-flex flex-column h-100">
         @include('layout.includes.header')
 
         @yield('content')

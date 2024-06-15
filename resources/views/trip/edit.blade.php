@@ -1,5 +1,7 @@
 @extends('layout.layout')
 
+@section('body_id', 'trip_edit')
+
 @section('content')
 <div class="container">
     <div class="row">
@@ -84,7 +86,7 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <div style="width: 100%; height: 300px;" id="new-trip-map"></div>
+                    <div id="new-trip-map"></div>
                     
                     <input name="coordinates_start" value="{{ old('coordinates_start') ?? $trip->coordinates_start }}" type="hidden" class="form-control @error('coordinates_start') is-invalid @enderror" id="coordinates_start">
                     @error('coordinates_start')

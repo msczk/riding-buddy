@@ -1,13 +1,21 @@
 @extends('layout.layout')
 
+@section('body_id', 'trip_show')
+
+@section('javascript')
+<script>
+    var coordinates_start = "{{$trip->coordinates_start}}";
+</script>
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row">
         <div class="col">
-            <img class="img-fluid " src="https://placehold.co/1920x500" alt="{{ $trip->name }}">
+            <div id="show-trip-map"></div>
         </div>
     </div>
-    <div class="row">
+    <div class="row mt-2">
         <div class="col">
             <h1>{{ $trip->name }} - Démarre le Le {{ date_format($trip->start_at, 'd-m-Y')  }} à {{ date_format($trip->start_at, 'H:i')  }}</h1>
             <div>
