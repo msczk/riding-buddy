@@ -55,6 +55,11 @@ class TripController extends Controller
      */
     public function edit(Trip $trip): \Illuminate\Http\RedirectResponse|\Illuminate\Contracts\View\View
     {
+        if($trip->user_id != Auth::user()->id)
+        {
+            return back()->with('error', __('This trip does not belong to you'));
+        }
+
         if($trip->isOver())
         {
             return back()->with('error', __('This trip is already over and cannot be modified'));
@@ -77,6 +82,11 @@ class TripController extends Controller
      */
     public function update(UpdateTripRequest $request, Trip $trip): \Illuminate\Http\RedirectResponse
     {
+        if($trip->user_id != Auth::user()->id)
+        {
+            return back()->with('error', __('This trip does not belong to you'));
+        }
+
         if($trip->isOver())
         {
             return back()->with('error', __('This trip is already over and cannot be modified'));
@@ -92,5 +102,22 @@ class TripController extends Controller
         $trip->update($trip_data);
 
         return back()->with('success', 'Trip updated successfully!');
+    }
+
+    public function destroy(Trip $trip)
+    {
+        if($trip->user_id != Auth::user()->id)
+        {
+            return back()->with('error', __('This trip does not belong to you'));
+        }
+
+        if ($trip->trashed())
+        {
+            return back()->with('error', __('This trip is already trashed'));
+        }
+
+        $trip->delete();
+
+        return to_route('profile.trips')->with('success', 'Trip deleted successfully!');
     }
 }

@@ -26,6 +26,7 @@ Route::get('/trip/{trip}/edit', [TripController::class, 'edit'])->name('trip.edi
 Route::post('/trip/create', [TripController::class, 'store'])->middleware('auth');
 Route::put('/trip/{trip}/edit', [TripController::class, 'update'])->middleware('auth');
 Route::get('/trip/{trip}/show', [TripController::class, 'show'])->name('trip.show');
+Route::delete('/trip/{trip}/destroy', [TripController::class, 'destroy'])->name('trip.destroy')->middleware('auth');
 
 // profile
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index')->middleware('auth');

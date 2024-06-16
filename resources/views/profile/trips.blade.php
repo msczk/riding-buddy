@@ -5,7 +5,7 @@
    @include('layout.alerts')
     <div class="row">
         @forelse ($trips as $trip)
-              <x-Trip.TripThumbnail :trip=$trip :showEdit=true />
+              <x-Trip.TripThumbnail :trip=$trip :showEdit=true :showTrash=true />
             @empty
               <div class="col">
                 <p class="text-center">No trips for the moment</p>

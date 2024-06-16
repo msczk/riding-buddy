@@ -13,7 +13,14 @@
         </div>
     </a>
     @if($showEdit)
-        <a class="text-success" href="{{ route('trip.edit', $trip) }}">{{ __('Edit') }}</a>
+        <a class="btn btn-success" href="{{ route('trip.edit', $trip) }}">{{ __('Edit') }}</a>
+    @endif
+    @if($showTrash)
+        <form method="POST" action="{{ route('trip.destroy', $trip) }}">
+            @csrf
+            @method('delete')
+            <button class="btn btn-danger" type="submit">{{ __('Delete') }}</button>
+        </form>
     @endif
 </div>
 
