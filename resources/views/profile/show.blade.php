@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="row mt-2">
-      <h2>{{ __('My coming trips') }}</h2>
+      <h2>{{ __('His coming trips') }}</h2>
       @forelse ($coming_trips as $trip)
             <x-Trip.TripThumbnail :trip=$trip />
           @empty
@@ -19,7 +19,7 @@
           @endforelse
    </div>
    <div class="row mt-2">
-    <h2>{{ __('My past trips') }}</h2>
+    <h2>{{ __('His past trips') }}</h2>
     @forelse ($past_trips as $trip)
           <x-Trip.TripThumbnail :trip=$trip />
         @empty

@@ -27,7 +27,7 @@ class TripThumbnail extends Component
         {
             if(Auth::user() && Auth::user()->id == $this->trip->user_id)
             {
-                if(!$this->trip->isOver() && !$this->trip->isOneDayAway())
+                if(!$this->trip->isOver() && !$this->trip->isOneDayAway() && !$trip->trashed())
                 {
                     $this->showEdit = $showEdit;
                 }

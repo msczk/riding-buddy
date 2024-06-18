@@ -74,8 +74,9 @@ class ProfileController extends Controller
     {
         $user = User::findOrfail(Auth::user()->id);
 
-        $trips = $user->tripsByStartDate;
+        $coming_trips = Trip::where('user_id', $user->id)->whereDate('start_at', '>=', now())->withTrashed()->get();
+        $past_trips = Trip::where('user_id', $user->id)->whereDate('start_at', '<', now())->withTrashed()->get();
 
-        return view('profile.trips')->with('trips', $trips);
+        return view('profile.trips')->with(['coming_trips' => $coming_trips, 'past_trips' => $past_trips]);
     }
 }
