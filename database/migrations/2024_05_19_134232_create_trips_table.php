@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('duration');
             $table->tinyInteger('level');
             $table->integer('max_participants');
+            $table->boolean('public_after_over')->default(true);
             $table->softDeletes();
             $table->timestamps();
 

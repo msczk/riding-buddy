@@ -28,6 +28,7 @@ class Trip extends Model
         'duration',
         'level',
         'max_participants',
+        'public_after_over'
     ];
 
     /**
@@ -39,6 +40,7 @@ class Trip extends Model
     {
         return [
             'start_at' => 'datetime',
+            'public_after_over' => 'boolean'
         ];
     }
 

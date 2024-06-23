@@ -22,5 +22,16 @@
             <button class="btn btn-danger" type="submit">{{ __('Delete') }}</button>
         </form>
     @endif
+    @if ($trip->isOver())
+    <form method="POST" action="{{ route('trip.visibility', $trip) }}">
+        @csrf
+        @method('put')
+        @if($trip->public_after_over)
+            <button class="btn btn-success" type="submit">{{ __('Visible') }}</button>
+        @else
+            <button class="btn btn-danger" type="submit">{{ __('Not visible') }}</button>
+        @endif
+    </form>
+    @endif
 </div>
 

@@ -41,9 +41,17 @@ class TripController extends Controller
      *
      * @param Trip $trip
      * @return \Illuminate\Contracts\View\View
+     * @throws \Symfony\Component\HttpKernel\Exception\HttpException
      */
     public function show(Trip $trip): \Illuminate\Contracts\View\View
     {
+        if($trip->isOver())
+        {
+            if(!$trip->public_after_over)
+            {
+                abort(403, __('This past trip is not public'));
+            }
+        }
         return view('trip.show')->with('trip', $trip);
     }
 
@@ -55,7 +63,7 @@ class TripController extends Controller
      */
     public function edit(Trip $trip): \Illuminate\Http\RedirectResponse|\Illuminate\Contracts\View\View
     {
-        if($trip->user_id != Auth::user()->id)
+        if(Auth::user() && $trip->user_id != Auth::user()->id)
         {
             return back()->with('error', __('This trip does not belong to you'));
         }
@@ -82,7 +90,7 @@ class TripController extends Controller
      */
     public function update(UpdateTripRequest $request, Trip $trip): \Illuminate\Http\RedirectResponse
     {
-        if($trip->user_id != Auth::user()->id)
+        if(Auth::user() && $trip->user_id != Auth::user()->id)
         {
             return back()->with('error', __('This trip does not belong to you'));
         }
@@ -104,9 +112,15 @@ class TripController extends Controller
         return back()->with('success', 'Trip updated successfully!');
     }
 
-    public function destroy(Trip $trip)
+    /**
+     * Do the trip soft delete action
+     *
+     * @param Trip $trip
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy(Trip $trip): \Illuminate\Http\RedirectResponse
     {
-        if($trip->user_id != Auth::user()->id)
+        if(Auth::user() && $trip->user_id != Auth::user()->id)
         {
             return back()->with('error', __('This trip does not belong to you'));
         }
@@ -119,5 +133,24 @@ class TripController extends Controller
         $trip->delete();
 
         return to_route('profile.trips')->with('success', 'Trip deleted successfully!');
+    }
+
+    /**
+     * Do the toggle trip visibility action
+     *
+     * @param Trip $trip
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function visibility(Trip $trip): \Illuminate\Http\RedirectResponse
+    {
+        if(Auth::user() && $trip->user_id != Auth::user()->id)
+        {
+            return back()->with('error', __('This trip does not belong to you'));
+        }
+
+        $trip->public_after_over = !$trip->public_after_over;
+        $trip->save();
+
+        return back()->with('success', 'Trip visibility after over updated successfully!');
     }
 }
