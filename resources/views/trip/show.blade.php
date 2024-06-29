@@ -9,7 +9,11 @@
 @endsection
 
 @section('content')
+
 <div class="container">
+    
+    @include('layout.alerts')
+
     <div class="row">
         <div class="col">
             <div id="show-trip-map"></div>
@@ -21,12 +25,12 @@
             <div>
                 By <a href="{{ route('profile.show', $trip->user->id) }}">{{ $trip->user->username }}</a>
             </div>
-            <hr>
             <p>
                 {{ $trip->description }}
             </p>
         </div>
     </div>
+    <hr>
     <div class="row">
         <div class="col-md-3 text-center ">
             {{ $trip->distance }} km
@@ -40,6 +44,39 @@
         <div class="col-md-3 text-center ">
             1 / {{ $trip->max_participants }}
         </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col">
+            @if(Auth::user() && $trip->user_id != Auth::user()->id)
+                @if(!$trip->isOver() && !$trip->isOneDayAway())
+                    <form method="POST" action="{{ route('trip.participate', $trip) }}">
+                        @csrf
+                        @method('put')
+
+                        @if($trip->users->contains(Auth::user()))
+                            <button class="btn btn-outline-primary">{{ __('Remove participation') }}</button>
+                        @else
+                            <button class="btn btn-outline-primary">{{ __('Participate') }}</button>
+                        @endif
+                    </form>
+                @endif
+            @endif
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h1>Participants</h1>
+        </div>
+    </div>
+    <div class="row">
+        @forelse ($trip->users as $user)
+            <x-Profile.ProfileThumbnail :user=$user />
+        @empty
+            <div class="col">
+                <p class="text-center">No new users for the moment</p>
+            </div>
+        @endforelse
     </div>
 </div>
     

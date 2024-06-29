@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Trip extends Model
 {
@@ -55,6 +56,16 @@ class Trip extends Model
     }
 
     /**
+     * Get the users that will participate to the trip
+     *
+     * @return BelongsToMany
+     */
+    public function users(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class);
+    }
+
+    /**
      * Return the label that corresponds to the level based on the number stored
      *
      * @return string
@@ -82,12 +93,27 @@ class Trip extends Model
         return $this->start_at < now();
     }
 
-    public function isOneDayAway()
+    /**
+     * Determine if a trip will start in 1 day or less
+     *
+     * @return float
+     */
+    public function isOneDayAway(): float
     {
         $date = Carbon::parse($this->start_at);
         $now = Carbon::now();
         $diff = $now->diffInDays($date);
 
         return $diff <= 1;
+    }
+
+    /**
+     * Determine if trip has reach its participation limit
+     *
+     * @return boolean
+     */
+    public function isFull(): bool
+    {
+        return ($this->users()->count() >= $this->max_participants);
     }
 }

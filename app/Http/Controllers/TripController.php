@@ -33,6 +33,8 @@ class TripController extends Controller
 
         $trip = Trip::create($trip_data);
 
+        $trip->users()->attach(Auth::user());
+
         return to_route('trip.edit', $trip)->with('success', 'Trip created successfully!');
     }
 
@@ -152,5 +154,49 @@ class TripController extends Controller
         $trip->save();
 
         return back()->with('success', 'Trip visibility after over updated successfully!');
+    }
+
+    /**
+     * Do the toggle trip participation action
+     *
+     * @param Trip $trip
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function participate(Trip $trip): \Illuminate\Http\RedirectResponse
+    {
+        if(!Auth::user())
+        {
+            return back()->with('error', __('You must bee logged in'));
+        }
+        
+        if($trip->user_id == Auth::user()->id)
+        {
+            return back()->with('error', __('You already participate to this trip'));
+        }
+
+        if($trip->isOver())
+        {
+            return back()->with('error', __('You cannot participate to this trip beecause it is already over'));
+        }
+
+        if($trip->isOneDayAway())
+        {
+            return back()->with('error', __('You cannot participate to this trip beecause it will start soon'));
+        }
+
+        if($trip->users->contains(Auth::user()))
+        {
+            $trip->users()->detach(Auth::user());
+            return back()->with('success', 'You unregistered for this trip');
+        }else{
+
+            if($trip->isFull())
+            {
+                return back()->with('error', __('You cannot participate to this trip beecause it is already full'));
+            }
+
+            $trip->users()->attach(Auth::user());
+            return back()->with('success', 'You registered for this trip');
+        }
     }
 }

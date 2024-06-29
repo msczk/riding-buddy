@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Authenticatable
 {
@@ -60,7 +61,7 @@ class User extends Authenticatable
      *
      * @return HasMany
      */
-    public function trips(): HasMany
+    public function createdTrips(): HasMany
     {
         return $this->hasMany(Trip::class);
     }
@@ -88,5 +89,15 @@ class User extends Authenticatable
         }
 
         return '';
+    }
+
+    /**
+     * Get the trips that the user will participate to
+     *
+     * @return BelongsToMany
+     */
+    public function trips(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class);
     }
 }
