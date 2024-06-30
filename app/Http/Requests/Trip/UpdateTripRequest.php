@@ -21,13 +21,16 @@ class UpdateTripRequest extends FormRequest
      */
     public function rules(): array
     {
+        $trip = $this->route('trip');
+        $min = $trip->users()->count();
+
         return [
             'description' => 'nullable',
             'coordinates_start' => 'required',
             'distance' => 'required|numeric',
             'duration' => 'required|numeric',
             'level' => 'required',
-            'max_participants' => 'required|numeric',
+            'max_participants' => 'required|numeric|min:'.$min,
         ];
     }
 }

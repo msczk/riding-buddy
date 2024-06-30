@@ -42,7 +42,7 @@
             {{ $trip->getLevelLabel() }}
         </div>
         <div class="col-md-3 text-center ">
-            1 / {{ $trip->max_participants }}
+            {{ $trip->users->count() }} / {{ $trip->max_participants }}
         </div>
     </div>
     <hr>
