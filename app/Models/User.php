@@ -98,6 +98,17 @@ class User extends Authenticatable
      */
     public function trips(): BelongsToMany
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(Trip::class)->withPivot('rate');
+    }
+
+    /**
+     * Determine if a user already rated a trip
+     *
+     * @param Trip $trip
+     * @return boolean
+     */
+    public function hasRated(Trip $trip): bool
+    {
+        return !(empty($this->trips->find($trip->id)->pivot->rate));
     }
 }

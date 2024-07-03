@@ -29,6 +29,8 @@ Route::put('/trip/{trip}/visibility', [TripController::class, 'visibility'])->na
 Route::put('/trip/{trip}/participate', [TripController::class, 'participate'])->name('trip.participate')->middleware('auth');
 Route::get('/trip/{trip}/show', [TripController::class, 'show'])->name('trip.show');
 Route::delete('/trip/{trip}/destroy', [TripController::class, 'destroy'])->name('trip.destroy')->middleware('auth');
+Route::get('/trip/{trip}/rate', [TripController::class, 'rate'])->name('trip.rate')->middleware('auth');
+Route::post('/trip/{trip}/rate', [TripController::class, 'doRating'])->middleware('auth');
 
 // profile
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index')->middleware('auth');

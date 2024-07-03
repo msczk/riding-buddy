@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Trip;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Trip\StoreTripRequest;
 use App\Http\Requests\Trip\UpdateTripRequest;
-use Illuminate\Support\Facades\Auth;
 
 class TripController extends Controller
 {
@@ -35,7 +36,7 @@ class TripController extends Controller
 
         $trip->users()->attach(Auth::user());
 
-        return to_route('trip.edit', $trip)->with('success', 'Trip created successfully!');
+        return to_route('trip.show', $trip)->with('success', 'Trip created successfully!');
     }
 
     /**
@@ -198,5 +199,53 @@ class TripController extends Controller
             $trip->users()->attach(Auth::user());
             return back()->with('success', 'You registered for this trip');
         }
+    }
+
+    /**
+     * Return the trip rating view
+     *
+     * @param Trip $trip
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Contracts\View\View
+     */
+    public function rate(Trip $trip): \Illuminate\Http\RedirectResponse|\Illuminate\Contracts\View\View
+    {
+        /** @var \App\Models\User */
+        $user = Auth::user();
+
+        if($trip->user_id == $user->id)
+        {
+            return back()->with('error', __('You cannot rate your own trip'));
+        }
+
+        if(!$trip->isOver())
+        {
+            return back()->with('error', __('You cannot rate a trip that is not over'));
+        }
+
+        if($user->hasRated($trip))
+        {
+            return back()->with('error', __('You have already rated this trip'));   
+        }
+
+        if($trip->users->contains($user))
+        {
+            return view('trip.rate')->with('trip', $trip);
+        }else{
+            return back()->with('error', __('You did not participate to this trip'));
+        }
+    }
+
+    public function doRating(Request $request, Trip $trip)
+    {
+        $rating = $request->input('rating');
+
+        if(!is_numeric($rating) || empty($rating))
+        {
+            return back()->with('error', __('Please send a correct rating value'));
+        }
+
+        $trip->users()->updateExistingPivot(Auth::user(), ['rate' => $rating]);
+
+        return to_route('trip.show', $trip)->with('success', 'Thank you for rating this trip');
     }
 }
