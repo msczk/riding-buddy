@@ -3,11 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-4 offset-4 ">
-            
-            @include('layout.alerts')
-
-            <form method="POST" action="{{ route('profile.edit') }}">
+        @include('layout.alerts')
+        <div class="offset-4 col-4">
+            <form class="bg-light px-2 py-2" method="POST" action="{{ route('profile.edit') }}">
                 @method('put')
                 @csrf
                 <div class="mb-3">
@@ -89,8 +87,18 @@
                 <div class="text-center ">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
-                
             </form>
+            @if (auth()->user()->subscribed())
+                @if (auth()->user()->subscription('default')->onGracePeriod())
+                    <p class="text-center mt-2">Votre abonnement prendra fin le {{ auth()->user()->subscription('default')->ends_at->format('d/m/Y') }}</p>
+                @else
+                    <form action="{{ route('subscription.cancel') }}" method="POST">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="btn btn-danger">{{ __('Annuler mon abonnement') }}</button>
+                    </form>
+                @endif
+            @endif
         </div>
     </div>
 </div>

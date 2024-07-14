@@ -79,4 +79,18 @@ class ProfileController extends Controller
 
         return view('profile.trips')->with(['coming_trips' => $coming_trips, 'past_trips' => $past_trips]);
     }
+
+    /**
+     * Return all invoices for the user
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function invoices(): \Illuminate\Contracts\View\View
+    {
+        /** @var \App\Models\User */
+        $user = Auth::user();
+
+        $invoices = $user->invoices();
+        return view('profile.invoices')->with(['invoices' => $invoices]);
+    }
 }

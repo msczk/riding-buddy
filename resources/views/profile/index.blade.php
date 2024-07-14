@@ -4,13 +4,13 @@
 <div class="container">
     <div class="row">
         <a href="{{ route('profile.edit') }}" class="col-3 text-center">
-            Mon compte
+            {{ __('Mon profile') }}
         </a>
         <a href="{{ route('profile.trips') }}" class="col-3 text-center">
-            Mes voyages
+            {{ __('Mes voyages') }}
         </a>
-        <a href="#" class="col-3 text-center">
-            Mes abonnements
+        <a href="{{ route('profile.invoices') }}" class="col-3 text-center">
+            {{ __('Mes factures') }}
         </a>
     </div>
 </div>

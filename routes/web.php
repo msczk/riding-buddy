@@ -3,8 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TripController;
-use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\SubscriptionController;
 
 // Landing page
 Route::get('/', [HomeController::class, 'landing'])->name('landing');
@@ -38,3 +40,13 @@ Route::get('/profile/trips', [ProfileController::class, 'trips'])->name('profile
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit')->middleware('auth');
 Route::put('/profile/edit', [ProfileController::class, 'update'])->middleware('auth');
 Route::get('/profile/{user}/show', [ProfileController::class, 'show'])->name('profile.show');
+Route::get('/profile/invoices', [ProfileController::class, 'invoices'])->name('profile.invoices')->middleware('auth');
+
+// Invoice
+Route::get('/invoice/{invoice}/download', [InvoiceController::class, 'download'])->name('invoice.download')->middleware('auth');
+
+// subscription
+Route::get('/premium', [SubscriptionController::class, 'pricing'])->name('subscription.pricing')->middleware(['auth', 'notSubscribed']);
+Route::post('/premium', [SubscriptionController::class, 'subscribe'])->middleware(['auth', 'notSubscribed']);
+Route::get('/confirmation', [SubscriptionController::class, 'confirmation'])->name('subscription.confirmation')->middleware(['auth', 'subscribed']);
+Route::delete('/unsubscribe', [SubscriptionController::class, 'cancel'])->name('subscription.cancel')->middleware(['auth', 'subscribed']);
