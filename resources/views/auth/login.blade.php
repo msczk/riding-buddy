@@ -24,10 +24,12 @@
                     <input type="checkbox" class="form-check-input" name="remember" id="remember">
                     <label class="form-check-label" for="remember">Stay logged in</label>
                 </div>
-                <div class="text-center ">
+                <div class="text-center">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
-                
+                <div class="text-center">
+                    <a class="text-muted" href="{{ route('password.forgot') }}">{{ __('Forgot password ?') }}</a>
+                </div>
             </form>
         </div>
     </div>

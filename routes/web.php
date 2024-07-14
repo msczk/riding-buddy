@@ -22,6 +22,13 @@ Route::delete('/logout', [AuthController::class, 'doLogout'])->name('auth.logout
 Route::get('/register', [AuthController::class, 'register'])->name('auth.register')->middleware('guest');
 Route::post('/register', [AuthController::class, 'doRegistration'])->middleware('guest');
 
+Route::get('/forgot-password', [AuthController::class, 'forgot'])->name('password.forgot')->middleware('guest');
+Route::post('/forgot-password', [AuthController::class, 'sendForgot'])->middleware('guest');
+
+Route::get('/reset-password/{token}', [AuthController::class, 'reset'])->name('password.reset')->middleware('guest');
+
+Route::post('/reset-password', [AuthController::class, 'doReset'])->name('password.update')->middleware('guest');
+
 // trip
 Route::get('/trip/create', [TripController::class, 'create'])->name('trip.create')->middleware('auth');
 Route::get('/trip/{trip}/edit', [TripController::class, 'edit'])->name('trip.edit')->middleware('auth');
@@ -42,7 +49,7 @@ Route::put('/profile/edit', [ProfileController::class, 'update'])->middleware('a
 Route::get('/profile/{user}/show', [ProfileController::class, 'show'])->name('profile.show');
 Route::get('/profile/invoices', [ProfileController::class, 'invoices'])->name('profile.invoices')->middleware('auth');
 
-// Invoice
+// invoice
 Route::get('/invoice/{invoice}/download', [InvoiceController::class, 'download'])->name('invoice.download')->middleware('auth');
 
 // subscription
