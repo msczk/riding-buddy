@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Carbon\Carbon;
 use Laravel\Cashier\Billable;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -111,5 +112,45 @@ class User extends Authenticatable
     public function hasRated(Trip $trip): bool
     {
         return !(empty($this->trips->find($trip->id)->pivot->rate));
+    }
+
+    /**
+     * Return the allowed amount of trips the user can create based on his subscription
+     *
+     * @return integer
+     */
+    public function allowedAmountOfTripsCreation(): int
+    {
+        if($this->subscribed())
+        {
+            $subscription = $this->subscription()->asStripeSubscription();
+            
+            if(isset($subscription->plan->metadata->create_trips) && !empty($subscription->plan->metadata->create_trips))
+            {
+                return $subscription->plan->metadata->create_trips;
+            }
+        }
+
+        return Config::get('app.permissions.default.create_trips');
+    }
+
+    /**
+     * Return the allowed amount of trips the user can participate to based on his subscription
+     *
+     * @return integer
+     */
+    public function allowedAmountOfTripsParticipation(): int
+    {
+        if($this->subscribed())
+        {
+            $subscription = $this->subscription()->asStripeSubscription();
+            
+            if(isset($subscription->plan->metadata->participate_trips) && !empty($subscription->plan->metadata->participate_trips))
+            {
+                return $subscription->plan->metadata->participate_trips;
+            }
+        }
+
+        return Config::get('app.permissions.default.participate_trips');
     }
 }

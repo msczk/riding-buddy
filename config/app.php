@@ -127,5 +127,12 @@ return [
         'Beginer' => 1,
         'Intermediate' => 2,
         'Expert' => 3
+    ],
+
+    'permissions' => [
+        'default' => [
+            'create_trips' => 2,
+            'participate_trips' => 2
+        ]
     ]
 ];

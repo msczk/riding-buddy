@@ -8,6 +8,10 @@
     
     @include('layout.alerts')
 
+    @if(session('limit_reached'))
+        <p class="text-success text-center">{{ session('limit_reached') }}</p>
+    @endif
+
     <div class="row">
             @forelse ($prices as $price)
                 @if($loop->first)

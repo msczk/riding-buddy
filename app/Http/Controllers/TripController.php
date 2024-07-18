@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Trip;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\Trip\StoreTripRequest;
 use App\Http\Requests\Trip\UpdateTripRequest;
 
@@ -13,10 +14,15 @@ class TripController extends Controller
     /**
      * Return the trip creation view
      *
-     * @return \Illuminate\Contracts\View\View
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
      */
-    public function create(): \Illuminate\Contracts\View\View
+    public function create(): \Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
     {
+        if(!Gate::allows('create-trip'))
+        {
+            abort(403, __('You reached your subscription plan limits. Consider upgrading it'));
+        }
+        
         return view('trip.create');
     }
 
@@ -28,6 +34,11 @@ class TripController extends Controller
      */
     public function store(StoreTripRequest $request): \Illuminate\Http\RedirectResponse
     {
+        if(!Gate::allows('create-trip')) 
+        {
+            abort(403, __('You reached your subscription plan limits. Consider upgrading it'));
+        }
+
         $trip_data = $request->validated();
 
         $trip_data['user_id'] = Auth::user()->id;
@@ -194,6 +205,11 @@ class TripController extends Controller
             if($trip->isFull())
             {
                 return back()->with('error', __('You cannot participate to this trip beecause it is already full'));
+            }
+
+            if(!Gate::allows('participate-trip')) 
+            {
+                abort(403, __('You reached your subscription plan limits. Consider upgrading it'));
             }
 
             $trip->users()->attach(Auth::user());
