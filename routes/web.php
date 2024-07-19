@@ -53,7 +53,7 @@ Route::get('/profile/invoices', [ProfileController::class, 'invoices'])->name('p
 Route::get('/invoice/{invoice}/download', [InvoiceController::class, 'download'])->name('invoice.download')->middleware('auth');
 
 // subscription
-Route::get('/premium', [SubscriptionController::class, 'pricing'])->name('subscription.pricing')->middleware(['auth', 'notSubscribed']);
+Route::get('/premium', [SubscriptionController::class, 'pricing'])->name('subscription.pricing')->middleware(['notSubscribed']);
 Route::post('/premium', [SubscriptionController::class, 'subscribe'])->middleware(['auth', 'notSubscribed']);
 Route::get('/confirmation', [SubscriptionController::class, 'confirmation'])->name('subscription.confirmation')->middleware(['auth', 'subscribed']);
 Route::delete('/unsubscribe', [SubscriptionController::class, 'cancel'])->name('subscription.cancel')->middleware(['auth', 'subscribed']);

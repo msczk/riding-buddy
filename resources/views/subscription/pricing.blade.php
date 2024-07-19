@@ -29,7 +29,7 @@
                 </form>
             @empty
             <div class="col">
-                <p class="text-center">No new users for the moment</p>
+                <p class="text-center">{{ __('No plan to display for the moment') }}</p>
               </div>
             @endforelse
     </div>
