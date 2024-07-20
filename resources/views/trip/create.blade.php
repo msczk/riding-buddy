@@ -9,7 +9,7 @@
             <form method="POST" action="{{ route('trip.create') }}">
                 @csrf
                 <div class="mb-3">
-                    <label for="name" class="form-label">Name</label>
+                    <label for="name" class="form-label">{{ __('Name') }}</label>
                     <input name="name" value="{{ old('name') }}" type="text" class="form-control @error('name') is-invalid @enderror" id="name">
                     @error('name')
                         <div class="invalid-feedback">
@@ -18,7 +18,7 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="description" class="form-label">Description</label>
+                    <label for="description" class="form-label">{{ __('Description') }}</label>
                     <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description">{{ old('description') }}</textarea>
                     @error('description')
                         <div class="invalid-feedback">
@@ -27,7 +27,7 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="start_at" class="form-label">Start at</label>
+                    <label for="start_at" class="form-label">{{ __('Start at') }}</label>
                     <input name="start_at" value="{{ old('start_at') }}" type="datetime-local" class="form-control @error('start_at') is-invalid @enderror" id="start_at">
                     @error('start_at')
                         <div class="invalid-feedback">
@@ -37,7 +37,7 @@
                 </div>
                 
                 <div class="mb-3">
-                    <label for="distance" class="form-label">Distance</label>
+                    <label for="distance" class="form-label">{{ __('Distance') }}</label>
                     <div class="input-group">
                         <input name="distance" value="{{ old('distance') }}" type="number" class="form-control @error('distance') is-invalid @enderror" id="distance">
                         <span class="input-group-text" id="basic-addon2">Kms</span>
@@ -50,7 +50,7 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="duration" class="form-label">Duration</label>
+                    <label for="duration" class="form-label">{{ __('Duration') }}</label>
                     <div class="input-group">
                         <input name="duration" value="{{ old('duration') }}" type="number" class="form-control @error('duration') is-invalid @enderror" id="duration">
                         <span class="input-group-text" id="basic-addon2">Heures</span>
@@ -62,7 +62,7 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="level" class="form-label">Level</label>
+                    <label for="level" class="form-label">{{ __('Level') }}</label>
                     <select name="level" class="form-select @error('level') is-invalid @enderror" id="level">
                         @foreach (Config::get('app.riding_levels') as $label => $value)
                             <option @if(old('level') == $value) selected @endif value="{{ $value }}">{{ $label }}</option>
@@ -75,7 +75,7 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="max_participants" class="form-label">Max participants</label>
+                    <label for="max_participants" class="form-label">{{ __('Max participants') }}</label>
                     <input name="max_participants" value="{{ old('max_participants') }}" type="number" class="form-control @error('max_participants') is-invalid @enderror" id="max_participants">
                     @error('max_participants')
                         <div class="invalid-feedback">
@@ -94,7 +94,7 @@
                     @enderror
                 </div>
                 <div class="text-center ">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
                 </div>
                 
             </form>

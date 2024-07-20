@@ -7,6 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    landing
+    <a href="{{ route('home') }}">{{ __('Go to app') }}</a>
 </body>
 </html>

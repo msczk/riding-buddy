@@ -50,7 +50,7 @@ class AuthController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'Identifiants incorrects.',
+            'email' => __('Invalid credentials'),
         ])->onlyInput('email');
     }
 
@@ -91,7 +91,7 @@ class AuthController extends Controller
 
         $user->notify(new NewRegistration());
 
-        return to_route('auth.login')->with('success', 'Félicitations, votre compte a bien été créé !');
+        return to_route('auth.login')->with('success', 'Congratulations, your account has been created!');
     }
 
     public function forgot()

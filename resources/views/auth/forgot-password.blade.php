@@ -17,7 +17,7 @@
                     @enderror
                 </div>
                 <div class="text-center ">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
                 </div>
                 
             </form>

@@ -76,11 +76,11 @@ class Trip extends Model
         {
             if($this->level == $value)
             {
-                return $label;
+                return __($label);
             }
         }
 
-        return 'unknown';
+        return _('unknown');
     }
 
     /**

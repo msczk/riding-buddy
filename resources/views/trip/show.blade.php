@@ -21,9 +21,9 @@
     </div>
     <div class="row mt-2">
         <div class="col">
-            <h1>{{ $trip->name }} - Démarre le Le {{ date_format($trip->start_at, 'd-m-Y')  }} à {{ date_format($trip->start_at, 'H:i')  }}</h1>
+            <h1>{{ $trip->name }} - {{ __('Starts at :date :time', ['date' => date_format($trip->start_at, 'd-m-Y'), 'time' => date_format($trip->start_at, 'H:i')]) }}</h1>
             <div>
-                By <a href="{{ route('profile.show', $trip->user->id) }}">{{ $trip->user->username }}</a>
+                {{ __('By') }} <a href="{{ route('profile.show', $trip->user->id) }}">{{ $trip->user->username }}</a>
             </div>
             <p>
                 {{ $trip->description }}
@@ -32,13 +32,13 @@
     </div>
     <hr>
     <div class="row">
-        <div class="col-md-3 text-center ">
-            {{ $trip->distance }} km
+        <div class="col-md-3 text-center">
+            {{ $trip->distance }} {{ __('km') }}
         </div>
-        <div class="col-md-3 text-center ">
-            {{ $trip->duration }} h
+        <div class="col-md-3 text-center">
+            {{ $trip->duration }} {{ __('h') }}
         </div>
-        <div class="col-md-3 text-center ">
+        <div class="col-md-3 text-center">
             {{ $trip->getLevelLabel() }}
         </div>
         <div class="col-md-3 text-center ">
@@ -66,7 +66,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <h1>Participants</h1>
+            <h1>{{ __('Participants') }}</h1>
         </div>
     </div>
     <div class="row">
@@ -74,7 +74,7 @@
             <x-Profile.ProfileThumbnail :user=$user />
         @empty
             <div class="col">
-                <p class="text-center">No new users for the moment</p>
+                <p class="text-center">{{ __('No new users for the moment') }}</p>
             </div>
         @endforelse
     </div>

@@ -38,11 +38,11 @@ class AskForRating extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->subject(__('Qu\'avez-vous pensé de la balade : '.$this->trip->name))
-                    ->line(_('Merci d\'avoir participé à la balade.'))
-                    ->line(_('Afin d\'améliorer l\'expérience de chacun, vous pouvez noter ce trajet. Cela ne prendra pas plus d\'une minute (vraiment).'))
-                    ->action('Je laisse une note', route('trip.rate', $this->trip))
-                    ->line('On remet ça quand ?');
+                    ->subject(__('What did you think about the trip :name ', ['name' => $this->trip->name]))
+                    ->line(_('Thank you for taking part in the trip'))
+                    ->line(_('To improve everyone\'s experience, you can rate this trip. It won\'t take more than a minute (really).'))
+                    ->action('Rate the trip', route('trip.rate', $this->trip))
+                    ->line('See you next trip');
     }
 
     /**

@@ -11,23 +11,23 @@
     <div class="row mt-2">
       <h2>{{ __('His coming trips') }}</h2>
       @forelse ($coming_trips as $trip)
-            <x-Trip.TripThumbnail :trip=$trip />
-          @empty
-            <div class="col">
-              <p class="text-center">No trips for the moment</p>
-            </div>
-          @endforelse
+        <x-Trip.TripThumbnail :trip=$trip />
+      @empty
+        <div class="col">
+          <p class="text-center">{{ __('No trips for the moment') }}</p>
+        </div>
+      @endforelse
    </div>
    <div class="row mt-2">
     <h2>{{ __('His past trips') }}</h2>
     @forelse ($past_trips as $trip)
-          <x-Trip.TripThumbnail :trip=$trip />
-        @empty
-          <div class="col">
-            <p class="text-center">No trips for the moment</p>
-          </div>
-        @endforelse
- </div>
+      <x-Trip.TripThumbnail :trip=$trip />
+    @empty
+      <div class="col">
+        <p class="text-center">{{ __('No trips for the moment') }}</p>
+      </div>
+    @endforelse
+</div>
 </div>
     
 @endsection

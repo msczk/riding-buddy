@@ -10,7 +10,7 @@
 
     <div class="row">
         <div class="col">
-            <p class="text-success">{{ __('Confirmation de votre abonnement') }}</p>
+            <p class="text-success">{{ __('You subscribed successfuly') }}</p>
         </div>
     </div>
     

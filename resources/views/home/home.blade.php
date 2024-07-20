@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1>Coming trips</h1>
+                <h1>{{ __('Coming trips') }}</h1>
             </div>
         </div>
         <div class="row">
@@ -12,7 +12,7 @@
               <x-Trip.TripThumbnail :trip=$coming_trip />
             @empty
               <div class="col">
-                <p class="text-center">No coming trips for the moment</p>
+                <p class="text-center">{{ __('No coming trips for the moment') }}</p>
               </div>
             @endforelse
         </div>
@@ -29,7 +29,7 @@
             <x-Profile.ProfileThumbnail :user=$last_user />
             @empty
             <div class="col">
-              <p class="text-center">No new users for the moment</p>
+              <p class="text-center">{{ __('No new users for the moment') }}</p>
             </div>
             @endforelse
         </div>
