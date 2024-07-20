@@ -17,7 +17,16 @@ class SubscriptionController extends Controller
     {  
         $stripe = new \Stripe\StripeClient(Config::get('cashier.secret'));
 
-        $prices = $stripe->prices->all(['active' => true]);
+        $prices_unordered = $stripe->prices->all(['active' => true]);
+
+        $prices = [];
+
+        foreach($prices_unordered as $price)
+        {
+            $prices[$price->unit_amount] = $price;
+        }
+
+        ksort($prices);
 
         return view('subscription.pricing')->with('prices', $prices);
     }
