@@ -14,7 +14,7 @@
                 @csrf
                 <div class="mb-3">
                     <label for="name" class="form-label">{{ __('Name') }}</label>
-                    <input name="name" disabled value="{{ old('name') ?? $trip->name }}" type="text" class="form-control @error('name') is-invalid @enderror" id="name">
+                    <input required name="name" disabled value="{{ old('name') ?? $trip->name }}" type="text" class="form-control @error('name') is-invalid @enderror" id="name">
                     @error('name')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -23,7 +23,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">{{ __('Description') }}</label>
-                    <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description">{{ old('description') ?? $trip->description }}</textarea>
+                    <textarea required name="description" class="form-control @error('description') is-invalid @enderror" id="description">{{ old('description') ?? $trip->description }}</textarea>
                     @error('description')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -32,7 +32,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="start_at" class="form-label">{{ __('Start at') }}</label>
-                    <input name="start_at" disabled value="{{ old('start_at') ?? $trip->start_at }}" type="datetime-local" class="form-control @error('start_at') is-invalid @enderror" id="start_at">
+                    <input required name="start_at" disabled value="{{ old('start_at') ?? $trip->start_at }}" type="datetime-local" class="form-control @error('start_at') is-invalid @enderror" id="start_at">
                     @error('start_at')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -42,30 +42,30 @@
                 <div class="mb-3">
                     <label for="distance" class="form-label">{{ __('Distance') }}</label>
                     <div class="input-group">
-                        <input name="distance" value="{{ old('distance') ?? $trip->distance }}" type="number" class="form-control @error('distance') is-invalid @enderror" id="distance">
+                        <input required name="distance" value="{{ old('distance') ?? $trip->distance }}" min="1" type="number" class="form-control @error('distance') is-invalid @enderror" id="distance">
                         <span class="input-group-text" id="basic-addon2">Kms</span>
+                        @error('distance')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
-                    @error('distance')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
                 </div>
                 <div class="mb-3">
                     <label for="duration" class="form-label">{{ __('Duration') }}</label>
                     <div class="input-group">
-                        <input name="duration" value="{{ old('duration') ?? $trip->duration }}" type="number" class="form-control @error('duration') is-invalid @enderror" id="duration">
+                        <input required name="duration" value="{{ old('duration') ?? $trip->duration }}" min="1" type="number" class="form-control @error('duration') is-invalid @enderror" id="duration">
                         <span class="input-group-text" id="basic-addon2">Heures</span>
+                        @error('duration')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
-                    @error('duration')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
                 </div>
                 <div class="mb-3">
                     <label for="level" class="form-label">{{ __('Level') }}</label>
-                    <select name="level" class="form-select @error('level') is-invalid @enderror" id="level">
+                    <select required name="level" class="form-select @error('level') is-invalid @enderror" id="level">
                         @foreach (Config::get('app.riding_levels') as $label => $value)
                             <option @if($trip->level == $value) selected @endif  value="{{ $value }}">{{ $label }}</option>
                         @endforeach
@@ -78,7 +78,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="max_participants" class="form-label">{{ __('Max participants') }}</label>
-                    <input name="max_participants" value="{{ old('max_participants') ?? $trip->max_participants }}" type="number" class="form-control @error('max_participants') is-invalid @enderror" id="max_participants">
+                    <input required name="max_participants" value="{{ old('max_participants') ?? $trip->max_participants }}" min="2" type="number" class="form-control @error('max_participants') is-invalid @enderror" id="max_participants">
                     @error('max_participants')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -88,7 +88,7 @@
                 <div class="mb-3">
                     <div id="new-trip-map"></div>
                     
-                    <input name="coordinates_start" value="{{ old('coordinates_start') ?? $trip->coordinates_start }}" type="hidden" class="form-control @error('coordinates_start') is-invalid @enderror" id="coordinates_start">
+                    <input required name="coordinates_start" value="{{ old('coordinates_start') ?? $trip->coordinates_start }}" type="hidden" class="form-control @error('coordinates_start') is-invalid @enderror" id="coordinates_start">
                     @error('coordinates_start')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -98,7 +98,6 @@
                 <div class="text-center ">
                     <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
                 </div>
-                
             </form>
         </div>
     </div>

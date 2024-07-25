@@ -24,11 +24,16 @@ class UpdateTripRequest extends FormRequest
         $trip = $this->route('trip');
         $min = $trip->users()->count();
 
+        if($min < 2)
+        {
+            $min = 2;
+        }
+
         return [
             'description' => 'nullable',
             'coordinates_start' => 'required',
-            'distance' => 'required|numeric',
-            'duration' => 'required|numeric',
+            'distance' => 'required|numeric|min:1',
+            'duration' => 'required|numeric|min:1',
             'level' => 'required',
             'max_participants' => 'required|numeric|min:'.$min,
         ];

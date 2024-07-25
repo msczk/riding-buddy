@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Trip;
 
+use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreTripRequest extends FormRequest
@@ -21,15 +22,19 @@ class StoreTripRequest extends FormRequest
      */
     public function rules(): array
     {
+        $today = Carbon::now()->startOfDay();
+
+        $two_days_from_now = $today->addDays(2);
+
         return [
             'name' => 'required',
             'description' => 'nullable',
-            'start_at' => 'required',
+            'start_at' => 'required|date|date_format:Y-m-d\TH:i|after:'.$two_days_from_now,
             'coordinates_start' => 'required',
-            'distance' => 'required|numeric',
-            'duration' => 'required|numeric',
+            'distance' => 'required|numeric|min:1',
+            'duration' => 'required|numeric|min:1',
             'level' => 'required',
-            'max_participants' => 'required|numeric',
+            'max_participants' => 'required|numeric|min:2',
         ];
     }
 }
