@@ -1,5 +1,9 @@
 <div class="col-3" >
-    <a class="d-block" href="{{ route('trip.show', $trip) }}">
+    @if (!$trip->trashed())
+        <a class="d-block" href="{{ route('trip.show', $trip) }}">
+    @else
+        <div>
+    @endif
         <div>
             <img class="img-fluid " src="https://placehold.co/300x180" alt="{{ $trip->name }}">
         </div>
@@ -11,7 +15,11 @@
         <div class="text-center">
             <span>Créé par {{ $trip->user->username }}</span>
         </div>
-    </a>
+    @if (!$trip->trashed())
+        </a>
+    @else
+    </div>
+    @endif
     @if($showEdit)
         <a class="btn btn-success" href="{{ route('trip.edit', $trip) }}">{{ __('Edit') }}</a>
     @endif
