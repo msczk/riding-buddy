@@ -68,7 +68,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="birthday" class="form-label">{{ __('Birthday') }}</label>
-                    <input name="birthday" value="{{ $user->birthday }}" type="date" class="form-control @error('birthday') is-invalid @enderror"  id="birthday">
+                    <input name="birthday" value="{{ $user->birthday->format('Y-m-d') }}" type="date" class="form-control @error('birthday') is-invalid @enderror"  id="birthday">
                     @error('birthday')
                         <div class="invalid-feedback">
                             {{ $message }}
