@@ -23,7 +23,7 @@
     @if($showEdit)
         <a class="btn btn-success" href="{{ route('trip.edit', $trip) }}">{{ __('Edit') }}</a>
     @endif
-    @if($showTrash)
+    @if($showTrash && !$trip->isOver())
         <form method="POST" action="{{ route('trip.destroy', $trip) }}">
             @csrf
             @method('delete')
