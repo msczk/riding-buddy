@@ -1,5 +1,5 @@
 <div class="col-3" >
-    @if (!$trip->trashed())
+    @if (!$trip->trashed() && $trip->public_after_over)
         <a class="d-block" href="{{ route('trip.show', $trip) }}">
     @else
         <div>
@@ -15,7 +15,7 @@
         <div class="text-center">
             <span>Créé par {{ $trip->user->username }}</span>
         </div>
-    @if (!$trip->trashed())
+    @if (!$trip->trashed() && $trip->public_after_over)
         </a>
     @else
     </div>
