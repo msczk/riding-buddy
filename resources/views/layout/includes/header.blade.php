@@ -5,9 +5,9 @@
         @auth
           <li class="nav-item "><a href="{{ route('profile.index') }}" class="nav-link px-2 link-secondary">{{ __('Profile') }}</a></li>
         @endauth
-        @if(!Auth::user()?->subscribed())
+        {{-- @if(!Auth::user()?->subscribed())
           <li class="nav-item "><a href="{{ route('subscription.pricing') }}" class="nav-link px-2 link-secondary">{{ __('Go premium') }}</a></li>
-        @endif
+        @endif --}}
       </ul>
 
       <div class="col-md-3 text-end">
