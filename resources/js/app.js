@@ -4,4 +4,8 @@ export {maptiler_apikey};
 
 import 'bootstrap';
 
-import './trip'
+import './tools/functions';
+
+import './trip';
+
+import './common';

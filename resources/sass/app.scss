@@ -1,4 +1,17 @@
+@import "./custom/custom-variables";
+
 @import "bootstrap/scss/bootstrap";
+
 @import "@maptiler/sdk/dist/maptiler-sdk.css";
 
+@import '/node_modules/@fortawesome/fontawesome-free/css/all.min.css';
+
+@import "./auth/login.scss";
+
+@import "./auth/register.scss";
+
 @import "./layout/trip.scss";
+
+@import "./layout/footer.scss";
+
+@import "./layout/common.scss";

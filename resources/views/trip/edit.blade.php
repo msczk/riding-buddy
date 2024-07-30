@@ -5,7 +5,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-4 offset-4 ">
+        <div class="col col-md-4 offset-md-4 my-3">
             
             @include('layout.alerts')
 
@@ -23,7 +23,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">{{ __('Description') }}</label>
-                    <textarea required name="description" class="form-control @error('description') is-invalid @enderror" id="description">{{ old('description') ?? $trip->description }}</textarea>
+                    <textarea rows="5" required name="description" class="form-control @error('description') is-invalid @enderror" id="description">{{ old('description') ?? $trip->description }}</textarea>
                     @error('description')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -43,7 +43,7 @@
                     <label for="distance" class="form-label">{{ __('Distance') }}</label>
                     <div class="input-group">
                         <input required name="distance" value="{{ old('distance') ?? $trip->distance }}" min="1" type="number" class="form-control @error('distance') is-invalid @enderror" id="distance">
-                        <span class="input-group-text" id="basic-addon2">Kms</span>
+                        <span class="input-group-text" id="basic-addon2">{{ __('Kms') }}</span>
                         @error('distance')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -55,7 +55,7 @@
                     <label for="duration" class="form-label">{{ __('Duration') }}</label>
                     <div class="input-group">
                         <input required name="duration" value="{{ old('duration') ?? $trip->duration }}" min="1" type="number" class="form-control @error('duration') is-invalid @enderror" id="duration">
-                        <span class="input-group-text" id="basic-addon2">Heures</span>
+                        <span class="input-group-text" id="basic-addon2">{{ __('Hours') }}</span>
                         @error('duration')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -96,7 +96,7 @@
                     @enderror
                 </div>
                 <div class="text-center ">
-                    <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+                    <button type="submit" class="btn btn-primary w-100">{{ __('Submit') }}</button>
                 </div>
             </form>
         </div>

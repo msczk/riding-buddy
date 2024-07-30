@@ -73,7 +73,7 @@ $(document).ready(function() {
                 container: 'show-trip-map', // container's id or the HTML element to render the map
                 style: maptilersdk.MapStyle.STREETS,
                 center: coordinates_start.split(','), // starting position [lng, lat]
-                zoom: 7, // starting zoom
+                zoom: 10, // starting zoom
                 
                 });
         

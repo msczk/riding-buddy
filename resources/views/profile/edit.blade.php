@@ -2,10 +2,17 @@
 
 @section('content')
 <div class="container">
+    <div class="row mt-2">
+        <div class="col">
+            <a class="text-decoration-none text-primary" href="{{ route('profile.index') }}">
+                <i class="fa fa-chevron-left"></i>
+            </a>
+        </div>
+    </div>
     <div class="row">
         @include('layout.alerts')
-        <div class="offset-4 col-4">
-            <form class="bg-light px-2 py-2" method="POST" action="{{ route('profile.edit') }}">
+        <div class="col offset-md-4 col-md-4">
+            <form class="py-2" method="POST" action="{{ route('profile.edit') }}">
                 @method('put')
                 @csrf
                 <div class="mb-3">
@@ -59,7 +66,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">{{ __('Description') }}</label>
-                    <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description">{{ $user->description }}</textarea>
+                    <textarea rows="5" name="description" class="form-control @error('description') is-invalid @enderror" id="description">{{ $user->description }}</textarea>
                     @error('description')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -85,7 +92,7 @@
                     @enderror
                 </div>
                 <div class="text-center ">
-                    <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+                    <button type="submit" class="btn btn-primary w-100">{{ __('Save') }}</button>
                 </div>
             </form>
             @if (auth()->user()->subscribed())

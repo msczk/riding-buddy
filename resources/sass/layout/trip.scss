@@ -1,6 +1,21 @@
 #trip_show{
     #show-trip-map{
-        height: 300px
+        height: 300px;
+        width: 100;
+    }
+
+    .participation-bar-fixed{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        background-color: #ffffff;
+        border-top: $border-width $border-style $border-color;
+        width: 100%;
+        min-height: 80px;
+    }
+
+    #fixed-menu{
+        display: none;
     }
 }
 
@@ -122,4 +137,8 @@
         align-items: center;
         box-shadow: 0 4px 30px rgba(0,0,0,.05);
     }
+}
+
+.trip-miniature{
+    margin-top: 20px;
 }

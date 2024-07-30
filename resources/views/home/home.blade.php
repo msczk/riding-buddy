@@ -1,5 +1,7 @@
 @extends('layout.layout')
 
+@section('body_id', 'home')
+
 @section('content')
     <div class="container">
         <div class="row">
@@ -21,7 +23,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1>Last users</h1>
+                <h1>{{ __('New community members') }}</h1>
             </div>
         </div>
         <div class="row">
@@ -29,7 +31,7 @@
             <x-Profile.ProfileThumbnail :user=$last_user />
             @empty
             <div class="col">
-              <p class="text-center">{{ __('No new users for the moment') }}</p>
+                <p class="text-center">{{ __('No new users for the moment') }}</p>
             </div>
             @endforelse
         </div>

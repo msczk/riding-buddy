@@ -131,8 +131,8 @@ return [
 
     'permissions' => [
         'default' => [
-            'create_trips' => 1,
-            'participate_trips' => 1
+            'create_trips' => 15,
+            'participate_trips' => 15
         ]
     ]
 ];
