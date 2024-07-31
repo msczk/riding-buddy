@@ -16,8 +16,8 @@ return new class extends Migration
             $table->integer('user_id');
             $table->integer('rate')->nullable();
 
-            //$table->foreign('trip_id')->references('id')->on('trips');
-            //$table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('trip_id')->references('id')->on('trips');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
