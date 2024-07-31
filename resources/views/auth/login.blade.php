@@ -5,7 +5,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col">
+        <div class="col col-md-4 offset-md-4">
             @include('layout.alerts')
             <form method="POST" action="{{ route('auth.login') }}">
                 @csrf

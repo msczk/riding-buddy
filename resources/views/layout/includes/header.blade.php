@@ -10,17 +10,17 @@
         @endif --}}
       </ul>
 
-      <div class="col-md-3 text-end">
+      <div class="col-md-3 text-end d-flex justify-content-end">
         <a href="{{ route('trip.create') }}" class="btn btn-success ">{{ __('New trip') }}</a>
         @guest
-          <a href="{{ route('auth.login') }}" class="btn btn-outline-primary">{{ __('Login') }}</a>
+          <a href="{{ route('auth.login') }}" class="btn btn-outline-primary mx-2">{{ __('Login') }}</a>
           <a href="{{ route('auth.register') }}" class="btn btn-primary">{{ __('Sign-up') }}</a>
         @endguest
         @auth
           <form class="nav-item" action="{{ route('auth.logout') }}" method="POST">
             @method('delete')
             @csrf
-            <button class="btn btn-danger">{{ __('Logout') }}</button>
+            <button class="btn btn-danger ms-2">{{ __('Logout') }}</button>
           </form>
         @endauth
       </div>

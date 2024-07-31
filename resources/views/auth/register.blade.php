@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col">
+        <div class="col col-md-4 offset-md-4">
             <form method="POST" action="{{ route('auth.register') }}">
                 @csrf
                 <div class="mb-3">

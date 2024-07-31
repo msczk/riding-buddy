@@ -16,13 +16,14 @@
         
 <div class="container">
     <div class="row mt-2">
-        <div class="col-8">
+        <div class="col-8 d-md-none">
             <a class="text-decoration-none text-primary" href="{{ route('home') }}">
                 <i class="fa fa-chevron-left"></i>
             </a>
         </div>
         <div class="col d-flex justify-content-between">
-            <a data-copy="{{ route('trip.show', $trip->id) }}" class="text-decoration-none text-primary copyClipBoard" href="javascript:void(0)">
+            
+            <a data-copy="{{ route('trip.show', $trip->id) }}" data-bs-toggle="tooltip" data-bs-title="{{ __('Copy to clipboard') }}" class="text-decoration-none text-primary copyClipBoard" href="javascript:void(0)">
                 <i class="text-primary fa fa-link"></i>
             </a>
             <a class="text-decoration-none text-primary" href="#">

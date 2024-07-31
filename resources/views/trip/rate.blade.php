@@ -16,13 +16,13 @@
                 {{ __('By') }} <a href="{{ route('profile.show', $trip->user->id) }}">{{ $trip->user->username }}</a>
             </div>
             <p>
-                {{ $trip->description }}
+                {!! nl2br(e($trip->description)) !!}
             </p>
         </div>
     </div>
     <hr>
     <div class="row">
-        <div class="col justify-content-center d-flex">
+        <div class="col col-md-4 offset-md-4 justify-content-center d-flex">
             <form method="POST" action="{{ route('trip.rate', $trip) }}" class="feedback">
                 @csrf
                 <div class="rating">
@@ -124,7 +124,7 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary mt-3">{{ __('Send my rating') }}</button>
+                <button type="submit" class="btn btn-primary mt-3 w-100">{{ __('Send my rating') }}</button>
             </div>
         </div>
     </div>
