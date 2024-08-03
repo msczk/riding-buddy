@@ -8,7 +8,7 @@
                 @csrf
                 <div class="mb-3">
                     <label for="username" class="form-label">{{ __('Username') }}</label>
-                    <input name="username" value="{{ old('username') }}" type="text" class="form-control @error('username') is-invalid @enderror" id="username">
+                    <input required name="username" value="{{ old('username') }}" type="text" class="form-control @error('username') is-invalid @enderror" id="username">
                     @error('username')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -17,7 +17,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">{{ __('Email address') }}</label>
-                    <input name="email" value="{{ old('email') }}" type="email" class="form-control @error('email') is-invalid @enderror" id="email">
+                    <input required name="email" value="{{ old('email') }}" type="email" class="form-control @error('email') is-invalid @enderror" id="email">
                     @error('email')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -26,7 +26,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">{{ __('Password') }}</label>
-                    <input name="password" type="password" class="form-control @error('password') is-invalid @enderror" id="password">
+                    <input required name="password" type="password" class="form-control @error('password') is-invalid @enderror" id="password">
                     @error('password')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -35,7 +35,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="password_confirmation" class="form-label">{{ __('Password confirmation') }}</label>
-                    <input name="password_confirmation" type="password" class="form-control @error('password_confirmation') is-invalid @enderror" id="password_confirmation">
+                    <input required name="password_confirmation" type="password" class="form-control @error('password_confirmation') is-invalid @enderror" id="password_confirmation">
                     @error('password_confirmation')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -56,14 +56,14 @@
                     @enderror
                 </div>
                 <div class="text-center ">
-                    <button type="submit" class="btn btn-primary w-100">{{ __('Submit') }}</button>
+                    <button type="submit" class="btn btn-primary w-100">{{ __('Sign-up') }}</button>
                 </div>
             </form>
         </div>
     </div>
     <div class="row mt-4">
         <div class="col text-center">
-            <a class="text-muted small" href="{{ route('auth.login') }}">{{ __('Already have an acccount ? Sign-in') }}</a>
+            <span class="text-muted small">{{ __('Already have an acccount ?') }}</span> <a class="text-muted small" href="{{ route('auth.login') }}">{{ __('Sign-in') }}</a>
         </div>
     </div>
 </div>

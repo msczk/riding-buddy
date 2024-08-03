@@ -37,7 +37,7 @@
         @if($trip->public_after_over)
             <button class="btn btn-success" type="submit">{{ __('Visible') }}</button>
         @else
-            <button class="btn btn-danger" type="submit">{{ __('Not visible') }}</button>
+            <button class="btn btn-danger" type="submit">{{ __('Hidden') }}</button>
         @endif
     </form>
     @endif

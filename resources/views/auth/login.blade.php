@@ -27,14 +27,14 @@
                     <label class="form-check-label fw-sem" for="remember">{{ __('Stay logged in') }}</label>
                 </div>
                 <div class="text-center">
-                    <button type="submit" class="btn btn-primary w-100">{{ __('Submit') }}</button>
+                    <button type="submit" class="btn btn-primary w-100">{{ __('Sign-in') }}</button>
                 </div>
             </form>
         </div>
     </div>
     <div class="row mt-4">
         <div class="col">
-            <a class="text-muted small" href="{{ route('password.forgot') }}">{{ __('Forgot password ?') }}</a>
+            <a class="text-muted small" href="{{ route('password.forgot') }}">{{ __('Forgot password') }}</a>
         </div>
         <div class="col d-flex justify-content-end">
             <a class="text-muted small" href="{{ route('auth.register') }}">{{ __('Sign-up') }}</a>

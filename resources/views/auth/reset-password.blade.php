@@ -36,7 +36,7 @@
                     @enderror
                 </div>
                 <div class="text-center ">
-                    <button type="submit" class="btn btn-primary w-100">{{ __('Submit') }}</button>
+                    <button type="submit" class="btn btn-primary w-100">{{ __('Reset password') }}</button>
                 </div>
                 
             </form>

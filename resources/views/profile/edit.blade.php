@@ -52,7 +52,7 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="level" class="form-label">{{ __('Level') }}</label>
+                    <label for="level" class="form-label">{{ __('Experience') }}</label>
                     <select name="riding_level" class="form-select @error('riding_level') is-invalid @enderror" id="riding_level">
                         @foreach (Config::get('app.riding_levels') as $label => $value)
                             <option @if($user->riding_level == $value) selected @endif  value="{{ $value }}">{{ __($label) }}</option>
@@ -75,7 +75,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="birthday" class="form-label">{{ __('Birthday') }}</label>
-                    <input name="birthday" value="{{ $user->birthday->format('Y-m-d') }}" type="date" class="form-control @error('birthday') is-invalid @enderror"  id="birthday">
+                    <input name="birthday" @if(isset($user->birthday) && !empty($user->birthday)) value="{{ $user->birthday->format('Y-m-d') }}" @endif type="date" class="form-control @error('birthday') is-invalid @enderror" id="birthday">
                     @error('birthday')
                         <div class="invalid-feedback">
                             {{ $message }}

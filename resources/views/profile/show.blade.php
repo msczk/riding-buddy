@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <div class="row mt-2">
+        <div class="row mt-2 d-md-none">
             <div class="col">
                 <a class="text-decoration-none text-primary" href="{{ (Auth::user() && Auth::user()->id == $user->id) ? route('profile.index') : route('home') }}">
                     <i class="fa fa-chevron-left"></i>

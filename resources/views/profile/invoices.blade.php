@@ -46,7 +46,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td>
+                            <td class="text-center" colspan="4">
                                 {{ __('You have no invoice') }}
                             </td>
                         </tr>

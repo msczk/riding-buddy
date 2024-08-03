@@ -34,9 +34,10 @@
     <div class="row mt-2">
         <div class="col">
             <h1>{{ $trip->name }}</h1>
-            <h2>{{ date_format($trip->start_at, 'l jS F Y h:i') }}</h2>
+            {{-- <h2>{{ date_format($trip->start_at, 'l jS F Y - h:i') }}</h2> --}}
+            <h2>{{ \Carbon\Carbon::createFromDate($trip->start_at)->translatedFormat('l jS F Y - h:i') }}</h2>
             <p>
-                <span class="fw-bold">{{ __('About this trip :') }}</span><br>
+                <span class="fw-bold">{{ __('About this trip') }} :</span><br>
                 {!! nl2br(e($trip->description)) !!}
             </p>
             <div class="py-2">
