@@ -38,7 +38,7 @@ class NewRegistration extends Notification
                     ->subject(__('Thank you for your registration on :app', ['app' => env('APP_NAME')]))
                     ->line(__('Congratulations, you just registred on :app', ['app' => env('APP_NAME')]))
                     ->action(__('Start using the app'), route('home'))
-                    ->line('Thank you for using our application!');
+                    ->line(__('Thank you for using our application!'));
     }
 
     /**

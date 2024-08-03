@@ -11,7 +11,8 @@
     
     <div class="row mt-2">
         <div class="col">
-            <h1>{{ $trip->name }} - {{ __('Starts at :date :time', ['date' => date_format($trip->start_at, 'd-m-Y'), 'time' => date_format($trip->start_at, 'H:i')]) }}</h1>
+            <h1>{{ $trip->name }}</h1>
+            <h2>{{ \Carbon\Carbon::createFromDate($trip->start_at)->translatedFormat('l jS F Y - h:i') }}</h2>
             <div>
                 {{ __('By') }} <a href="{{ route('profile.show', $trip->user->id) }}">{{ $trip->user->username }}</a>
             </div>

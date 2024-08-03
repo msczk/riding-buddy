@@ -91,7 +91,7 @@ class AuthController extends Controller
 
         $user->notify(new NewRegistration());
 
-        return to_route('auth.login')->with('success', 'Congratulations, your account has been created!');
+        return to_route('auth.login')->with('success', __('Congratulations, your account has been created!'));
     }
 
     public function forgot()

@@ -46,5 +46,22 @@
     "Visible" : "Visible",
     "Hidden" : "Caché",
     "Participants" : "Participants",
-    "About this trip" : "À propos de cette balade"
+    "About this trip" : "À propos de cette balade",
+    "Thank you for your registration on :app" : "Merci pour votre inscription sur :app",
+    "Congratulations, you just registred on :app" : "Félicitations, vous venez de vous inscrire sur :app",
+    "Start using the app" : "Commencer à utiliser l'application",
+    "Thank you for using our application!" : "Merci d'utiliser notre application !",
+    "What did you think about the trip :name" : "Qu'avez-vous pensé de la balade :name",
+    "Thank you for taking part in the trip" : "Merci d'avoir participé à cette balade",
+    "To improve everyone's experience, you can rate this trip. It won't take more than a minute (really)." : "Pour améliorer l'expérience de chacun, vous pouvez évaluer ce voyage. Cela ne prendra pas plus d'une minute (vraiment).",
+    "Rate the trip" : "Noter cette balade",
+    "See you next trip" : "A bientôt pour une prochain balade",
+    "Congratulations, your account has been created!" : "Félicitations, votre compte a été créé !",
+    "Hello!" : "Bonjour !",
+    "Regards" : "Cordialement",
+    "If you're having trouble clicking the \":actionText\" button, copy and paste the URL below\ninto your web browser:": "Si vous avez des problèmes en cliquant sur le bouton \":actionText\", faites un copié/collé de l'url ci-dessous dans votre navigateur : ",
+    "Participate" : "Participer",
+    "Remove participation" : "Retirer sa participation",
+    "By" : "Par",
+    "Send my rating" : "Envoyer mon évaluation"
 }
