@@ -31,6 +31,7 @@ class User extends Authenticatable
         'optin_newsletter',
         'riding_level',
         'birthday',
+        'bike',
     ];
 
     /**

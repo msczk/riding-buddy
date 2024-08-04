@@ -52,10 +52,23 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="level" class="form-label">{{ __('Experience') }}</label>
+                    <label for="riding_level" class="form-label">{{ __('Experience') }}</label>
                     <select name="riding_level" class="form-select @error('riding_level') is-invalid @enderror" id="riding_level">
                         @foreach (Config::get('app.riding_levels') as $label => $value)
-                            <option @if($user->riding_level == $value) selected @endif  value="{{ $value }}">{{ __($label) }}</option>
+                            <option @if($user->riding_level == $value) selected @endif value="{{ $value }}">{{ __($label) }}</option>
+                        @endforeach
+                    </select>
+                    @error('riding_level')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label for="bike" class="form-label">{{ __('My bike type') }}</label>
+                    <select name="bike" class="form-select @error('bike') is-invalid @enderror" id="bike">
+                        @foreach (Config::get('app.bikes') as $label => $value)
+                            <option @if($user->bike == $value) selected @endif value="{{ $value }}">{{ __($label) }}</option>
                         @endforeach
                     </select>
                     @error('riding_level')
@@ -102,7 +115,7 @@
                     <form action="{{ route('subscription.cancel') }}" method="POST">
                         @csrf
                         @method('delete')
-                        <button type="submit" class="btn btn-danger">{{ __('Annuler mon abonnement') }}</button>
+                        <button type="submit" class="btn btn-danger">{{ __('Cancel my subscription') }}</button>
                     </form>
                 @endif
             @endif

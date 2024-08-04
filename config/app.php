@@ -134,5 +134,14 @@ return [
             'create_trips' => 15,
             'participate_trips' => 15
         ]
-    ]
+    ],
+
+    'bikes' => [
+        'Sportsbike' => 1,
+        'Naked' => 2,
+        'Touring' => 3,
+        'Adventure' => 4,
+        'Supermoto' => 5,
+        'Cruiser' => 6
+    ],
 ];

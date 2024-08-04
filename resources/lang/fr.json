@@ -63,5 +63,17 @@
     "Participate" : "Participer",
     "Remove participation" : "Retirer sa participation",
     "By" : "Par",
-    "Send my rating" : "Envoyer mon évaluation"
+    "Send my rating" : "Envoyer mon évaluation",
+    "Thank you for rating this trip" : "Merci d'avoir noté cette balade",
+    "Please check the form below for errors" : "Veuillez vérifier que le formulaire ci-dessous ne contient pas d'erreurs",
+    "Your subscription will end on :end" : "Votre abonnement prendra fin le :end",
+    "Cancel my subscription" : "Résilier mon abonnement",
+    "My bike type" : "Mon type de moto",
+    "Sportsbike" : "Sportive",
+    "Naked" : "Roadster",
+    "Touring" : "Touring",
+    "Adventure" : "Trail",
+    "Supermoto" : "Supermotard",
+    "Cruiser" : "Cruiser",
+    "Profile updated successfully!" : "Profil mis à jour avec succès !"
 }

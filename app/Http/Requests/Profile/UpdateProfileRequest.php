@@ -26,6 +26,7 @@ class UpdateProfileRequest extends FormRequest
             'lastname' => ['sometimes', 'string', 'nullable'],
             'description' => ['sometimes', 'string', 'nullable'],
             'riding_level' => ['required', 'numeric'],
+            'bike' => ['required', 'numeric'],
             'birthday' => ['sometimes', 'nullable', 'date'],
             'optin_newsletter' => ['sometimes'],
         ];
