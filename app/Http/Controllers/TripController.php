@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Trip;
 use Illuminate\Http\Request;
+use App\Notifications\TripDeleted;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\Trip\StoreTripRequest;
@@ -142,6 +143,17 @@ class TripController extends Controller
         if ($trip->trashed())
         {
             return back()->with('error', __('This trip is already trashed'));
+        }
+
+        if(!empty($trip->users))
+        {
+            foreach($trip->users as $user)
+            {
+                if($trip->user->id != $user->id)
+                {
+                    $user->notify(new TripDeleted($trip));
+                }
+            }
         }
 
         $trip->delete();

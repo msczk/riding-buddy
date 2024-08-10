@@ -90,5 +90,11 @@
     "Results" : "Résultats",
     "Radius" : "Rayon",
     "Trip start place" : "Départ de la balade",
-    "Search for a trip" : "Rechercher une balade"
+    "Search for a trip" : "Rechercher une balade",
+    "A trip you participate has been canceled" : "Une balade à laquelle vous participez a été annulée",
+    "The trip \":name\" has been canceled" : "La balade \":name\" a été annulée",
+    "Sadly you will not be able to participate to this trip" : "Malheureusement, vous ne pourrez pas y participer",
+    "But, don't worry ! There are plenty of other trips waiting for you" : "Mais ne vous inquiétez pas ! De nombreux autres voyages vous attendent",
+    "Edit" : "Modifier",
+    "Delete" : "Supprimer"
 }
