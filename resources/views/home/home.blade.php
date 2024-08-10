@@ -5,6 +5,14 @@
 @section('content')
     <div class="container">
         <div class="row">
+            <div class="col col-md-6 offset-md-3">
+                <x-Trip.SearchBar />
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
             <div class="col">
                 <h1>{{ __('Coming trips') }}</h1>
             </div>

@@ -6,4 +6,6 @@ import './tools/functions';
 
 import './trip';
 
+import './geocoding';
+
 import './common';

@@ -85,15 +85,21 @@
                 <div class="mb-3">
                     <div id="new-trip-map"></div>
                     
-                    <input required name="coordinates_start" value="{{ old('coordinates_start') }}" type="hidden" class="form-control @error('coordinates_start') is-invalid @enderror" id="coordinates_start">
-                    @error('coordinates_start')
+                    <input required name="coordinates_start_lat" value="{{ old('coordinates_start_lat') }}" type="hidden" class="form-control @error('coordinates_start_lat') is-invalid @enderror" id="coordinates_start_lat">
+                    <input required name="coordinates_start_long" value="{{ old('coordinates_start_long') }}" type="hidden" class="form-control @error('coordinates_start_long') is-invalid @enderror" id="coordinates_start_long">
+                    @error('coordinates_start_lat')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                    @error('coordinates_start_long')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                     @enderror
                 </div>
                 <div class="text-center">
-                    <button type="submit" class="btn btn-primary w-100">{{ __('Submit') }}</button>
+                    <button type="submit" class="btn btn-primary w-100">{{ __('Add') }}</button>
                 </div>
             </form>
         </div>

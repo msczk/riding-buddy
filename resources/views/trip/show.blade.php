@@ -4,7 +4,8 @@
 
 @section('javascript')
 <script>
-    var coordinates_start = "{{$trip->coordinates_start}}";
+    var coordinates_start_lat = "{{$trip->coordinates_start_lat}}";
+    var coordinates_start_long = "{{$trip->coordinates_start_long}}";
 </script>
 @endsection
 

@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->dateTime('start_at');
-            $table->string('coordinates_start');
+            $table->string('coordinates_start_lat');
+            $table->string('coordinates_start_long');
             $table->integer('distance');
             $table->string('duration');
             $table->tinyInteger('level');

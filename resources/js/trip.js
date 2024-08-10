@@ -10,18 +10,22 @@ $(document).ready(function() {
     // If page is trip add or edit form
     if($('#new-trip-map').length > 0)
     {
-        init_map_configuration();
+        init_configuration();
         
         // We get the coordinates input value
-        const coordinates_start = $('#coordinates_start');
+        const coordinates_start_lat_element = $('#coordinates_start_lat')
+        const coordinates_start_long_element = $('#coordinates_start_long')
+
+        const coordinates_start_lat = coordinates_start_lat_element.val();
+        const coordinates_start_long = coordinates_start_long_element.val();
 
         // if has coordinates = edit form so we zoom on the marker
-        if(coordinates_start.val() !== '')
+        if(coordinates_start_lat !== '' && coordinates_start_long !== '')
         {
             var map = new maptilersdk.Map({
                 container: 'new-trip-map', // container's id or the HTML element to render the map
                 style: maptilersdk.MapStyle.STREETS,
-                center: coordinates_start.val().split(','), // starting position [lng, lat]
+                center: [coordinates_start_long, coordinates_start_lat], // starting position [lng, lat]
                 zoom: 4, // starting zoom
                 
               });
@@ -35,10 +39,10 @@ $(document).ready(function() {
         }
 
          // if has coordinates = edit form so we place the marker on the map
-        if(coordinates_start.val() !== '')
+        if(coordinates_start_lat !== '' && coordinates_start_long !== '')
         {
             var marker = new maptilersdk.Marker()
-            .setLngLat(coordinates_start.val().split(','))
+            .setLngLat([coordinates_start_long, coordinates_start_lat])
             .addTo(map);
         }else{
             var marker = null;
@@ -57,34 +61,36 @@ $(document).ready(function() {
                 .addTo(map);
     
             var lngLat = marker.getLngLat();
-            coordinates_start.val(lngLat.lng + ',' + lngLat.lat);
+
+            coordinates_start_lat_element.val(lngLat.lat);
+            coordinates_start_long_element.val(lngLat.lng);
         });
     }
 
     // If page is trip show
     if($('#show-trip-map').length > 0)
     {
-        init_map_configuration();
+        init_configuration();
         
         // if has coordinates = edit form so we zoom on the marker
-        if(coordinates_start !== '')
+        if(coordinates_start_lat !== '' && coordinates_start_long !== '')
         {
             var map = new maptilersdk.Map({
                 container: 'show-trip-map', // container's id or the HTML element to render the map
                 style: maptilersdk.MapStyle.STREETS,
-                center: coordinates_start.split(','), // starting position [lng, lat]
+                center: [coordinates_start_long, coordinates_start_lat], // starting position [lng, lat]
                 zoom: 10, // starting zoom
                 
                 });
         
             var marker = new maptilersdk.Marker()
-            .setLngLat(coordinates_start.split(','))
+            .setLngLat([coordinates_start_long, coordinates_start_lat])
             .addTo(map);
         }
     }
 });
 
-function init_map_configuration()
+function init_configuration()
 {
     maptilersdk.config.apiKey = maptiler_apikey;
     maptilersdk.config.primaryLanguage = maptilersdk.Language.FRENCH;

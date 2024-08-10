@@ -6,6 +6,7 @@ use App\Http\Controllers\TripController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SubscriptionController;
 
 // Landing page
@@ -40,6 +41,9 @@ Route::get('/trip/{trip}/show', [TripController::class, 'show'])->name('trip.sho
 Route::delete('/trip/{trip}/destroy', [TripController::class, 'destroy'])->name('trip.destroy')->middleware('auth');
 Route::get('/trip/{trip}/rate', [TripController::class, 'rate'])->name('trip.rate')->middleware('auth');
 Route::post('/trip/{trip}/rate', [TripController::class, 'doRating'])->middleware('auth');
+
+// search
+Route::get('/trip/search', [SearchController::class, 'doSearch'])->name('trip.search');
 
 // profile
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index')->middleware('auth');

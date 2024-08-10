@@ -75,5 +75,20 @@
     "Adventure" : "Trail",
     "Supermoto" : "Supermotard",
     "Cruiser" : "Cruiser",
-    "Profile updated successfully!" : "Profil mis à jour avec succès !"
+    "Profile updated successfully!" : "Profil mis à jour avec succès !",
+    "I am looking for a trip at" : "Je recherche une balade au départ de",
+    "Search" : "Rechercher",
+    "Trip created successfully!" : "Balade créée avec succès !",
+    "Start at" : "Démarre le",
+    "Duration" : "Durée",
+    "Distance" : "Distance",
+    "Level" : "Niveau",
+    "Max participants" : "Nombre de participants",
+    "Add" : "Ajouter",
+    "Name" : "Nom",
+    "Hours" : "Heures",
+    "Results" : "Résultats",
+    "Radius" : "Rayon",
+    "Trip start place" : "Départ de la balade",
+    "Search for a trip" : "Rechercher une balade"
 }
