@@ -57,7 +57,7 @@ class Trip extends Model
     }
 
     /**
-     * Get the users that will participate to the trip
+     * Get the users associated to the trip
      *
      * @return BelongsToMany
      */
@@ -66,17 +66,26 @@ class Trip extends Model
         return $this->belongsToMany(User::class)->withPivot('rate');
     }
 
+
+    /**
+     * Get the users that are approved for the trip
+     *
+     * @return BelongsToMany
+     */
+    public function approvedUsers(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class)->where('approved', 1)->withPivot('rate');
+    }
+
     /**
      * Return the label that corresponds to the level based on the number stored
      *
      * @return string
      */
-    public function getLevelLabel() : string
+    public function getLevelLabel(): string
     {
-        foreach (Config::get('app.riding_levels') as $label => $value)
-        {
-            if($this->level == $value)
-            {
+        foreach (Config::get('app.riding_levels') as $label => $value) {
+            if ($this->level == $value) {
                 return __($label);
             }
         }

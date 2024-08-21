@@ -1,6 +1,5 @@
 import $ from 'jquery';
 import * as bootstrap from 'bootstrap';
-import * as tooltip from '@popperjs/core';
 
 const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
 const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
@@ -17,6 +16,6 @@ $('.copyClipBoard').on('click', function()
      // Returns a Bootstrap tooltip instance
 
     // setContent example
-    tooltip.setContent({ '.tooltip-inner': 'Copied' })
+    tooltip.setContent({ '.tooltip-inner': txt_copied })
 });
 

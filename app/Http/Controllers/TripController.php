@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Trip;
+use App\Models\User;
 use Illuminate\Http\Request;
-use App\Notifications\TripDeleted;
+use App\Notifications\Trip\TripDeleted;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use App\Notifications\Trip\TripNewParticipation;
 use App\Http\Requests\Trip\StoreTripRequest;
 use App\Http\Requests\Trip\UpdateTripRequest;
+use App\Notifications\Trip\TripApproved;
+use App\Notifications\Trip\TripWaitingForApproval;
 
 class TripController extends Controller
 {
@@ -19,11 +23,10 @@ class TripController extends Controller
      */
     public function create(): \Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
     {
-        if(!Gate::allows('create-trip'))
-        {
+        if (!Gate::allows('create-trip')) {
             abort(403, __('You reached your subscription plan limits. Consider upgrading it'));
         }
-        
+
         return view('trip.create');
     }
 
@@ -35,20 +38,24 @@ class TripController extends Controller
      */
     public function store(StoreTripRequest $request): \Illuminate\Http\RedirectResponse
     {
-        if(!Gate::allows('create-trip')) 
-        {
+        if (!Gate::allows('create-trip')) {
             abort(403, __('You reached your subscription plan limits. Consider upgrading it'));
         }
 
+        /** @var \App\Models\User */
+        $user = Auth::user();
+
         $trip_data = $request->validated();
 
-        $trip_data['user_id'] = Auth::user()->id;
+        $trip_data['user_id'] = $user->id;
 
         $trip = Trip::create($trip_data);
 
-        $trip->users()->attach(Auth::user());
+        $trip->users()->attach($user);
 
-        return to_route('trip.show', $trip)->with('success', 'Trip created successfully!');
+        $trip->users()->updateExistingPivot($user, ['approved' => true]);
+
+        return to_route('trip.show', $trip)->with('success', __('Trip created successfully!'));
     }
 
     /**
@@ -60,10 +67,8 @@ class TripController extends Controller
      */
     public function show(Trip $trip): \Illuminate\Contracts\View\View
     {
-        if($trip->isOver())
-        {
-            if(!$trip->public_after_over)
-            {
+        if ($trip->isOver()) {
+            if (!$trip->public_after_over) {
                 abort(403, __('This past trip is not public'));
             }
         }
@@ -78,18 +83,15 @@ class TripController extends Controller
      */
     public function edit(Trip $trip): \Illuminate\Http\RedirectResponse|\Illuminate\Contracts\View\View
     {
-        if(Auth::user() && $trip->user_id != Auth::user()->id)
-        {
+        if (Auth::user() && $trip->user_id != Auth::user()->id) {
             return back()->with('error', __('This trip does not belong to you'));
         }
 
-        if($trip->isOver())
-        {
+        if ($trip->isOver()) {
             return back()->with('error', __('This trip is already over and cannot be modified'));
         }
 
-        if($trip->isOneDayAway())
-        {
+        if ($trip->isOneDayAway()) {
             return back()->with('error', __('This trip will start soon and cannot be modified'));
         }
 
@@ -105,21 +107,18 @@ class TripController extends Controller
      */
     public function update(UpdateTripRequest $request, Trip $trip): \Illuminate\Http\RedirectResponse
     {
-        if(Auth::user() && $trip->user_id != Auth::user()->id)
-        {
+        if (Auth::user() && $trip->user_id != Auth::user()->id) {
             return back()->with('error', __('This trip does not belong to you'));
         }
 
-        if($trip->isOver())
-        {
+        if ($trip->isOver()) {
             return back()->with('error', __('This trip is already over and cannot be modified'));
         }
 
-        if($trip->isOneDayAway())
-        {
+        if ($trip->isOneDayAway()) {
             return back()->with('error', __('This trip will start soon and cannot be modified'));
         }
-        
+
         $trip_data = $request->validated();
 
         $trip->update($trip_data);
@@ -135,22 +134,17 @@ class TripController extends Controller
      */
     public function destroy(Trip $trip): \Illuminate\Http\RedirectResponse
     {
-        if(Auth::user() && $trip->user_id != Auth::user()->id)
-        {
+        if (Auth::user() && $trip->user_id != Auth::user()->id) {
             return back()->with('error', __('This trip does not belong to you'));
         }
 
-        if ($trip->trashed())
-        {
+        if ($trip->trashed()) {
             return back()->with('error', __('This trip is already trashed'));
         }
 
-        if(!empty($trip->users))
-        {
-            foreach($trip->users as $user)
-            {
-                if($trip->user->id != $user->id)
-                {
+        if (!empty($trip->users)) {
+            foreach ($trip->users as $user) {
+                if ($trip->user->id != $user->id) {
                     $user->notify(new TripDeleted($trip));
                 }
             }
@@ -169,8 +163,7 @@ class TripController extends Controller
      */
     public function visibility(Trip $trip): \Illuminate\Http\RedirectResponse
     {
-        if(Auth::user() && $trip->user_id != Auth::user()->id)
-        {
+        if (Auth::user() && $trip->user_id != Auth::user()->id) {
             return back()->with('error', __('This trip does not belong to you'));
         }
 
@@ -188,44 +181,45 @@ class TripController extends Controller
      */
     public function participate(Trip $trip): \Illuminate\Http\RedirectResponse
     {
-        if(!Auth::user())
-        {
+        /** @var \App\Models\User */
+        $user = Auth::user();
+
+        if (!$user) {
             return back()->with('error', __('You must bee logged in'));
         }
-        
-        if($trip->user_id == Auth::user()->id)
-        {
+
+        if ($trip->user_id == $user->id) {
             return back()->with('error', __('You already participate to this trip'));
         }
 
-        if($trip->isOver())
-        {
+        if ($trip->isOver()) {
             return back()->with('error', __('You cannot participate to this trip beecause it is already over'));
         }
 
-        if($trip->isOneDayAway())
-        {
+        if ($trip->isOneDayAway()) {
             return back()->with('error', __('You cannot participate to this trip beecause it will start soon'));
         }
 
-        if($trip->users->contains(Auth::user()))
-        {
-            $trip->users()->detach(Auth::user());
-            return back()->with('success', 'You unregistered for this trip');
-        }else{
+        if ($trip->users->contains($user)) {
+            $trip->users()->detach($user);
+            return back()->with('success', __('You unregistered for this trip'));
+        } else {
 
-            if($trip->isFull())
-            {
+            if ($trip->isFull()) {
                 return back()->with('error', __('You cannot participate to this trip beecause it is already full'));
             }
 
-            if(!Gate::allows('participate-trip')) 
-            {
+            if (!Gate::allows('participate-trip')) {
                 abort(403, __('You reached your subscription plan limits. Consider upgrading it'));
             }
 
-            $trip->users()->attach(Auth::user());
-            return back()->with('success', 'You registered for this trip');
+            $trip->users()->attach($user);
+
+            $user->notify(new TripWaitingForApproval($trip));
+
+            $trip->user->notify(new TripNewParticipation($trip, $user));
+
+            return back()->with('success', __('You participation has been submited to the initiator of this trip'));
         }
     }
 
@@ -240,41 +234,49 @@ class TripController extends Controller
         /** @var \App\Models\User */
         $user = Auth::user();
 
-        if($trip->user_id == $user->id)
-        {
+        if (!$user) {
+            return back()->with('error', __('You must bee logged in'));
+        }
+
+        if ($trip->user_id == $user->id) {
             return back()->with('error', __('You cannot rate your own trip'));
         }
 
-        if(!$trip->isOver())
-        {
+        if (!$trip->isOver()) {
             return back()->with('error', __('You cannot rate a trip that is not over'));
         }
 
-        if($user->hasRated($trip))
-        {
-            return back()->with('error', __('You have already rated this trip'));   
+        if ($user->hasRated($trip)) {
+            return back()->with('error', __('You have already rated this trip'));
         }
 
-        if($trip->users->contains($user))
-        {
+        if ($trip->users->contains($user)) {
             return view('trip.rate')->with('trip', $trip);
-        }else{
+        } else {
             return back()->with('error', __('You did not participate to this trip'));
         }
     }
 
-    public function doRating(Request $request, Trip $trip)
+    /**
+     * Do the trip rating action
+     *
+     * @param Request $request
+     * @param Trip $trip
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function doRating(Request $request, Trip $trip): \Illuminate\Http\RedirectResponse
     {
         $rating = $request->input('rating');
 
-        if(!is_numeric($rating) || empty($rating))
-        {
+        if (!is_numeric($rating) || empty($rating)) {
             return back()->with('error', __('Please send a correct rating value'));
         }
 
         $trip->users()->updateExistingPivot(Auth::user(), ['rate' => $rating]);
 
-        return to_route('trip.show', $trip)->with('success', 'Thank you for rating this trip');
+        return to_route('trip.show', $trip)->with('success', __('Thank you for rating this trip'));
+    }
+
     /**
      * Do the approbation of a user who wants to join de trip
      *

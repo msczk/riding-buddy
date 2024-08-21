@@ -64,7 +64,7 @@
                     <label for="level" class="form-label">{{ __('Level') }}</label>
                     <select required name="level" class="form-select @error('level') is-invalid @enderror" id="level">
                         @foreach (Config::get('app.riding_levels') as $label => $value)
-                            <option @if(old('level') == $value) selected @endif value="{{ $value }}">{{ $label }}</option>
+                            <option @if(old('level') == $value) selected @endif value="{{ $value }}">{{ __($label) }}</option>
                         @endforeach
                     </select>
                     @error('level')
