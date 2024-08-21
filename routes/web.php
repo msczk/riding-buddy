@@ -41,6 +41,7 @@ Route::get('/trip/{trip}/show', [TripController::class, 'show'])->name('trip.sho
 Route::delete('/trip/{trip}/destroy', [TripController::class, 'destroy'])->name('trip.destroy')->middleware('auth');
 Route::get('/trip/{trip}/rate', [TripController::class, 'rate'])->name('trip.rate')->middleware('auth');
 Route::post('/trip/{trip}/rate', [TripController::class, 'doRating'])->middleware('auth');
+Route::get('/trip/{trip}/approve/{user}', [TripController::class, 'approve'])->name('trip.approve');
 
 // search
 Route::get('/trip/search', [SearchController::class, 'doSearch'])->name('trip.search');

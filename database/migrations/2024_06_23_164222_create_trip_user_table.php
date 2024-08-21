@@ -15,6 +15,7 @@ return new class extends Migration
             $table->integer('trip_id');
             $table->integer('user_id');
             $table->integer('rate')->nullable();
+            $table->boolean('approved')->default(false);
 
             $table->foreign('trip_id')->references('id')->on('trips');
             $table->foreign('user_id')->references('id')->on('users');

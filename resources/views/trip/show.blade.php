@@ -57,7 +57,7 @@
             {{ $trip->getLevelLabel() }}
         </div>
         <div class="col-6 text-center ">
-            {{ $trip->users->count() }} / {{ $trip->max_participants }}
+            {{ $trip->approvedUsers()->count() }} / {{ $trip->max_participants }}
         </div>
     </div>
 
@@ -89,7 +89,7 @@
         </div>
     </div>
     <div class="row">
-        @forelse ($trip->users as $user)
+        @forelse ($trip->approvedUsers as $user)
             <x-Profile.ProfileThumbnail :user=$user />
         @empty
             <div class="col">

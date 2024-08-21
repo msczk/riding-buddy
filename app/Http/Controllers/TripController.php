@@ -275,5 +275,39 @@ class TripController extends Controller
         $trip->users()->updateExistingPivot(Auth::user(), ['rate' => $rating]);
 
         return to_route('trip.show', $trip)->with('success', 'Thank you for rating this trip');
+    /**
+     * Do the approbation of a user who wants to join de trip
+     *
+     * @param Trip $trip
+     * @param User $user
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function approve(Trip $trip, User $user): \Illuminate\Http\RedirectResponse
+    {
+        if (!Auth::user()) {
+            return back()->with('error', __('You must bee logged in'));
+        }
+
+        if ($trip->user_id != Auth::user()->id) {
+            return to_route('trip.show', $trip)->with('error', __('You are not the initiator of this trip'));
+        }
+
+        if ($trip->user_id == $user->id) {
+            return to_route('trip.show', $trip)->with('error', __('You cannot approve yourself'));
+        }
+
+        if ($trip->isOver()) {
+            return to_route('trip.show', $trip)->with('error', __('You cannot approve someone for a trip that is over'));
+        }
+
+        if (!$trip->users->contains($user)) {
+            return to_route('trip.show', $trip)->with('error', __('You cannot approve someone for a trip he does not participate'));
+        }
+
+        $trip->users()->updateExistingPivot($user, ['approved' => true]);
+
+        $user->notify(new TripApproved($trip));
+
+        return to_route('trip.show', $trip)->with('success', __('User :username has been approved', ['username' => $user->username]));
     }
 }

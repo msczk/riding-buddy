@@ -11,7 +11,7 @@
         <div>{{ $trip->name }}</div>
 
         <div>
-            <span>{{ $trip->distance }} km</span> - <span>{{ $trip->duration }} h</span> - <span>1/{{ $trip->max_participants }}</span>
+            <span>{{ $trip->distance }} km</span> - <span>{{ $trip->duration }} h</span> - <span>{{ $trip->approvedUsers()->count() }} / {{ $trip->max_participants }}</span>
         </div>
 
         <div>Le {{ date_format($trip->start_at, 'd-m-Y')  }} à {{ date_format($trip->start_at, 'H:i')  }} par {{ $trip->user->username }}</div>

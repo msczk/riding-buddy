@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Notifications;
+namespace App\Notifications\Trip;
 
 use App\Models\Trip;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
 class TripDeleted extends Notification
