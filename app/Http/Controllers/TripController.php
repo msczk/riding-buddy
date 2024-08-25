@@ -147,7 +147,7 @@ class TripController extends Controller
 
         $trip->update($trip_data);
 
-        return back()->with('success', 'Trip updated successfully!');
+        return back()->with('success', __('Trip updated successfully!'));
     }
 
     /**
@@ -176,7 +176,7 @@ class TripController extends Controller
 
         $trip->delete();
 
-        return to_route('profile.trips')->with('success', 'Trip deleted successfully!');
+        return to_route('profile.trips')->with('success', __('Trip deleted successfully!'));
     }
 
     /**
@@ -194,7 +194,7 @@ class TripController extends Controller
         $trip->public_after_over = !$trip->public_after_over;
         $trip->save();
 
-        return back()->with('success', 'Trip visibility after over updated successfully!');
+        return back()->with('success', __('Trip visibility after over updated successfully!'));
     }
 
     /**

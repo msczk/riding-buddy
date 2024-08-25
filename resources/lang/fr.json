@@ -125,5 +125,8 @@
     "This past trip is not public" : "Cette balade passée n'est pas publique",
     "Copy to clipboard" : "Copier dans le presse-papiers",
     "Copied" : "Copié",
-    "You are not the initiator of this trip" : "Vous n'êtes pas le créateur de cette balade"
+    "You are not the initiator of this trip" : "Vous n'êtes pas le créateur de cette balade",
+    "Trip updated successfully!" : "Balade mis à jour avec succès !",
+    "Trip deleted successfully!" : "Balade supprimée avec succès !",
+    "This trip is already trashed" : "Cette balade est déjà supprimée"
 }

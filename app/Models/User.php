@@ -86,9 +86,8 @@ class User extends Authenticatable
      */
     public function getAge(): String
     {
-        if(!empty($this->birthday))
-        {
-            return Carbon::parse($this->birthday)->age.' '.__('ans');
+        if (!empty($this->birthday)) {
+            return Carbon::parse($this->birthday)->age . ' ' . __('ans');
         }
 
         return '';
@@ -122,12 +121,10 @@ class User extends Authenticatable
      */
     public function allowedAmountOfTripsCreation(): int
     {
-        if($this->subscribed())
-        {
+        if ($this->subscribed()) {
             $subscription = $this->subscription()->asStripeSubscription();
-            
-            if(isset($subscription->plan->metadata->create_trips) && !empty($subscription->plan->metadata->create_trips))
-            {
+
+            if (isset($subscription->plan->metadata->create_trips) && !empty($subscription->plan->metadata->create_trips)) {
                 return $subscription->plan->metadata->create_trips;
             }
         }
@@ -142,12 +139,10 @@ class User extends Authenticatable
      */
     public function allowedAmountOfTripsParticipation(): int
     {
-        if($this->subscribed())
-        {
+        if ($this->subscribed()) {
             $subscription = $this->subscription()->asStripeSubscription();
-            
-            if(isset($subscription->plan->metadata->participate_trips) && !empty($subscription->plan->metadata->participate_trips))
-            {
+
+            if (isset($subscription->plan->metadata->participate_trips) && !empty($subscription->plan->metadata->participate_trips)) {
                 return $subscription->plan->metadata->participate_trips;
             }
         }
