@@ -101,7 +101,7 @@ class User extends Authenticatable
      */
     public function trips(): BelongsToMany
     {
-        return $this->belongsToMany(Trip::class)->withPivot('rate');
+        return $this->belongsToMany(Trip::class)->withPivot(['rate', 'approved']);
     }
 
     /**
@@ -153,5 +153,21 @@ class User extends Authenticatable
         }
 
         return Config::get('app.permissions.default.participate_trips');
+    }
+
+    /**
+     * Return if a user participate to a trip
+     *
+     * @param Trip $trip
+     * @return boolean
+     */
+    public function participate(Trip $trip): bool
+    {
+        return $trip->users->contains($this);
+    }
+
+    public function isApprovedForTrip(Trip $trip): bool
+    {
+        return $this->trips->find($trip->id)->pivot->approved;
     }
 }

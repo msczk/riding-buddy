@@ -72,7 +72,6 @@ $(document).ready(function() {
     {
         init_configuration();
         
-        // if has coordinates = edit form so we zoom on the marker
         if(coordinates_start_lat !== '' && coordinates_start_long !== '')
         {
             var map = new maptilersdk.Map({
@@ -82,11 +81,41 @@ $(document).ready(function() {
                 zoom: 10, // starting zoom
                 
                 });
-        
-            var marker = new maptilersdk.Marker()
-            .setLngLat([coordinates_start_long, coordinates_start_lat])
-            .addTo(map);
-        }
+
+            if(is_approved) 
+            {
+                var marker = new maptilersdk.Marker()
+                .setLngLat([coordinates_start_long, coordinates_start_lat])
+                .addTo(map);
+            }else{
+                map.on('load', function () {
+                    map.addSource('start_area', {
+                        type: 'geojson',
+                        data: {
+                        "type": "FeatureCollection",
+                        "features": [{
+                            "type": "Feature",
+                            "geometry": {
+                                "type": "Point",
+                                "coordinates": [coordinates_start_long, coordinates_start_lat]
+                            }
+                        }]
+                        }
+                    });
+                    
+                    map.addLayer({
+                        'id': 'point',
+                        'source': 'start_area',
+                        'type': 'circle',
+                        'paint': {
+                            'circle-radius' : 50,
+                            'circle-color' : '#007cbf',
+                            'circle-opacity' : 0.5,
+                        }
+                    });
+                });
+            }
+        }        
     }
 });
 

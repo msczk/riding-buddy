@@ -72,7 +72,31 @@ class TripController extends Controller
                 abort(403, __('This past trip is not public'));
             }
         }
-        return view('trip.show')->with('trip', $trip);
+
+        /** @var \App\Models\User */
+        $user = Auth::user();
+
+        $is_approved = false;
+
+        $fake_coordinates = $trip->generateCloseCoordinates(2);
+
+        $coordinates_start_lat = $fake_coordinates[0];
+        $coordinates_start_long = $fake_coordinates[1];
+
+        if ($user) {
+            if ($user->participate($trip)) {
+                if ($user->isApprovedForTrip($trip)) {
+                    $is_approved = true;
+
+                    $coordinates_start_lat = $trip->coordinates_start_lat;
+                    $coordinates_start_long = $trip->coordinates_start_long;
+                }
+            }
+        }
+
+
+
+        return view('trip.show')->with(['trip' => $trip, 'is_approved' => $is_approved, 'coordinates_start_lat' => $coordinates_start_lat, 'coordinates_start_long' => $coordinates_start_long]);
     }
 
     /**

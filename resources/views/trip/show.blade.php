@@ -4,8 +4,15 @@
 
 @section('javascript')
 <script>
-    var coordinates_start_lat = "{{$trip->coordinates_start_lat}}";
-    var coordinates_start_long = "{{$trip->coordinates_start_long}}";
+    @if($is_approved)
+    
+        var is_approved = {{$is_approved}};
+    @else
+        var is_approved = false;
+    @endif
+
+    var coordinates_start_lat = "{{$coordinates_start_lat}}";
+    var coordinates_start_long = "{{$coordinates_start_long}}";
 </script>
 @endsection
 
@@ -69,7 +76,7 @@
                         @csrf
                         @method('put')
     
-                        @if($trip->users->contains(Auth::user()))
+                        @if(Auth::user() && Auth::user()->participate($trip))
                             <button class="btn btn-primary w-100">{{ __('Remove participation') }}</button>
                         @else
                             <button class="btn btn-primary w-100">{{ __('Participate') }}</button>
