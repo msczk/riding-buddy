@@ -37,7 +37,7 @@ Route::post('/trip/create', [TripController::class, 'store'])->middleware('auth'
 Route::put('/trip/{trip}/edit', [TripController::class, 'update'])->middleware('auth');
 Route::put('/trip/{trip}/visibility', [TripController::class, 'visibility'])->name('trip.visibility')->middleware('auth');
 Route::put('/trip/{trip}/participate', [TripController::class, 'participate'])->name('trip.participate')->middleware('auth');
-Route::get('/trip/{trip}/show', [TripController::class, 'show'])->name('trip.show');
+Route::get('/trip/{trip:slug}/show', [TripController::class, 'show'])->name('trip.show');
 Route::delete('/trip/{trip}/destroy', [TripController::class, 'destroy'])->name('trip.destroy')->middleware('auth');
 Route::get('/trip/{trip}/rate', [TripController::class, 'rate'])->name('trip.rate')->middleware('auth');
 Route::post('/trip/{trip}/rate', [TripController::class, 'doRating'])->middleware('auth');
@@ -51,7 +51,7 @@ Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index
 Route::get('/profile/trips', [ProfileController::class, 'trips'])->name('profile.trips')->middleware('auth');
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit')->middleware('auth');
 Route::put('/profile/edit', [ProfileController::class, 'update'])->middleware('auth');
-Route::get('/profile/{user}/show', [ProfileController::class, 'show'])->name('profile.show');
+Route::get('/profile/{user:slug}/show', [ProfileController::class, 'show'])->name('profile.show');
 Route::get('/profile/invoices', [ProfileController::class, 'invoices'])->name('profile.invoices')->middleware('auth');
 
 // invoice

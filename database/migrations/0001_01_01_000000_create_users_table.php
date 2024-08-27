@@ -24,6 +24,7 @@ return new class extends Migration
             $table->boolean('optin_newsletter')->default(false);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('slug')->unique();
             $table->rememberToken();
             $table->timestamps();
         });

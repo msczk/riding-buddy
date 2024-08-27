@@ -24,6 +24,7 @@ return new class extends Migration
             $table->tinyInteger('level');
             $table->integer('max_participants');
             $table->boolean('public_after_over')->default(true);
+            $table->string('slug')->unique();
             $table->softDeletes();
             $table->timestamps();
 

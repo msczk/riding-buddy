@@ -11,7 +11,7 @@
     </div>
 
     <div class="row mt-2 border-bottom pb-3">
-        <a class="col text-decoration-none " href="{{ route('profile.show', Auth::user()->id) }}">
+        <a class="col text-decoration-none " href="{{ route('profile.show', Auth::user()) }}">
             <div class="d-flex justify-content-between">
                 <div class="d-flex">
                     <div class="me-3">

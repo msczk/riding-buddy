@@ -4,14 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Trip;
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use App\Notifications\Trip\TripDeleted;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
-use App\Notifications\Trip\TripNewParticipation;
+use App\Notifications\Trip\TripDeleted;
+use App\Notifications\Trip\TripApproved;
 use App\Http\Requests\Trip\StoreTripRequest;
 use App\Http\Requests\Trip\UpdateTripRequest;
-use App\Notifications\Trip\TripApproved;
+use App\Notifications\Trip\TripNewParticipation;
 use App\Notifications\Trip\TripWaitingForApproval;
 
 class TripController extends Controller
@@ -48,6 +50,8 @@ class TripController extends Controller
         $trip_data = $request->validated();
 
         $trip_data['user_id'] = $user->id;
+
+        $trip_data['slug'] = Str::slug($request->input('name'), '-', App::currentLocale());
 
         $trip = Trip::create($trip_data);
 

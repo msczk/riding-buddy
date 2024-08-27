@@ -31,7 +31,7 @@
         </div>
         <div class="col d-flex justify-content-between">
             
-            <a data-copy="{{ route('trip.show', $trip->id) }}" data-bs-toggle="tooltip" data-bs-title="{{ __('Copy to clipboard') }}" class="text-decoration-none text-primary copyClipBoard" href="javascript:void(0)">
+            <a data-copy="{{ route('trip.show', $trip) }}" data-bs-toggle="tooltip" data-bs-title="{{ __('Copy to clipboard') }}" class="text-decoration-none text-primary copyClipBoard" href="javascript:void(0)">
                 <i class="text-primary fa fa-link"></i>
             </a>
             <a class="text-decoration-none text-primary" href="#">
@@ -48,7 +48,7 @@
                 {!! nl2br(e($trip->description)) !!}
             </p>
             <div class="py-2">
-                <img width="50px" height="50px" class="rounded-circle" src="https://placehold.co/300x300" alt="{{ $trip->user->username }}"> <a href="{{ route('profile.show', $trip->user->id) }}">{{ $trip->user->username }}</a>
+                <img width="50px" height="50px" class="rounded-circle" src="https://placehold.co/300x300" alt="{{ $trip->user->username }}"> <a href="{{ route('profile.show', $trip->user) }}">{{ $trip->user->username }}</a>
             </div>
         </div>
     </div>

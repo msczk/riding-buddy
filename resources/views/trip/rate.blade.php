@@ -14,7 +14,7 @@
             <h1>{{ $trip->name }}</h1>
             <h2>{{ \Carbon\Carbon::createFromDate($trip->start_at)->translatedFormat('l jS F Y - h:i') }}</h2>
             <div>
-                {{ __('By') }} <a href="{{ route('profile.show', $trip->user->id) }}">{{ $trip->user->username }}</a>
+                {{ __('By') }} <a href="{{ route('profile.show', $trip->user) }}">{{ $trip->user->username }}</a>
             </div>
             <p>
                 {!! nl2br(e($trip->description)) !!}
