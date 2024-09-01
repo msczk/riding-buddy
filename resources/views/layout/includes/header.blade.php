@@ -10,7 +10,7 @@
         @endif --}}
       </ul>
 
-      <div class="col-md-4 text-end d-flex justify-content-end">
+      <div class="col-6 col-lg-4 text-end d-flex justify-content-end">
         <a href="{{ route('trip.create') }}" class="btn btn-success ">{{ __('New trip') }}</a>
         @guest
           <a href="{{ route('auth.login') }}" class="btn btn-outline-primary mx-2">{{ __('Sign-in') }}</a>

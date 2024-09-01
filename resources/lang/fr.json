@@ -128,5 +128,8 @@
     "You are not the initiator of this trip" : "Vous n'êtes pas le créateur de cette balade",
     "Trip updated successfully!" : "Balade mis à jour avec succès !",
     "Trip deleted successfully!" : "Balade supprimée avec succès !",
-    "This trip is already trashed" : "Cette balade est déjà supprimée"
+    "This trip is already trashed" : "Cette balade est déjà supprimée",
+    "Meeting location" : "Point de départ",
+    "The approximate distance you will cover during the ride" : "La distance approximative que vous allez parcourir durant la balade",
+    "The approximate duration of the trip" : "La durée approximative de la balade"
 }

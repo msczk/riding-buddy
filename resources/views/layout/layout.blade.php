@@ -17,7 +17,7 @@
         @yield('content')
 
         @include('layout.includes.fixed-menu')
-        @include('layout.includes.footer')
+        {{-- @include('layout.includes.footer') --}}
         @vite(['resources/js/app.js'])
     </body>
 </html>
