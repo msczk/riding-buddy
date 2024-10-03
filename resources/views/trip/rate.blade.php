@@ -23,7 +23,7 @@
     </div>
     <hr>
     <div class="row">
-        <div class="col col-md-4 offset-md-4 justify-content-center d-flex">
+        <div class="col col-lg-4 offset-lg-4 justify-content-center d-flex">
             <form method="POST" action="{{ route('trip.rate', $trip) }}" class="feedback">
                 @csrf
                 <div class="rating">

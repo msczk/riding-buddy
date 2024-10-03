@@ -3,8 +3,8 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col col-md-4 offset-md-4">
-            <form method="POST" action="{{ route('auth.register') }}">
+        <div class="col col-lg-4 offset-lg-4">
+            <form class="my-2" method="POST" action="{{ route('auth.register') }}">
                 @csrf
                 <div class="mb-3">
                     <label for="username" class="form-label">{{ __('Username') }}</label>

@@ -3,9 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col col-md-4 offset-md-4">
+        <div class="col col-lg-4 offset-lg-4">
             @include('layout.alerts')
-            <form method="POST" action="{{ route('password.forgot') }}">
+            <form class="my-2" method="POST" action="{{ route('password.forgot') }}">
                 @csrf
                 <div class="mb-3">
                     <label for="email" class="form-label">{{ __('Email address') }}</label>

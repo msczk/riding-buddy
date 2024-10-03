@@ -5,9 +5,9 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col col-md-4 offset-md-4">
+        <div class="col col-lg-4 offset-lg-4">
             @include('layout.alerts')
-            <form method="POST" action="{{ route('auth.login') }}">
+            <form class="my-2" method="POST" action="{{ route('auth.login') }}">
                 @csrf
                 <div class="mb-3">
                     <label for="email" class="form-label fw-sem">{{ __('Email address') }}</label>
@@ -33,10 +33,10 @@
         </div>
     </div>
     <div class="row mt-4">
-        <div class="col">
+        <div class="col-8 col-md-6">
             <a class="text-muted small" href="{{ route('password.forgot') }}">{{ __('Forgot password') }}</a>
         </div>
-        <div class="col d-flex justify-content-end">
+        <div class="col-4 col-md-6 d-flex justify-content-end">
             <a class="text-muted small" href="{{ route('auth.register') }}">{{ __('Sign-up') }}</a>
         </div>
     </div>

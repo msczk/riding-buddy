@@ -61,25 +61,6 @@
             {{ $trip->approvedUsers()->count() }} / {{ $trip->max_participants }}
         </div>
     </div>
-
-    @if(!Auth::user() || (Auth::user() && $trip->user_id != Auth::user()->id))
-        @if(!$trip->isOver() && !$trip->isOneDayAway())
-            <div class="row d-none d-md-flex my-2">
-                <div class="offset-3 col-6">
-                    <form class="text-center my-auto px-2" method="POST" action="{{ route('trip.participate', $trip) }}">
-                        @csrf
-                        @method('put')
-    
-                        @if(Auth::user() && Auth::user()->participate($trip))
-                            <button class="btn btn-primary w-100">{{ __('Remove participation') }}</button>
-                        @else
-                            <button class="btn btn-primary w-100">{{ __('Participate') }}</button>
-                        @endif
-                    </form>
-                </div>
-            </div>
-        @endif
-    @endif
 </div>
 
 <div id="show-trip-map"></div>
@@ -102,18 +83,22 @@
 
 @if(!Auth::user() || (Auth::user() && $trip->user_id != Auth::user()->id))
     @if(!$trip->isOver() && !$trip->isOneDayAway())
-        <div class="participation-bar-fixed d-flex flex-column d-md-none">
-            <form class="text-center my-auto px-2" method="POST" action="{{ route('trip.participate', $trip) }}">
-                @csrf
-                @method('put')
+    <div class="container">
+        <div class="row d-flex my-2">
+            <div class="col offset-lg-3 col-lg-6">
+                <form class="text-center my-auto px-2" method="POST" action="{{ route('trip.participate', $trip) }}">
+                    @csrf
+                    @method('put')
 
-                @if($trip->users->contains(Auth::user()))
-                    <button class="btn btn-primary w-100">{{ __('Remove participation') }}</button>
-                @else
-                    <button class="btn btn-primary w-100">{{ __('Participate') }}</button>
-                @endif
-            </form>
+                    @if(Auth::user() && Auth::user()->participate($trip))
+                        <button class="btn btn-primary w-100">{{ __('Remove participation') }}</button>
+                    @else
+                        <button class="btn btn-primary w-100">{{ __('Participate') }}</button>
+                    @endif
+                </form>
+            </div>
         </div>
+    </div>
     @endif
 @endif
 

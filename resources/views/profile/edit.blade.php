@@ -1,5 +1,7 @@
 @extends('layout.layout')
 
+@section('body_id', 'profile_edit')
+
 @section('content')
 <div class="container">
     <div class="row mt-2">
@@ -11,8 +13,8 @@
     </div>
     <div class="row">
         @include('layout.alerts')
-        <div class="col offset-md-4 col-md-4">
-            <form class="py-2" method="POST" action="{{ route('profile.edit') }}">
+        <div class="col offset-lg-4 col-lg-4">
+            <form id="profile_edit_form" method="POST" action="{{ route('profile.edit') }}">
                 @method('put')
                 @csrf
                 <div class="mb-3">

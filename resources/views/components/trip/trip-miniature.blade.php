@@ -1,4 +1,4 @@
-<div class="trip-miniature col-12 col-md-3">
+<div class="trip-miniature col-6 col-md-3">
     @if (!$trip->trashed() && $trip->public_after_over)
         <a class="d-block" href="{{ route('trip.show', $trip) }}">
     @else

@@ -22,7 +22,7 @@
         
     </form>
 @else
-    <form class="mt-2" action="{{ route('trip.search') }}" method="GET" id="search-wrapper">
+    <form action="{{ route('trip.search') }}" method="GET" id="search-wrapper">
         <input type="hidden" name="lat" id="lat" @isset($lat) value="{{ $lat }}" @endisset>
         <input type="hidden" name="long" id="long" @isset($long) value="{{ $long }}" @endisset>
 

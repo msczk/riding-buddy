@@ -1,3 +1,9 @@
+body{
+    @include media-breakpoint-down(md) {
+        padding-bottom: 70px;
+      }
+}
+
 #fixed-menu{
     position: fixed;
     bottom: 0;
@@ -5,7 +11,7 @@
     background-color: #ffffff;
     border-top: $border-width $border-style $border-color;
     width: 100%;
-    min-height: 80px;
+    min-height: 60px;
     display: flex;
     z-index: 2;
     transition: all 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955);
@@ -53,4 +59,8 @@
             }
         }
     }
+
+    @include media-breakpoint-down(md) {
+        margin: 20px 0;
+      }
 }
