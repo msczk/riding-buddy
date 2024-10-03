@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('trip_user', function (Blueprint $table) {
-            $table->bigInteger('trip_id');
-            $table->bigInteger('user_id');
+            $table->unsignedBigInteger('trip_id');
+            $table->unsignedBigInteger('user_id');
             $table->integer('rate')->nullable();
             $table->boolean('approved')->default(false);
 
