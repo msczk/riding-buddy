@@ -51,7 +51,7 @@ class TripController extends Controller
 
         $trip_data['user_id'] = $user->id;
 
-        $trip_data['slug'] = Str::slug($request->input('name'), '-', App::currentLocale());
+        $trip_data['slug'] = Str::slug($request->input('name'), '-', App::currentLocale()) . '-' . time();
 
         $trip = Trip::create($trip_data);
 

@@ -30,7 +30,7 @@
             <button class="btn btn-danger" type="submit">{{ __('Delete') }}</button>
         </form>
     @endif
-    @if ($trip->isOver() && !$trip->trashed())
+    {{-- @if ($trip->isOver() && !$trip->trashed())
     <form method="POST" action="{{ route('trip.visibility', $trip) }}">
         @csrf
         @method('put')
@@ -40,6 +40,6 @@
             <button class="btn btn-danger" type="submit">{{ __('Hidden') }}</button>
         @endif
     </form>
-    @endif
+    @endif --}}
 </div>
 
