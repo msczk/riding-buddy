@@ -11,11 +11,12 @@ class HomeController extends Controller
     /**
      * Return the landing page view
      *
-     * @return \Illuminate\Contracts\View\View
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
      */
-    public function landing(): \Illuminate\Contracts\View\View
+    public function landing(): \Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
     {
-        return view('home.landing');
+        return to_route('home');
+        //return view('home.landing');
     }
 
     /**
@@ -31,5 +32,4 @@ class HomeController extends Controller
 
         return view('home.home')->with(['last_users' => $last_users, 'coming_trips' => $coming_trips]);
     }
-    
 }
