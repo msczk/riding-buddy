@@ -5,7 +5,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col col-md-6 offset-md-3">
+            <div class="col col-lg-6 offset-lg-3">
                 <x-Trip.SearchBar />
             </div>
         </div>
