@@ -1,12 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BikeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TripController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SubscriptionController;
 
 // Landing page
@@ -49,10 +50,18 @@ Route::get('/trip/search', [SearchController::class, 'doSearch'])->name('trip.se
 // profile
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index')->middleware('auth');
 Route::get('/profile/trips', [ProfileController::class, 'trips'])->name('profile.trips')->middleware('auth');
+Route::get('/profile/bikes', [ProfileController::class, 'bikes'])->name('profile.bikes')->middleware('auth');
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit')->middleware('auth');
 Route::put('/profile/edit', [ProfileController::class, 'update'])->middleware('auth');
 Route::get('/profile/{user:slug}/show', [ProfileController::class, 'show'])->name('profile.show');
-Route::get('/profile/invoices', [ProfileController::class, 'invoices'])->name('profile.invoices')->middleware('auth');
+// Route::get('/profile/invoices', [ProfileController::class, 'invoices'])->name('profile.invoices')->middleware('auth');
+
+// bike
+Route::get('/bike/create', [BikeController::class, 'create'])->name('bike.create')->middleware('auth');
+Route::post('/bike/create', [BikeController::class, 'store'])->middleware('auth');
+Route::get('/bike/{bike}/edit', [BikeController::class, 'edit'])->name('bike.edit')->middleware('auth');
+Route::put('/bike/{bike}/edit', [BikeController::class, 'update'])->middleware('auth');
+Route::delete('/bike/{bike}/destroy', [BikeController::class, 'destroy'])->name('bike.destroy')->middleware('auth');
 
 // invoice
 Route::get('/invoice/{invoice}/download', [InvoiceController::class, 'download'])->name('invoice.download')->middleware('auth');

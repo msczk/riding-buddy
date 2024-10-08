@@ -131,5 +131,18 @@
     "This trip is already trashed" : "Cette balade est déjà supprimée",
     "Meeting location" : "Point de départ",
     "The approximate distance you will cover during the ride" : "La distance approximative que vous allez parcourir durant la balade",
-    "The approximate duration of the trip" : "La durée approximative de la balade"
+    "The approximate duration of the trip" : "La durée approximative de la balade",
+    "My garage" : "Mon garage",
+    "No bikes for the moment" : "Aucune moto pour le moment",
+    "Garage" : "Garage",
+    "Add a bike" : "Ajouter une moto",
+    "Brand" : "Marque",
+    "Model" : "Modèle",
+    "Cylinder" : "Cylindrée",
+    "Year" : "Année",
+    "Bike created successfully!" : "Moto créée avec succès !",
+    "His bikes" : "Ses motos",
+    "This bike does not belong to you" : "Cette moto ne vous appartient pas",
+    "Bike updated successfully!" : "Moto éditée avec succès !",
+    "Bike deleted successfully!" : "Moto supprimée avec succès !"
 }

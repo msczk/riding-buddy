@@ -35,5 +35,13 @@
             </div>
             @endforelse
         </div>
+        @if (!$user->bikes->isEmpty())
+            <div class="row">
+                <h2>{{ __('His bikes') }}</h2>
+                @foreach ($user->bikes as $bike)
+                    <x-Bike.BikeThumbnail :bike=$bike />
+                @endforeach
+            </div>
+        @endif
     </div>
 @endsection

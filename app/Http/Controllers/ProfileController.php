@@ -93,4 +93,18 @@ class ProfileController extends Controller
         $invoices = $user->invoices();
         return view('profile.invoices')->with(['invoices' => $invoices]);
     }
+
+    /**
+     * Return all bikes for the user
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function bikes(): \Illuminate\Contracts\View\View
+    {
+        /** @var \App\Models\User */
+        $user = Auth::user();
+
+        $bikes = $user->bikes;
+        return view('profile.bikes')->with(['bikes' => $bikes]);
+    }
 }

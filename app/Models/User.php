@@ -152,7 +152,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Return if a user participate to a trip
+     * Return if a user participates to a trip
      *
      * @param Trip $trip
      * @return boolean
@@ -162,8 +162,24 @@ class User extends Authenticatable
         return $trip->users->contains($this);
     }
 
+    /**
+     * Return if a user participates and is approved for a trip
+     *
+     * @param Trip $trip
+     * @return boolean
+     */
     public function isApprovedForTrip(Trip $trip): bool
     {
         return $this->trips->find($trip->id)->pivot->approved;
+    }
+
+    /**
+     * Get the user's bike(s)
+     *
+     * @return HasMany
+     */
+    public function bikes(): HasMany
+    {
+        return $this->hasMany(Bike::class);
     }
 }
