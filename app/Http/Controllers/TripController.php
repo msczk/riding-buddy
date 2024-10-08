@@ -98,8 +98,6 @@ class TripController extends Controller
             }
         }
 
-
-
         return view('trip.show')->with(['trip' => $trip, 'is_approved' => $is_approved, 'coordinates_start_lat' => $coordinates_start_lat, 'coordinates_start_long' => $coordinates_start_long]);
     }
 

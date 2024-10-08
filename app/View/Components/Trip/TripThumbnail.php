@@ -23,23 +23,17 @@ class TripThumbnail extends Component
         $this->showEdit = false;
         $this->showTrash = false;
 
-        if($showEdit == true)
-        {
-            if(Auth::user() && Auth::user()->id == $this->trip->user_id)
-            {
-                if(!$this->trip->isOver() && !$this->trip->isOneDayAway() && !$trip->trashed())
-                {
+        if ($showEdit == true) {
+            if (Auth::user() && Auth::user()->id == $this->trip->user_id) {
+                if (!$this->trip->isOver() && !$this->trip->isOneDayAway() && !$trip->trashed()) {
                     $this->showEdit = $showEdit;
                 }
             }
         }
 
-        if($showTrash == true)
-        {
-            if(Auth::user() && Auth::user()->id == $this->trip->user_id)
-            {
-                if(!$this->trip->trashed())
-                {
+        if ($showTrash == true) {
+            if (Auth::user() && Auth::user()->id == $this->trip->user_id) {
+                if (!$this->trip->trashed()) {
                     $this->showTrash = $showTrash;
                 }
             }
