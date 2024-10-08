@@ -52,7 +52,7 @@
         </a>
         <a href="{{ route('profile.bikes') }}" class="col d-flex text-black text-decoration-none justify-content-between py-2">
             <div>
-                <i class="fa-solid fa-route"></i> {{ __('Garage') }}
+                <i class="fa-solid fa-biking"></i> {{ __('Garage') }}
             </div>
             <div class="">
                 <i class="fa fa-chevron-right"></i>
