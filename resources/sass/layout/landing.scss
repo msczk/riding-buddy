@@ -6,6 +6,10 @@
     background-position: center;
     padding-bottom: 50px;
 
+    @include media-breakpoint-up(lg) {
+        background-image: url(@/../images/backgrounds/landing-background-wide-gradient.jpg);
+      }
+
     h1{
         color: $white;
     }
