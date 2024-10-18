@@ -1,7 +1,9 @@
 body{
-    @include media-breakpoint-down(md) {
-        padding-bottom: 70px;
-      }
+    &.app{
+        @include media-breakpoint-down(md) {
+            padding-bottom: 70px;
+          }
+    }
 }
 
 #fixed-menu{

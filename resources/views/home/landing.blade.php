@@ -1,12 +1,26 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <a href="{{ route('home') }}">{{ __('Go to app') }}</a>
-</body>
+<html class="" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        @vite(['resources/sass/app.scss'])
+    </head>
+    <body id="landing" class="d-flex flex-column justify-content-end">
+        <div class="container">
+            <div class="col-12">
+                <h1>
+                    {{ __(':name, the app where you make friends and find roads around your location', ['name' => Config::get('app.name')]) }}
+                </h1>
+            </div>
+            <div class="col-12">
+                <a class="btn btn-primary btn-register w-100" href="{{ route('auth.register') }}">{{ __('Get started') }}</a>
+            </div>
+            <div class="col-12 text-center">
+                <a class="btn-guest" href="{{ route('home') }}">{{ __('Continue as guest') }}</a>
+            </div>
+        </div>
+
+        @vite(['resources/js/app.js'])
+    </body>
 </html>

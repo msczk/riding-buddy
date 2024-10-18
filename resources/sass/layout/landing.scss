@@ -1,0 +1,22 @@
+#landing{
+    height: 100vh;
+    background-image: url(@/../images/backgrounds/landing-background-gradient.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding-bottom: 50px;
+
+    h1{
+        color: $white;
+    }
+
+    .btn-register{
+        margin: 20px 0;
+    }
+
+    .btn-guest{
+        text-decoration: none;
+        color: $white;
+        font-weight: 500;;
+    }
+}

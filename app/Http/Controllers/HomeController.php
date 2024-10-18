@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Trip;
 use App\Models\User;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -15,8 +15,11 @@ class HomeController extends Controller
      */
     public function landing(): \Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
     {
-        return to_route('home');
-        //return view('home.landing');
+        if (Auth::user()) {
+            return to_route('home');
+        }
+
+        return view('home.landing');
     }
 
     /**

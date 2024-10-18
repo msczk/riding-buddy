@@ -144,5 +144,8 @@
     "His bikes" : "Ses motos",
     "This bike does not belong to you" : "Cette moto ne vous appartient pas",
     "Bike updated successfully!" : "Moto éditée avec succès !",
-    "Bike deleted successfully!" : "Moto supprimée avec succès !"
+    "Bike deleted successfully!" : "Moto supprimée avec succès !",
+    ":name, the app where you make friends and find roads around your location" : ":name, l'application pour rencontrer des amis et découvrir les routes autour de chez soi !",
+    "Get started" : "Démarrer",
+    "Continue as guest" : "Continuer en invité"
 }

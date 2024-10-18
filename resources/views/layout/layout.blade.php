@@ -11,7 +11,7 @@
         @vite(['resources/sass/app.scss'])
         @yield('javascript')
     </head>
-    <body id="@yield('body_id')" class="d-flex flex-column">
+    <body id="@yield('body_id')" class="d-flex flex-column app">
         @include('layout.includes.header')
 
         @yield('content')
