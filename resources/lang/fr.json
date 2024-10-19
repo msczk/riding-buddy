@@ -147,5 +147,7 @@
     "Bike deleted successfully!" : "Moto supprimée avec succès !",
     ":name, the app where you make friends and find roads around your location" : ":name, l'application pour rencontrer des amis et découvrir les routes autour de chez soi !",
     "Get started" : "Démarrer",
-    "Continue as guest" : "Continuer en invité"
+    "Continue as guest" : "Continuer en invité",
+    "Let's get started" : "C'est parti !",
+    "Before we start, we need a few information." : "Avant de commencer, on aurait besoin de quelques informations."
 }

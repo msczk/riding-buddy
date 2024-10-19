@@ -3,18 +3,15 @@
 // Variables should follow the `$component-state-property-size` formula for
 // consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
 
-// Font system
-
+// Fonts
 $font-family-sans-serif: "Roboto", sans-serif !default;
 
 $headings-font-family: "Roboto", sans-serif !default;
 $headings-font-style: normal !default;
-$headings-font-weight: 500 !default;
+$headings-font-weight: 600 !default;
 $headings-line-height: 1.5 !default;
 
-// Color system
-
-// scss-docs-start color-variables
+// Colors
 $blue:    #0B48E4 !default;
 $indigo:  #6610f2 !default;
 $purple:  #4B25B1  !default;
@@ -26,9 +23,86 @@ $green:   #15D289 !default;
 $teal:    #20c997 !default;
 $cyan:    #0dcaf0 !default;
 $black:   #161616 !default;
+$white:   #ffffff !default;
 
 $primary: #D3FD51 !default;
 
+$dark-neutral-n500: $black;
+$dark-neutral-n400: #222222;
+$dark-neutral-n300: #2f2f2f;
+
+$mid-neutral-n200: #424242;
+$mid-neutral-n100: #505053;
+$mid-neutral-n90: #6e6e75;
+$mid-neutral-n80: #85858b;
+$mid-neutral-n70: #9b9b9f;
+$mid-neutral-n60: #aeaeb1;
+
+$light-neutral-n50: #c4c4c6;
+$light-neutral-n40: #dfdfdf;
+$light-neutral-n30: #ececec;
+$light-neutral-n20: #f5f5f5;
+$light-neutral-n10: #fcfcfc;
+$light-neutral-n00: $white;
+
+.dark-neutral-n500{
+    color: $dark-neutral-n500;
+}
+.dark-neutral-n400{
+    color: $dark-neutral-n400;
+}
+.dark-neutral-n300{
+    color: $dark-neutral-n300;
+}
+
+.mid-neutral-n200{
+    color: $mid-neutral-n200;
+}
+.mid-neutral-n100{
+    color: $mid-neutral-n100;
+}
+.mid-neutral-n90{
+    color: $mid-neutral-n90;
+}
+.mid-neutral-n80{
+    color: $mid-neutral-n80;
+}
+.mid-neutral-n70{
+    color: $mid-neutral-n70;
+}
+.mid-neutral-n60{
+    color: $mid-neutral-n60;
+}
+
+.light-neutral-n50{
+    color: $light-neutral-n50;
+}
+.light-neutral-n40{
+    color: $light-neutral-n40;
+}
+.light-neutral-n30{
+    color: $light-neutral-n30;
+}
+.light-neutral-n20{
+    color: $light-neutral-n20;
+}
+.light-neutral-n10{
+    color: $light-neutral-n10;
+}
+.light-neutral-n00{
+    color: $light-neutral-n00;
+}
+
+
+// Layout
 $grid-gutter-width:           3.5rem !default;
 
-$btn-font-weight: 500;
+// Buttons
+$btn-font-weight: 600;
+
+// Forms
+$input-border-color: $light-neutral-n50 !default;
+$input-focus-width: 1px !default;
+$input-focus-border-color: $mid-neutral-n90 !default;
+$input-focus-box-shadow: none;
+$form-check-input-checked-color: $black;
