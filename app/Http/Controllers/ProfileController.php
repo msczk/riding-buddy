@@ -17,7 +17,14 @@ class ProfileController extends Controller
      */
     public function index(): \Illuminate\Contracts\View\View
     {
-        return view('profile.index');
+        $user = User::findOrfail(Auth::user()->id);
+
+        $trips = $user->createdTrips;
+
+        // var_dump($trips);
+        // die;
+
+        return view('profile.index')->with(['trips' => $trips]);
     }
 
     /**

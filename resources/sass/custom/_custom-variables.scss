@@ -8,7 +8,7 @@ $font-family-sans-serif: "Roboto", sans-serif !default;
 
 $headings-font-family: "Roboto", sans-serif !default;
 $headings-font-style: normal !default;
-$headings-font-weight: 600 !default;
+$headings-font-weight: 700 !default;
 $headings-line-height: 1.5 !default;
 
 // Colors
@@ -93,12 +93,15 @@ $light-neutral-n00: $white;
     color: $light-neutral-n00;
 }
 
-
 // Layout
 $grid-gutter-width:           3.5rem !default;
 
 // Buttons
 $btn-font-weight: 600;
+
+.btn-primary{
+    color: $dark-neutral-n300 !important;
+}
 
 // Forms
 $input-border-color: $light-neutral-n50 !default;

@@ -1,3 +1,56 @@
+#account{
+    #block-avatar{
+        #avatar{
+            .avatar-img{
+                border-radius: 12px;
+            }
+        }
+        #username{
+            margin-top: 15px;
+        }
+    }
+    
+    #profile-tabs{
+        margin-top: 25px;
+        &.nav-tabs{
+            border: none !important;
+            background-color: $light-neutral-n20;
+            padding: 5px 0;
+            border-radius: 8px;
+
+            .btn{
+                color: $mid-neutral-n90;
+                font-size: $small-font-size;
+                font-weight: 500;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 6px;
+
+                &.active{
+                    background-color: $white;
+                    color: $black;
+                }
+            }
+        }
+    }
+
+    .tab-content{
+        #no-trip-yet{
+            padding-top: 100px;
+            padding-bottom: 100px;
+
+            h2{
+                margin: 15px 0;
+            }
+
+            .btn-primary{
+                margin: 20px 0;
+            }
+        }
+    }
+
+}
+
 #profile_edit{
     #profile_edit_form{
         padding: 10px 0;
