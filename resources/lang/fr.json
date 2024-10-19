@@ -7,7 +7,7 @@
     "Password" : "Mot de passe",
     "Sign-in" : "Se connecter",
     "Submit" : "Envoyer",
-    "Stay logged in" : "Rester connecté",
+    "Stay logged in" : "Se souvenir de moi",
     "Forgot password" : "Mot de passe oublié",
     "Sign-up" : "S'inscrire",
     "Username" : "Nom d'utilisateur",
@@ -149,5 +149,7 @@
     "Get started" : "Démarrer",
     "Continue as guest" : "Continuer en invité",
     "Let's get started" : "C'est parti !",
-    "Before we start, we need a few information." : "Avant de commencer, on aurait besoin de quelques informations."
+    "Before we start, we need a few information." : "Avant de commencer, on aurait besoin de quelques informations.",
+    "Login" : "Connexion",
+    "Reset" : "Réinitialiser"
 }
