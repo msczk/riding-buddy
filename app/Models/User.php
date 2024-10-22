@@ -67,17 +67,7 @@ class User extends Authenticatable
      */
     public function createdTrips(): HasMany
     {
-        return $this->hasMany(Trip::class);
-    }
-
-    /**
-     * Get the trips that the user created ordered by the start date of the trip (nearest to farthest)
-     *
-     * @return HasMany
-     */
-    public function tripsByStartDate(): HasMany
-    {
-        return $this->hasMany(Trip::class)->orderBy('start_at', 'ASC');
+        return $this->hasMany(Trip::class)->orderBy('start_at', 'DESC');
     }
 
     /**
@@ -101,7 +91,7 @@ class User extends Authenticatable
      */
     public function trips(): BelongsToMany
     {
-        return $this->belongsToMany(Trip::class)->withPivot(['rate', 'approved']);
+        return $this->belongsToMany(Trip::class)->orderBy('start_at', 'DESC')->withPivot(['rate', 'approved']);
     }
 
     /**

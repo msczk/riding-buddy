@@ -15,16 +15,23 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Contracts\View\View
      */
-    public function index(): \Illuminate\Contracts\View\View
+    public function index(Request $request): \Illuminate\Contracts\View\View
     {
         $user = User::findOrfail(Auth::user()->id);
 
         $trips = $user->createdTrips;
 
-        // var_dump($trips);
-        // die;
+        $participations = $user->trips;
 
-        return view('profile.index')->with(['trips' => $trips]);
+        $bikes = $user->bikes;
+
+        $tab = 'trip';
+
+        if ($request->has('tab')) {
+            $tab = $request->input('tab');
+        }
+
+        return view('profile.index')->with(['trips' => $trips, 'bikes' => $bikes, 'participations' => $participations, 'tab' => $tab]);
     }
 
     /**
@@ -69,7 +76,7 @@ class ProfileController extends Controller
 
         $user->save();
 
-        return back()->with('success', 'Profile updated successfully!');
+        return back()->with('success', __('Profile updated successfully!'));
     }
 
     /**
@@ -77,41 +84,41 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Contracts\View\View
      */
-    public function trips(): \Illuminate\Contracts\View\View
-    {
-        $user = User::findOrfail(Auth::user()->id);
+    // public function trips(): \Illuminate\Contracts\View\View
+    // {
+    //     $user = User::findOrfail(Auth::user()->id);
 
-        $coming_trips = Trip::where('user_id', $user->id)->whereDate('start_at', '>=', now())->withTrashed()->get();
-        $past_trips = Trip::where('user_id', $user->id)->whereDate('start_at', '<', now())->withTrashed()->get();
+    //     $coming_trips = Trip::where('user_id', $user->id)->whereDate('start_at', '>=', now())->withTrashed()->get();
+    //     $past_trips = Trip::where('user_id', $user->id)->whereDate('start_at', '<', now())->withTrashed()->get();
 
-        return view('profile.trips')->with(['coming_trips' => $coming_trips, 'past_trips' => $past_trips]);
-    }
+    //     return view('profile.trips')->with(['coming_trips' => $coming_trips, 'past_trips' => $past_trips]);
+    // }
 
     /**
      * Return all invoices for the user
      *
      * @return \Illuminate\Contracts\View\View
      */
-    public function invoices(): \Illuminate\Contracts\View\View
-    {
-        /** @var \App\Models\User */
-        $user = Auth::user();
+    // public function invoices(): \Illuminate\Contracts\View\View
+    // {
+    //     /** @var \App\Models\User */
+    //     $user = Auth::user();
 
-        $invoices = $user->invoices();
-        return view('profile.invoices')->with(['invoices' => $invoices]);
-    }
+    //     $invoices = $user->invoices();
+    //     return view('profile.invoices')->with(['invoices' => $invoices]);
+    // }
 
     /**
      * Return all bikes for the user
      *
      * @return \Illuminate\Contracts\View\View
      */
-    public function bikes(): \Illuminate\Contracts\View\View
-    {
-        /** @var \App\Models\User */
-        $user = Auth::user();
+    // public function bikes(): \Illuminate\Contracts\View\View
+    // {
+    //     /** @var \App\Models\User */
+    //     $user = Auth::user();
 
-        $bikes = $user->bikes;
-        return view('profile.bikes')->with(['bikes' => $bikes]);
-    }
+    //     $bikes = $user->bikes;
+    //     return view('profile.bikes')->with(['bikes' => $bikes]);
+    // }
 }

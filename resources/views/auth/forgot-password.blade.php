@@ -1,5 +1,7 @@
 @extends('layout.layout')
 
+@section('body_id', 'forgot-password')
+
 @section('content')
 <div class="container">
     <div class="row">

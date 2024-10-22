@@ -36,7 +36,7 @@ class BikeController extends Controller
 
         Bike::create($bike_data);
 
-        return to_route('profile.bikes')->with('success', __('Bike created successfully!'));
+        return to_route('profile.index', ['tab' => 'garage'])->with('success', __('Bike created successfully!'));
     }
 
     /**
@@ -71,7 +71,7 @@ class BikeController extends Controller
 
         $bike->update($bike_data);
 
-        return back()->with('success', __('Bike updated successfully!'));
+        return to_route('profile.index', ['tab' => 'garage'])->with('success', __('Bike updated successfully!'));
     }
 
     /**
@@ -88,6 +88,6 @@ class BikeController extends Controller
 
         $bike->delete();
 
-        return to_route('profile.bikes')->with('success', __('Bike deleted successfully!'));
+        return to_route('profile.index')->with('success', __('Bike deleted successfully!'));
     }
 }

@@ -1,7 +1,7 @@
 body{
     &.app{
         padding-top: 20px;
-        padding-bottom: 20px;
+        padding-bottom: 65px;
 
         .form-floating{
             > label{
@@ -15,6 +15,30 @@ body{
                 color: $black;
             }
         }
+
+        #fixed-menu{
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            background-color: #ffffff;
+            width: 100%;
+            min-height: 60px;
+            display: flex;
+            z-index: 2;
+
+            .menu-item{
+                display: flex;
+                width: 40px;
+                height: 40px;
+                text-decoration: none;
+                align-items: center;
+                justify-content: center;
+                color: $gray-400;
+                &.active{
+                    color: $primary
+                }
+            }
+        }    
 
         #search-wrapper{
             #searchbar-result-wrapper{

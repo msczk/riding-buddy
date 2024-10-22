@@ -60,11 +60,11 @@
                 </div>
                 <div class="mb-3 form-check">
                     <input type="checkbox" class="form-check-input" name="optin_newsletter" id="optin_newsletter">
-                    <label class="form-check-label" for="optin_newsletter">{{ __('Subscribe to newsletter') }}</label>
+                    <label class="form-check-label fw-semibold" for="optin_newsletter">{{ __('Subscribe to newsletter') }}</label>
                 </div>
                 <div class="mb-3 form-check">
                     <input type="checkbox" class="form-check-input" name="cgu" id="cgu">
-                    <label class="form-check-label  @error('cgu') is-invalid @enderror" for="cgu">{{ __('I accept the terms and conditions') }}</label>
+                    <label class="form-check-label fw-semibold  @error('cgu') is-invalid @enderror" for="cgu">{{ __('I accept the terms and conditions') }}</label>
                     @error('cgu')
                         <div class="invalid-feedback">
                             {{ $message }}

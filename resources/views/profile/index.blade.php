@@ -34,17 +34,20 @@
 
     <ul class="nav nav-tabs justify-content-evenly" id="profile-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-            <button class="btn active" id="trip-tab" data-bs-toggle="tab" data-bs-target="#trip-tab-pane" type="button" role="tab" aria-controls="trip-tab-pane" aria-selected="true">{{ __('Trips') }}</button>
+            <button class="btn @if($tab == 'trip') active @endif" id="trip-tab" data-bs-toggle="tab" data-bs-target="#trip-tab-pane" type="button" role="tab" aria-controls="trip-tab-pane" aria-selected="true">{{ __('Trips') }}</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="btn " id="participation-tab" data-bs-toggle="tab" data-bs-target="#participation-tab-pane" type="button" role="tab" aria-controls="participation-tab-pane" aria-selected="false">{{ __('Participations') }}</button>
+            <button class="btn @if($tab == 'participation') active @endif" id="participation-tab" data-bs-toggle="tab" data-bs-target="#participation-tab-pane" type="button" role="tab" aria-controls="participation-tab-pane" aria-selected="false">{{ __('Participations') }}</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="btn " id="garage-tab" data-bs-toggle="tab" data-bs-target="#garage-tab-pane" type="button" role="tab" aria-controls="garage-tab-pane" aria-selected="false">{{ __('Garage') }}</button>
+            <button class="btn @if($tab == 'garage') active @endif"" id="garage-tab" data-bs-toggle="tab" data-bs-target="#garage-tab-pane" type="button" role="tab" aria-controls="garage-tab-pane" aria-selected="false">{{ __('Garage') }}</button>
         </li>
     </ul>
+
+    @include('layout.alerts')
+
     <div class="tab-content">
-        <div class="tab-pane fade show active" id="trip-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+        <div class="tab-pane fade @if($tab == 'trip') show active @endif" id="trip-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
             <div class="row">
                 @if(!$trips->isEmpty())
                     @foreach ($trips as $trip)
@@ -73,8 +76,66 @@
                 @endif
             </div>
         </div>
-        <div class="tab-pane fade" id="participation-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">2</div>
-        <div class="tab-pane fade" id="garage-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">3</div>
+        <div class="tab-pane fade @if($tab == 'participation') show active @endif" id="participation-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+            <div class="row">
+                @if(!$participations->isEmpty())
+                    @foreach ($participations as $participation)
+                        <x-Trip.TripThumbnail :trip=$participation :showEdit=true :showTrash=true />
+                    @endforeach
+                @else
+                    <div id="no-trip-yet" class="col-12 text-center">
+                        <div>
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g clip-path="url(#clip0_9_7282)">
+                                    <path d="M12.0006 11.39C12.0006 10.74 11.6106 10.16 11.0206 9.91L5.44062 7.55C3.96062 9.23 3.12062 11.25 2.64062 13H10.3906C11.2806 13 12.0006 12.28 12.0006 11.39Z" fill="#05132B"/>
+                                    <path d="M21.96 11.22C21.55 6.81 17.4 3.73 12.98 4.02C10.47 4.18 8.54 4.96 7.05 6.06L11.79 8.07C13.12 8.64 13.99 9.94 13.99 11.39C13.99 13.38 12.37 15 10.38 15H2.21C2 16.31 2 17.2 2 17.2V18C2 19.1 2.9 20 4 20H14C18.67 20 22.41 15.99 21.96 11.22Z" fill="#05132B"/>
+                                </g>
+                            </svg>
+                        </div>
+                        <h2 class="h5">
+                            {{ __('No participation') }}
+                        </h2>
+                        <div>
+                            <span class="small mid-neutral-n70">{{ __('You do not participate to any trips.') }}</span>
+                        </div>
+                        <div>
+                            <a class="btn btn-primary w-75" href="{{ route('trip.create') }}">{{ __('Search for a trip') }}</a>
+                        </div>
+                    </div>
+                @endif
+            </div>
+        </div>
+        <div class="tab-pane fade @if($tab == 'garage') show active @endif" id="garage-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
+            <div class="row">
+                @if(!$bikes->isEmpty())
+                    <div class="col-12">
+                        <a class="btn btn-primary w-100 mb-2" href="{{ route('bike.create') }}">{{ __('Add bike') }}</a>
+                    </div>
+                    @foreach ($bikes as $bike)
+                        <x-Bike.BikeThumbnail :bike=$bike :showEdit=true :showTrash=true />
+                    @endforeach
+                @else
+                    <div id="no-trip-yet" class="col-12 text-center">
+                        <div>
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g clip-path="url(#clip0_9_6065)">
+                                    <path d="M20 11C19.82 11 19.64 11.03 19.47 11.05L17.41 9H20V6L16.28 7.86L13.41 5H9V7H12.59L14.59 9H11L7 11L5 9H0V11H4C1.79 11 0 12.79 0 15C0 17.21 1.79 19 4 19C6.21 19 8 17.21 8 15L10 17H13L16.49 10.9L17.5 11.91C16.59 12.64 16 13.75 16 15C16 17.21 17.79 19 20 19C22.21 19 24 17.21 24 15C24 12.79 22.21 11 20 11ZM4 17C2.9 17 2 16.1 2 15C2 13.9 2.9 13 4 13C5.1 13 6 13.9 6 15C6 16.1 5.1 17 4 17ZM20 17C18.9 17 18 16.1 18 15C18 13.9 18.9 13 20 13C21.1 13 22 13.9 22 15C22 16.1 21.1 17 20 17Z" fill="#05132B"/>
+                                </g>
+                            </svg>
+                        </div>
+                        <h2 class="h5">
+                            {{ __('Add a new bike') }}
+                        </h2>
+                        <div>
+                            <span class="small mid-neutral-n70">{{ __('Show your ride to other members.') }}</span>
+                        </div>
+                        <div>
+                            <a class="btn btn-primary w-75" href="{{ route('bike.create') }}">{{ __('Add bike') }}</a>
+                        </div>
+                    </div>
+                @endif
+            </div>
+        </div>
     </div>
 
     @auth

@@ -31,7 +31,7 @@
                 </div>
                 <div class="mb-3 form-check">
                     <input type="checkbox" class="form-check-input" name="remember" id="remember">
-                    <label class="form-check-label fw-sem" for="remember">{{ __('Stay logged in') }}</label>
+                    <label class="form-check-label fw-semibold" for="remember">{{ __('Stay logged in') }}</label>
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary w-100">{{ __('Sign-in') }}</button>
