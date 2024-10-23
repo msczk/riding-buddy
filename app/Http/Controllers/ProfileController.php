@@ -43,8 +43,8 @@ class ProfileController extends Controller
     public function show(User $user): \Illuminate\Contracts\View\View
     {
         $coming_trips = Trip::where('user_id', $user->id)->whereDate('start_at', '>=', now())->get();
-        $past_trips = Trip::where('user_id', $user->id)->whereDate('start_at', '<', now())->get();
-        return view('profile.show')->with(['user' => $user, 'coming_trips' => $coming_trips, 'past_trips' => $past_trips]);
+
+        return view('profile.show')->with(['user' => $user, 'coming_trips' => $coming_trips]);
     }
 
     /**

@@ -57,3 +57,54 @@
         padding: 10px 0;
     }
 }
+
+#biker_profile{
+    #block-avatar-public{
+        margin-top: 20px;
+    }
+
+    #block-user-info{
+        margin-top: 20px;
+    }
+
+    #block-user-more-info{
+
+        .more-info-title{
+            font-weight: 600;
+            color: $dark;
+            font-size: $small-font-size;
+        }
+        
+        .more-info-content{
+            margin-top: 10px;
+            font-weight: 500;
+            color: $dark-neutral-n300;
+            font-size: $small-font-size;
+        }
+
+        .location{
+            margin-top: 30px;
+        }
+
+        .trips{
+            margin-top: 30px;
+
+            #coming-trips{
+                margin-top: 10px;
+            }
+        }
+
+        .bikes{
+            margin-top: 30px;
+
+            #bikes-profil{
+                margin-top: 10px;
+            }
+        }
+    }
+
+    #block-user-rate-riding{
+        margin-top: 35px;
+        margin-bottom: 35px;
+    }
+}

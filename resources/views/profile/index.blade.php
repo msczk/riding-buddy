@@ -6,10 +6,10 @@
 <div class="container">
     <div class="row">
         <div class="col-4"></div>
-        <div class="col-4">
-            <h1 class="h6 text-center">{{ __('Profile') }}</h1>
+        <div class="col-4 d-flex align-items-center justify-content-center">
+            <h1 class="h6 text-center m-0">{{ __('Profile') }}</h1>
         </div>
-        <div class="col-4 d-flex justify-content-end">
+        <div class="col-4 d-flex align-items-center justify-content-end">
             <a href="{{ route('profile.edit') }}">
                 <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M10.011 13.5942C8.54019 13.5942 7.35046 12.4484 7.35046 11.0092C7.35046 9.57004 8.54019 8.41504 10.011 8.41504C11.4817 8.41504 12.6434 9.57004 12.6434 11.0092C12.6434 12.4484 11.4817 13.5942 10.011 13.5942Z" fill="black"/>

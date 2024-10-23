@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('lastname')->nullable();
             $table->tinyInteger('riding_level')->default(1);
             $table->tinyInteger('bike')->nullable();
+            $table->string('location')->nullable();
             $table->date('birthday')->nullable();
             $table->boolean('optin_newsletter')->default(false);
             $table->timestamp('email_verified_at')->nullable();

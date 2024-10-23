@@ -1,4 +1,4 @@
-<div class="col-6 col-lg-3">
+<div class="bike-miniature col-6 col-lg-3">
     <div>
         <img class="w-100" src="https://placehold.co/300x300" alt="{{ $bike->brand }} {{ $bike->model }} {{ $bike->year }}">
     </div>

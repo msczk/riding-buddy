@@ -161,5 +161,9 @@
     "Show your ride to other members." : "Faites voir aux autres membres votre monture.",
     "Add bike" : "Ajouter une moto",
     "Edit my profile" : "Modifier mon profil",
-    "Edit a bike" : "Modifier une moto"
+    "Edit a bike" : "Modifier une moto",
+    "Location" : "Localisation",
+    "Biker profile" : "Profil motard",
+    "Unknown" : "Inconnue",
+    "Member since :date" : "Membre depuis :date"
 }

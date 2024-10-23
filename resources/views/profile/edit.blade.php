@@ -62,6 +62,28 @@
                         </div>
                     @enderror
                 </div>
+                <div class="mb-3 form-floating">
+                    <textarea placeholder="{{ __('Description') }}" rows="5" name="description" class="form-control @error('description') is-invalid @enderror" id="description">{{ $user->description }}</textarea>
+                    
+                    <label for="description">{{ __('Description') }}</label>
+                    
+                    @error('description')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                <div class="mb-3 form-floating">
+                    <input placeholder="{{ __('Location') }}" name="location" value="{{ $user->location }}" type="text" class="form-control @error('location') is-invalid @enderror" id="location">
+                    
+                    <label for="location">{{ __('Location') }}</label>
+                    
+                    @error('location')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
                 <div class="mb-3">
                     <label for="riding_level" class="form-label fw-semibold">{{ __('Experience') }}</label>
                     <select name="riding_level" class="form-select @error('riding_level') is-invalid @enderror" id="riding_level">
@@ -88,17 +110,7 @@
                         </div>
                     @enderror
                 </div>
-                <div class="mb-3 form-floating">
-                    <textarea placeholder="{{ __('Description') }}" rows="5" name="description" class="form-control @error('description') is-invalid @enderror" id="description">{{ $user->description }}</textarea>
-                    
-                    <label for="description">{{ __('Description') }}</label>
-                    
-                    @error('description')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div>
+                
                 <div class="mb-3">
                     <label for="birthday" class="form-label fw-semibold">{{ __('Birthday') }}</label>
                     <input name="birthday" @if(isset($user->birthday) && !empty($user->birthday)) value="{{ $user->birthday->format('Y-m-d') }}" @endif type="date" class="form-control @error('birthday') is-invalid @enderror" id="birthday">

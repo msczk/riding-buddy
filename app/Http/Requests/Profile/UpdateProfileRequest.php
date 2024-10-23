@@ -29,6 +29,7 @@ class UpdateProfileRequest extends FormRequest
             'bike' => ['required', 'numeric'],
             'birthday' => ['sometimes', 'nullable', 'date'],
             'optin_newsletter' => ['sometimes'],
+            'location' => ['sometimes', 'nullable', 'string'],
         ];
     }
 }

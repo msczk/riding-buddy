@@ -37,19 +37,15 @@
                         </div>
                     @enderror
                 </div>
-                <div class="mb-3">
-                    <div class="input-group form-floating">
-                        <input placeholder="{{ __('Cylinder') }}" required name="cylinder" value="{{ old('cylinder') ?? $bike->cylinder }}" type="number" min="1" class="form-control @error('cylinder') is-invalid @enderror" id="cylinder">
+                <div class="mb-3 form-floating">
+                        <input placeholder="{{ __('Cylinder') }}" required name="cylinder" value="{{ old('cylinder') ?? $bike->cylinder }}" type="text" class="form-control @error('cylinder') is-invalid @enderror" id="cylinder">
                         
                         <label for="cylinder">{{ __('Cylinder') }}</label>
-                        
-                        <span class="input-group-text">{{ __('cc') }}</span>
                         @error('cylinder')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                         @enderror
-                    </div>
                 </div>
                 <div class="mb-3 form-floating">
                     <input placeholder="{{ __('Year') }}" name="year" required value="{{ old('year') ?? $bike->year }}" type="number" class="form-control @error('year') is-invalid @enderror" id="year">

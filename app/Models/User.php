@@ -32,7 +32,8 @@ class User extends Authenticatable
         'riding_level',
         'birthday',
         'bike',
-        'slug'
+        'slug',
+        'location'
     ];
 
     /**
