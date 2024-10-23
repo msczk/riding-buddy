@@ -165,5 +165,7 @@
     "Location" : "Localisation",
     "Biker profile" : "Profil motard",
     "Unknown" : "Inconnue",
-    "Member since :date" : "Membre depuis :date"
+    "Member since :date" : "Membre depuis :date",
+    "Trips" : "Balades",
+    "Invalid credentials" : "Informations d'identification incorrectes"
 }
