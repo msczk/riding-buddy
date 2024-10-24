@@ -12,26 +12,6 @@
     
     #profile-tabs{
         margin-top: 25px;
-        &.nav-tabs{
-            border: none !important;
-            background-color: $light-neutral-n20;
-            padding: 5px 0;
-            border-radius: 8px;
-
-            .btn{
-                color: $mid-neutral-n90;
-                font-size: $small-font-size;
-                font-weight: 500;
-                padding: 10px 20px;
-                border: none;
-                border-radius: 6px;
-
-                &.active{
-                    background-color: $white;
-                    color: $black;
-                }
-            }
-        }
     }
 
     .tab-content{

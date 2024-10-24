@@ -32,7 +32,7 @@
         </div>
     </div>
 
-    <ul class="nav nav-tabs justify-content-evenly" id="profile-tabs" role="tablist">
+    <ul class="nav nav-tabs custom-nav-tabs justify-content-evenly" id="profile-tabs" role="tablist">
         <li class="nav-item" role="presentation">
             <button class="btn @if($tab == 'trip') active @endif" id="trip-tab" data-bs-toggle="tab" data-bs-target="#trip-tab-pane" type="button" role="tab" aria-controls="trip-tab-pane" aria-selected="true">{{ __('Trips') }}</button>
         </li>
@@ -40,14 +40,14 @@
             <button class="btn @if($tab == 'participation') active @endif" id="participation-tab" data-bs-toggle="tab" data-bs-target="#participation-tab-pane" type="button" role="tab" aria-controls="participation-tab-pane" aria-selected="false">{{ __('Participations') }}</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="btn @if($tab == 'garage') active @endif"" id="garage-tab" data-bs-toggle="tab" data-bs-target="#garage-tab-pane" type="button" role="tab" aria-controls="garage-tab-pane" aria-selected="false">{{ __('Garage') }}</button>
+            <button class="btn @if($tab == 'garage') active @endif" id="garage-tab" data-bs-toggle="tab" data-bs-target="#garage-tab-pane" type="button" role="tab" aria-controls="garage-tab-pane" aria-selected="false">{{ __('Garage') }}</button>
         </li>
     </ul>
 
     @include('layout.alerts')
 
     <div class="tab-content">
-        <div class="tab-pane fade @if($tab == 'trip') show active @endif" id="trip-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+        <div class="tab-pane fade @if($tab == 'trip') show active @endif" id="trip-tab-pane" role="tabpanel" aria-labelledby="trip-tab" tabindex="0">
             <div class="row">
                 @if(!$trips->isEmpty())
                     @foreach ($trips as $trip)
@@ -76,11 +76,11 @@
                 @endif
             </div>
         </div>
-        <div class="tab-pane fade @if($tab == 'participation') show active @endif" id="participation-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+        <div class="tab-pane fade @if($tab == 'participation') show active @endif" id="participation-tab-pane" role="tabpanel" aria-labelledby="participation-tab" tabindex="0">
             <div class="row">
                 @if(!$participations->isEmpty())
                     @foreach ($participations as $participation)
-                        <x-Trip.TripThumbnail :trip=$participation :showEdit=true :showTrash=true />
+                        <x-Trip.TripThumbnail :trip=$participation />
                     @endforeach
                 @else
                     <div id="no-trip-yet" class="col-12 text-center">
@@ -105,7 +105,7 @@
                 @endif
             </div>
         </div>
-        <div class="tab-pane fade @if($tab == 'garage') show active @endif" id="garage-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
+        <div class="tab-pane fade @if($tab == 'garage') show active @endif" id="garage-tab-pane" role="tabpanel" aria-labelledby="garage-tab" tabindex="0">
             <div class="row">
                 @if(!$bikes->isEmpty())
                     <div class="col-12">

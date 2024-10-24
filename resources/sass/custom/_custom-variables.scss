@@ -6,6 +6,12 @@
 // Fonts
 $font-family-sans-serif: "Roboto", sans-serif !default;
 
+$extra-small-font-size: 0.75rem;
+
+.extra-small{
+    font-size: $extra-small-font-size;
+}
+
 $headings-font-family: "Roboto", sans-serif !default;
 $headings-font-style: normal !default;
 $headings-font-weight: 700 !default;

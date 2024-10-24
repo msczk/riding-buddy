@@ -1,8 +1,62 @@
 #trip_show{
     #show-trip-map{
+        margin-top: 20px;
+        margin-bottom: 20px;
         height: 300px;
         width: 100;
     }
+
+    #trip-tabs{
+        margin-top: 15px;
+    }
+
+    #trip-tabs-content{
+        margin-top: 20px;
+
+        #trip-name{
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: $black;
+        }
+
+        #trip-description{
+            font-size: $small-font-size;
+            color: $dark-neutral-n300;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .trip-details-lines{
+
+            margin-top: 15px;
+            
+            .trip-details-text{
+
+                padding-left: 10px;
+
+                .trip-details-title{
+                    font-size: $small-font-size;
+                    color: $black;
+                    font-weight: 600;
+                }
+                
+                .trip-details-subtitle{
+                    font-size: $extra-small-font-size;
+                    color: $mid-neutral-n90;
+                }
+            }
+        }
+    }
+
+    #trip-participation-form{
+        margin-top: 40px;
+        .btn-participate{
+            padding: 15px 0;
+            border-radius: 12px;
+        }
+    }
+
+
 }
 
 #trip_add{

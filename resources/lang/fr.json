@@ -167,5 +167,12 @@
     "Unknown" : "Inconnue",
     "Member since :date" : "Membre depuis :date",
     "Trips" : "Balades",
-    "Invalid credentials" : "Informations d'identification incorrectes"
+    "Invalid credentials" : "Informations d'identification incorrectes",
+    "Ask for participaton" : "Demander à participer",
+    "Trip details" : "Détail de la balade",
+    "Details" : "Détails",
+    "Discussion" : "Discussion",
+    "Start date and time" : "Date et heure de départ",
+    "Number of participants" : "Nombre de participants",
+    "Organizer" : "Organisateur"
 }
