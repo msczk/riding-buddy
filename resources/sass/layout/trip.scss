@@ -46,13 +46,31 @@
                 }
             }
         }
+
+        #no-message-yet{
+            margin-top: 20px;
+        }
     }
 
     #trip-participation-form{
         margin-top: 40px;
-        .btn-participate{
+        .btn-participate,
+        .btn-no-participate{
             padding: 15px 0;
             border-radius: 12px;
+            font-size: 1rem;
+        }
+
+        .btn-no-participate{
+            color: $dark-neutral-n300;
+            border: 1px solid $dark-neutral-n300;
+
+            &:hover,
+            &:active,
+            &:focus{
+                color: $white;
+                background-color: $dark-neutral-n300;
+            }
         }
     }
 

@@ -140,43 +140,56 @@
                             </div>
                         </div>
                     </div>
+
+                    @if(!Auth::user() || (Auth::user() && $trip->user_id != Auth::user()->id))
+                        @if(!$trip->isOver() && !$trip->isOneDayAway())
+                            <div class="row">
+                                <div class="col-12">
+                                    <form id="trip-participation-form" method="POST" action="{{ route('trip.participate', $trip) }}">
+                                        @csrf
+                                        @method('put')
+
+                                        @if(Auth::user() && Auth::user()->participate($trip))
+                                            <button class="btn w-100 btn-no-participate">{{ __('Remove participation') }}</button>
+                                        @else
+                                            <button class="btn btn-primary w-100 btn-participate">{{ __('Ask for participaton') }}</button>
+                                        @endif
+                                    </form>
+                                </div>
+                            </div>
+                        @endif
+                    @endif
                 </div>
                 <div class="tab-pane fade" id="discussion-tab-pane" role="tabpanel" aria-labelledby="discussion-tab" tabindex="0">
                     <div class="row">
-                        
+                        <div id="no-message-yet" class="col-12 text-center">
+                            <div>
+                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M21.4453 3.42316C21.0466 3.00849 20.3506 3.29383 20.3506 3.86849V7.38449C20.3506 8.85916 21.5653 10.0725 23.0399 10.0725C23.9693 10.0832 25.2599 10.0858 26.3559 10.0832C26.9173 10.0818 27.2026 9.41116 26.8133 9.00583C25.4066 7.54316 22.8879 4.92183 21.4453 3.42316Z" fill="#161616"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M24.1754 12.0227H24.1752H24.1752C23.7405 12.019 23.2442 12.0147 22.686 12.0147C20.2648 12.0147 18.2739 10.0107 18.2739 7.56675V3.27875C18.2739 2.94141 18.0046 2.66675 17.6706 2.66675H10.618C7.32673 2.66675 4.6665 5.36808 4.6665 8.67875V23.0454C4.6665 26.5187 7.45347 29.3334 10.8926 29.3334H21.3949C24.6743 29.3334 27.3332 26.6494 27.3332 23.3361V12.6281C27.3332 12.2894 27.0652 12.0161 26.7298 12.0174L26.2385 12.0212C25.8085 12.0246 25.3749 12.0281 25.0783 12.0281C24.8147 12.0281 24.5138 12.0255 24.1754 12.0227ZM19.2238 21.8425H11.9651C11.4171 21.8425 10.9731 21.3985 10.9731 20.8505C10.9731 20.3025 11.4171 19.8571 11.9651 19.8571H19.2238C19.7718 19.8571 20.2171 20.3025 20.2171 20.8505C20.2171 21.3985 19.7718 21.8425 19.2238 21.8425ZM11.9651 15.1835H16.4785C17.0265 15.1835 17.4718 14.7395 17.4718 14.1915C17.4718 13.6435 17.0265 13.1982 16.4785 13.1982H11.9651C11.4171 13.1982 10.9731 13.6435 10.9731 14.1915C10.9731 14.7395 11.4171 15.1835 11.9651 15.1835Z" fill="#161616"/>
+                                </svg>
+                                    
+                            </div>
+                            <h2 class="h5">
+                                {{ __('No message') }}
+                            </h2>
+                            <div>
+                                <span class="small mid-neutral-n70">{{ __('There is no discussion about this trip for the moment') }}</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="tab-pane fade" id="participants-tab-pane" role="tabpanel" aria-labelledby="participants-tab" tabindex="0">
                     <div class="row">
-                        
+                        @if(!$trip->users->isEmpty())
+                            @foreach ($trip->users as $user)
+                                <x-Trip.ParticipantThumbnail :user=$user :trip=$trip />
+                            @endforeach
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-@if(!Auth::user() || (Auth::user() && $trip->user_id != Auth::user()->id))
-    @if(!$trip->isOver() && !$trip->isOneDayAway())
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <form id="trip-participation-form" method="POST" action="{{ route('trip.participate', $trip) }}">
-                        @csrf
-                        @method('put')
-
-                        @if(Auth::user() && Auth::user()->participate($trip))
-                            <button class="btn btn-primary w-100 btn-participate">{{ __('Remove participation') }}</button>
-                        @else
-                            <button class="btn btn-primary w-100 btn-participate">{{ __('Ask for participaton') }}</button>
-                        @endif
-                    </form>
-                </div>
-            </div>
-        </div>
-    @endif
-@endif
-
-
-    
 @endsection

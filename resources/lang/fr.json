@@ -174,5 +174,7 @@
     "Discussion" : "Discussion",
     "Start date and time" : "Date et heure de départ",
     "Number of participants" : "Nombre de participants",
-    "Organizer" : "Organisateur"
+    "Organizer" : "Organisateur",
+    "No message" : "Aucun message",
+    "There is no discussion about this trip for the moment" : "Il n'y a pas de discussion sur cette balade pour le moment"
 }
