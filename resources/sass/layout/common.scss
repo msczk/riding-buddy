@@ -97,5 +97,19 @@ body{
                 }
             }
         }
+
+        .heading-title{
+            text-align: center;
+            color: $dark-neutral-n500;
+            font-weight: 600;
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .form-floating{
+            textarea{
+                min-height: 150px;;
+            }
+        } 
     }
 }
