@@ -13,9 +13,13 @@ class GoBack extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct(string $url = '')
     {
-        $this->url = url()->previous();
+        if (empty($url)) {
+            $this->url = url()->previous();
+        } else {
+            $this->url = $url;
+        }
     }
 
     /**
