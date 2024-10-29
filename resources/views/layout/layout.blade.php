@@ -12,7 +12,7 @@
         @yield('javascript')
     </head>
     <body id="@yield('body_id')" class="d-flex flex-column app">
-        @include('layout.includes.header')
+        {{-- @include('layout.includes.header') --}}
 
         @yield('content')
 
