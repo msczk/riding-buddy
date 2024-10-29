@@ -188,7 +188,7 @@ class TripController extends Controller
 
         $trip->delete();
 
-        return to_route('profile.trips')->with('success', __('Trip deleted successfully!'));
+        return to_route('profile.index')->with('success', __('Trip deleted successfully!'));
     }
 
     /**
