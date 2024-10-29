@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h1 class="h5">{{ __('Add a bike') }}</h1>
+            <h1 class="heading-title">{{ __('Add a bike') }}</h1>
         </div>
     </div>
     <div class="row">

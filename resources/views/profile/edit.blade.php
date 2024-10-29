@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h1 class="h5">{{ __('Edit my profile') }}</h1>
+            <h1 class="heading-title">{{ __('Edit my profile') }}</h1>
         </div>
     </div>
     <div class="row">

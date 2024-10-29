@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-4"></div>
         <div class="col-4 d-flex align-items-center justify-content-center">
-            <h1 class="h6 text-center m-0">{{ __('Profile') }}</h1>
+            <h1 class="heading-title">{{ __('Profile') }}</h1>
         </div>
         <div class="col-4 d-flex align-items-center justify-content-end">
             <a href="{{ route('profile.edit') }}">

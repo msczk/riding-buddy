@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h1 class="h5">{{ __('Let\'s get started') }}</h1>
+            <h1 class="heading-title">{{ __('Let\'s get started') }}</h1>
             <p class="small mid-neutral-n80">{{ __('Before we start, we need a few information.') }}</p>
         </div>
     </div>

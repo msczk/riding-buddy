@@ -24,12 +24,12 @@
 
 
 <div class="container">
-    <div class="row d-md-none">
+    <div class="row">
         <div class="col-3 d-flex align-items-center">
             <x-Common.GoBack />
         </div>
         <div class="col-6 d-flex align-items-center justify-content-center">
-            <h1 class="h6 text-center m-0">{{ __('Trip details') }}</h1>
+            <h1 class="heading-title">{{ __('Trip details') }}</h1>
         </div>
     </div>
 </div>
