@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Bike;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\StoreBikeRequest;
-use App\Http\Requests\UpdateBikeRequest;
+use App\Http\Requests\Bike\StoreBikeRequest;
+use App\Http\Requests\Bike\UpdateBikeRequest;
 
 class BikeController extends Controller
 {
