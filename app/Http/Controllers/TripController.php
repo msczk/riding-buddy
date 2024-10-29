@@ -55,6 +55,11 @@ class TripController extends Controller
 
         $trip = Trip::create($trip_data);
 
+        $trip->findCountry();
+        $trip->findCity();
+
+        $trip->save();
+
         $trip->users()->attach($user);
 
         $trip->users()->updateExistingPivot($user, ['approved' => true]);
@@ -148,6 +153,11 @@ class TripController extends Controller
         $trip_data = $request->validated();
 
         $trip->update($trip_data);
+
+        $trip->findCountry();
+        $trip->findCity();
+
+        $trip->update();
 
         return back()->with('success', __('Trip updated successfully!'));
     }

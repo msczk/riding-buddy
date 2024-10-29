@@ -3,12 +3,17 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use GuzzleHttp\Client;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Facades\Log;
+use GuzzleHttp\Psr7;
+use GuzzleHttp\Exception\ClientException;
 
 class Trip extends Model
 {
@@ -31,7 +36,9 @@ class Trip extends Model
         'level',
         'max_participants',
         'public_after_over',
-        'slug'
+        'slug',
+        'country',
+        'city'
     ];
 
     /**
@@ -177,5 +184,83 @@ class Trip extends Model
         $lat_rads = asin($z3);
 
         return array_map('rad2deg', array($lat_rads, $lng_rads));
+    }
+
+    /**
+     * Call Maptiler API and set the country
+     *
+     * @return self
+     */
+    public function findCountry(): self
+    {
+        $country = '';
+
+        if (App::environment('local')) {
+            $client = new Client(['verify' => base_path('cacert.pem')]);
+        } else {
+            $client = new Client();
+        }
+
+        try {
+            $res = $client->request('GET', 'https://api.maptiler.com/geocoding/' . $this->coordinates_start_long . ',' . $this->coordinates_start_lat . '.json', [
+                'query' => [
+                    'key' => env('MAPTILER_API_KEY'),
+                    'types' => 'country',
+                    'language' => 'fr'
+                ]
+            ]);
+        } catch (ClientException $e) {
+            Log::alert(Psr7\Message::toString($e->getRequest()));
+            Log::alert(Psr7\Message::toString($e->getResponse()));
+        }
+
+        $response = json_decode($res->getBody()->getContents(), true);
+
+        if (isset($response['features'][0]['text_fr'])) {
+            $country = $response['features'][0]['text_fr'];
+        }
+
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * Call Maptiler API and set the city
+     *
+     * @return self
+     */
+    public function findCity(): self
+    {
+        $city = '';
+
+        if (App::environment('local')) {
+            $client = new Client(['verify' => base_path('cacert.pem')]);
+        } else {
+            $client = new Client();
+        }
+
+        try {
+            $res = $client->request('GET', 'https://api.maptiler.com/geocoding/' . $this->coordinates_start_long . ',' . $this->coordinates_start_lat . '.json', [
+                'query' => [
+                    'key' => env('MAPTILER_API_KEY'),
+                    'types' => 'municipality',
+                    'language' => 'fr'
+                ]
+            ]);
+        } catch (ClientException $e) {
+            Log::alert(Psr7\Message::toString($e->getRequest()));
+            Log::alert(Psr7\Message::toString($e->getResponse()));
+        }
+
+        $response = json_decode($res->getBody()->getContents(), true);
+
+        if (isset($response['features'][0]['text_fr'])) {
+            $city = $response['features'][0]['text_fr'];
+        }
+
+        $this->city = $city;
+
+        return $this;
     }
 }

@@ -110,7 +110,7 @@
                                 
                             <div class="trip-details-text">
                                 <div class="trip-details-title">
-                                    Yssingeaux, France
+                                    {{ $trip->city }}, {{ $trip->country }}
                                 </div>
                                 <div class="trip-details-subtitle">
                                     {{ __('Location') }}

@@ -28,8 +28,8 @@ class StoreTripRequest extends FormRequest
 
         return [
             'name' => 'required',
-            'description' => 'nullable',
-            'start_at' => 'required|date|date_format:Y-m-d\TH:i|after:'.$two_days_from_now,
+            'description' => 'required',
+            'start_at' => 'required|date|date_format:Y-m-d\TH:i|after:' . $two_days_from_now,
             'coordinates_start_lat' => 'required',
             'coordinates_start_long' => 'required',
             'distance' => 'required|numeric|min:1',
