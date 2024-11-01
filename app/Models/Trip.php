@@ -244,7 +244,7 @@ class Trip extends Model
             $res = $client->request('GET', 'https://api.maptiler.com/geocoding/' . $this->coordinates_start_long . ',' . $this->coordinates_start_lat . '.json', [
                 'query' => [
                     'key' => env('MAPTILER_API_KEY'),
-                    'types' => 'municipality',
+                    'types' => 'locality,municipality',
                     'language' => 'fr'
                 ]
             ]);
