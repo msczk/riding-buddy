@@ -4,15 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Trip;
 use App\Models\User;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use App\Notifications\Trip\TripDeleted;
 use App\Notifications\Trip\TripApproved;
-use App\Http\Requests\Trip\StoreTripRequest;
-use App\Http\Requests\Trip\UpdateTripRequest;
 use App\Notifications\Trip\TripNewParticipation;
 use App\Notifications\Trip\TripWaitingForApproval;
 
@@ -30,41 +27,6 @@ class TripController extends Controller
         }
 
         return view('trip.create');
-    }
-
-    /**
-     * Do the trip creation action
-     *
-     * @param StoreTripRequest $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function store(StoreTripRequest $request): \Illuminate\Http\RedirectResponse
-    {
-        if (!Gate::allows('create-trip')) {
-            abort(403, __('You reached your subscription plan limits. Consider upgrading it'));
-        }
-
-        /** @var \App\Models\User */
-        $user = Auth::user();
-
-        $trip_data = $request->validated();
-
-        $trip_data['user_id'] = $user->id;
-
-        $trip_data['slug'] = Str::slug($request->input('name'), '-', App::currentLocale()) . '-' . time();
-
-        $trip = Trip::create($trip_data);
-
-        $trip->findCountry();
-        $trip->findCity();
-
-        $trip->save();
-
-        $trip->users()->attach($user);
-
-        $trip->users()->updateExistingPivot($user, ['approved' => true]);
-
-        return to_route('trip.show', $trip)->with('success', __('Trip created successfully!'));
     }
 
     /**
@@ -127,39 +89,6 @@ class TripController extends Controller
         }
 
         return view('trip.edit')->with('trip', $trip);
-    }
-
-    /**
-     * Do the Trip update action
-     *
-     * @param UpdateTripRequest $request
-     * @param Trip $trip
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function update(UpdateTripRequest $request, Trip $trip): \Illuminate\Http\RedirectResponse
-    {
-        if (Auth::user() && $trip->user_id != Auth::user()->id) {
-            return back()->with('error', __('This trip does not belong to you'));
-        }
-
-        if ($trip->isOver()) {
-            return back()->with('error', __('This trip is already over and cannot be modified'));
-        }
-
-        if ($trip->isOneDayAway()) {
-            return back()->with('error', __('This trip will start soon and cannot be modified'));
-        }
-
-        $trip_data = $request->validated();
-
-        $trip->update($trip_data);
-
-        $trip->findCountry();
-        $trip->findCity();
-
-        $trip->update();
-
-        return back()->with('success', __('Trip updated successfully!'));
     }
 
     /**

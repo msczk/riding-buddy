@@ -9,6 +9,7 @@
         </script>
 
         @vite(['resources/sass/app.scss'])
+        @livewireStyles
         @yield('javascript')
     </head>
     <body id="@yield('body_id')" class="d-flex flex-column app">
@@ -19,5 +20,6 @@
         @include('layout.includes.fixed-menu')
         {{-- @include('layout.includes.footer') --}}
         @vite(['resources/js/app.js'])
+        @livewireScripts
     </body>
 </html>

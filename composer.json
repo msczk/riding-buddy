@@ -9,7 +9,8 @@
         "dompdf/dompdf": "^3.0",
         "laravel/cashier": "^15.4",
         "laravel/framework": "^11.0",
-        "laravel/tinker": "^2.9"
+        "laravel/tinker": "^2.9",
+        "livewire/livewire": "^3.5"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

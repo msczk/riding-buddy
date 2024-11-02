@@ -3,9 +3,18 @@
 @section('body_id', 'trip_edit')
 
 @section('content')
+
 <div class="container">
-            
+    <div class="row">
+        <div class="col-12">
+            <h1 class="heading-title">{{ __('Edit a trip') }}</h1>
+        </div>
+    </div>
     @include('layout.alerts')
+    @livewire('trip.multistep-form-trip-edit', ['trip' => $trip])
+</div>
+{{-- 
+<div class="container">
 
     <form class="row my-3" method="POST" action="{{ route('trip.edit', $trip) }}">
         @method('put')
@@ -110,6 +119,6 @@
             <button type="submit" class="btn btn-primary w-100">{{ __('Submit') }}</button>
         </div>
     </form>
-</div>
+</div> --}}
     
 @endsection

@@ -34,8 +34,6 @@ Route::post('/reset-password', [AuthController::class, 'doReset'])->name('passwo
 // trip
 Route::get('/trip/create', [TripController::class, 'create'])->name('trip.create')->middleware('auth');
 Route::get('/trip/{trip}/edit', [TripController::class, 'edit'])->name('trip.edit')->middleware('auth');
-Route::post('/trip/create', [TripController::class, 'store'])->middleware('auth');
-Route::put('/trip/{trip}/edit', [TripController::class, 'update'])->middleware('auth');
 Route::put('/trip/{trip}/visibility', [TripController::class, 'visibility'])->name('trip.visibility')->middleware('auth');
 Route::put('/trip/{trip}/participate', [TripController::class, 'participate'])->name('trip.participate')->middleware('auth');
 Route::get('/trip/{trip:slug}/show', [TripController::class, 'show'])->name('trip.show');

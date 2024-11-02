@@ -183,5 +183,6 @@
     "Create" : "Créer",
     ":distance km" : ":distance km",
     ":duration hours" : ":duration heures",
-    "Estimation" : "Estimation"
+    "Estimation" : "Estimation",
+    "Edit a trip" : "Modifier une balade"
 }
