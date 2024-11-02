@@ -38,13 +38,12 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-2 d-flex align-items-center">
+        <div class="col-12 d-flex align-items-center">
             <a href="{{ route('profile.show', $trip->user) }}">
                 <img width="50px" height="50px" class="rounded-circle" src="https://placehold.co/50x50" alt="{{ $trip->user->username }}">
             </a>
-        </div>
-        <div class="col-10 d-flex align-items-center">
-            <div>
+        
+            <div class="d-flex flex-column align-items-start ps-2">
                 <div class="small fw-semibold ">
                     <a class="text-decoration-none text-black" href="{{ route('profile.show', $trip->user) }}">{{ $trip->user->username }}</a>
                 </div>
@@ -114,6 +113,28 @@
                                 </div>
                                 <div class="trip-details-subtitle">
                                     {{ __('Location') }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row trip-details-lines">
+                        <div class="col-12 d-flex">
+                            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g clip-path="url(#clip0_9_4982)">
+                                    <rect width="40" height="40" rx="8" fill="#EFEFEF"/>
+                                    <g transform="translate(8, 8)">
+                                        <path d="M11.99 2C6.47 2 2 6.48 2 12C2 17.52 6.47 22 11.99 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 11.99 2ZM12 20C7.58 20 4 16.42 4 12C4 7.58 7.58 4 12 4C16.42 4 20 7.58 20 12C20 16.42 16.42 20 12 20Z" fill="#05132B"/>
+                                        <path d="M12.5 7H11V13L16.25 16.15L17 14.92L12.5 12.25V7Z" fill="#05132B"/>
+                                    </g>
+                                </g>
+                            </svg>
+                            
+                            <div class="trip-details-text">
+                                <div class="trip-details-title">
+                                    {{ __(':distance km', ['distance' => $trip->distance]) }} - {{ __(':duration hours', ['duration' => $trip->duration]) }}
+                                </div>
+                                <div class="trip-details-subtitle">
+                                    {{ __('Estimation') }}
                                 </div>
                             </div>
                         </div>

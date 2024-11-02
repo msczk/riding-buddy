@@ -176,5 +176,12 @@
     "Number of participants" : "Nombre de participants",
     "Organizer" : "Organisateur",
     "No message" : "Aucun message",
-    "There is no discussion about this trip for the moment" : "Il n'y a pas de discussion sur cette balade pour le moment"
+    "There is no discussion about this trip for the moment" : "Il n'y a pas de discussion sur cette balade pour le moment",
+    "Create a new trip" : "Créer une nouvelle balade",
+    "Next" : "Suivant",
+    "Previous" : "Précédent",
+    "Create" : "Créer",
+    ":distance km" : ":distance km",
+    ":duration hours" : ":duration heures",
+    "Estimation" : "Estimation"
 }
