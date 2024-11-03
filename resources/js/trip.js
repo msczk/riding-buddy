@@ -4,12 +4,12 @@ import * as maptilersdk from '@maptiler/sdk';
 
 import {maptiler_apikey} from './app.js';
 
-window.maptilerSdk = maptilersdk;
-window.maptilerApiKey = maptiler_apikey;
-
 
 
 $(document).ready(function() {
+
+    window.maptilerSdk = maptilersdk;
+    window.maptilerApiKey = maptiler_apikey;
 
     // If page is trip add or edit form
     // if($('#new-trip-map').length > 0)
