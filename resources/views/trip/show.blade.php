@@ -22,7 +22,6 @@
     @include('layout.alerts')
 </div>
 
-
 <div class="container">
     <div class="row">
         <div class="col-3 d-flex align-items-center">
@@ -102,6 +101,28 @@
                     <div class="row trip-details-lines">
                         <div class="col-12 d-flex">
                             <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g clip-path="url(#clip0_9_4982)">
+                                    <rect width="40" height="40" rx="8" fill="#EFEFEF"/>
+                                    <g transform="translate(8, 8)">
+                                        <path d="M11.99 2C6.47 2 2 6.48 2 12C2 17.52 6.47 22 11.99 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 11.99 2ZM12 20C7.58 20 4 16.42 4 12C4 7.58 7.58 4 12 4C16.42 4 20 7.58 20 12C20 16.42 16.42 20 12 20Z" fill="#05132B"/>
+                                        <path d="M12.5 7H11V13L16.25 16.15L17 14.92L12.5 12.25V7Z" fill="#05132B"/>
+                                    </g>
+                                </g>
+                            </svg>
+                            
+                            <div class="trip-details-text">
+                                <div class="trip-details-title">
+                                    {{ __(':distance km', ['distance' => $trip->distance]) }} - {{ __(':duration hours', ['duration' => $trip->duration]) }}
+                                </div>
+                                <div class="trip-details-subtitle">
+                                    {{ __('Estimation') }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row trip-details-lines">
+                        <div class="col-12 d-flex">
+                            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect width="40" height="40" rx="8" fill="#EFEFEF"/>
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M16.8206 11.692C18.8234 10.5283 21.2851 10.5486 23.2691 11.7452C25.2336 12.9663 26.4276 15.1454 26.4164 17.4896C26.3707 19.8184 25.0904 22.0074 23.4901 23.6997C22.5664 24.6808 21.5331 25.5483 20.4114 26.2846C20.2958 26.3514 20.1693 26.3961 20.0379 26.4166C19.9116 26.4112 19.7885 26.3739 19.6798 26.3079C17.9671 25.2016 16.4646 23.7895 15.2446 22.1394C14.2236 20.762 13.6436 19.0979 13.5833 17.3731C13.5819 15.0245 14.8178 12.8557 16.8206 11.692ZM17.9779 18.3451C18.3148 19.1757 19.11 19.7174 19.9922 19.7174C20.5702 19.7216 21.1258 19.4901 21.5352 19.0745C21.9446 18.6589 22.1738 18.0938 22.1717 17.5051C22.1748 16.6065 21.6458 15.7945 20.8316 15.4485C20.0174 15.1024 19.0787 15.2904 18.4538 15.9247C17.8289 16.5591 17.641 17.5146 17.9779 18.3451Z" fill="black"/>
                                 <ellipse opacity="0.4" cx="19.9998" cy="28.2499" rx="4.58333" ry="0.916666" fill="black"/>
@@ -120,21 +141,17 @@
                     <div class="row trip-details-lines">
                         <div class="col-12 d-flex">
                             <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <g clip-path="url(#clip0_9_4982)">
-                                    <rect width="40" height="40" rx="8" fill="#EFEFEF"/>
-                                    <g transform="translate(8, 8)">
-                                        <path d="M11.99 2C6.47 2 2 6.48 2 12C2 17.52 6.47 22 11.99 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 11.99 2ZM12 20C7.58 20 4 16.42 4 12C4 7.58 7.58 4 12 4C16.42 4 20 7.58 20 12C20 16.42 16.42 20 12 20Z" fill="#05132B"/>
-                                        <path d="M12.5 7H11V13L16.25 16.15L17 14.92L12.5 12.25V7Z" fill="#05132B"/>
-                                    </g>
+                                <rect width="40" height="40" rx="8" fill="#EFEFEF"/>
+                                <g clip-path="url(#clip0_9_6065)"  transform="translate(8, 10)">
+                                    <path d="M20 11C19.82 11 19.64 11.03 19.47 11.05L17.41 9H20V6L16.28 7.86L13.41 5H9V7H12.59L14.59 9H11L7 11L5 9H0V11H4C1.79 11 0 12.79 0 15C0 17.21 1.79 19 4 19C6.21 19 8 17.21 8 15L10 17H13L16.49 10.9L17.5 11.91C16.59 12.64 16 13.75 16 15C16 17.21 17.79 19 20 19C22.21 19 24 17.21 24 15C24 12.79 22.21 11 20 11ZM4 17C2.9 17 2 16.1 2 15C2 13.9 2.9 13 4 13C5.1 13 6 13.9 6 15C6 16.1 5.1 17 4 17ZM20 17C18.9 17 18 16.1 18 15C18 13.9 18.9 13 20 13C21.1 13 22 13.9 22 15C22 16.1 21.1 17 20 17Z" fill="#05132B"/>
                                 </g>
                             </svg>
-                            
                             <div class="trip-details-text">
                                 <div class="trip-details-title">
-                                    {{ __(':distance km', ['distance' => $trip->distance]) }} - {{ __(':duration hours', ['duration' => $trip->duration]) }}
+                                    {{ $trip->getLevelLabel() }}
                                 </div>
                                 <div class="trip-details-subtitle">
-                                    {{ __('Estimation') }}
+                                    {{ __('Recommended riding level') }}
                                 </div>
                             </div>
                         </div>

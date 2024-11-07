@@ -184,5 +184,6 @@
     ":distance km" : ":distance km",
     ":duration hours" : ":duration heures",
     "Estimation" : "Estimation",
-    "Edit a trip" : "Modifier une balade"
+    "Edit a trip" : "Modifier une balade",
+    "Recommended riding level" : "Niveau de conduite conseillé"
 }
