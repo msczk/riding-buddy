@@ -3,13 +3,8 @@
 @section('body_id', 'home')
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col col-lg-6 offset-lg-3">
-                <x-Trip.SearchBar />
-            </div>
-        </div>
-    </div>
+
+    @livewire('search.search')
 
     <div class="container">
         <div class="row">
