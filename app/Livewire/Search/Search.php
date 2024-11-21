@@ -2,13 +2,12 @@
 
 namespace App\Livewire\Search;
 
-use Psr7\Message;
 use GuzzleHttp\Psr7;
 use GuzzleHttp\Client;
 use Livewire\Component;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Log;
-
 use GuzzleHttp\Exception\ClientException;
 
 class Search extends Component
@@ -20,6 +19,25 @@ class Search extends Component
     public float $long = 0;
     public array $results = [];
     public bool $show_modal = false;
+
+    public function mount(Request $request)
+    {
+        if (!empty($request->get('lat'))) {
+            $this->lat = $request->get('lat');
+        }
+
+        if (!empty($request->get('long'))) {
+            $this->long = $request->get('long');
+        }
+
+        if (!empty($request->get('radius'))) {
+            $this->radius = $request->get('radius');
+        }
+
+        if (!empty($request->get('place'))) {
+            $this->query = $request->get('place');
+        }
+    }
 
     public function boot()
     {
@@ -82,8 +100,6 @@ class Search extends Component
 
     public function showModal()
     {
-        $this->query = '';
-        $this->results = [];
         $this->show_modal = true;
     }
 

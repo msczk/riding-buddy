@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Trip\SearchTripRequest;
 use App\Models\Trip;
-use Illuminate\Support\Facades\DB;
 
 class SearchController extends Controller
 {

@@ -3,10 +3,15 @@
 @section('body_id', 'home')
 
 @section('content')
-
-    @livewire('search.search')
-
     <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <h1>{{ __('Home') }}</h1>
+            </div>
+            <div class="col-6 d-flex justify-content-end align-items-center">
+                @livewire('search.search')
+            </div>
+        </div>
         <div class="row">
             <div class="col">
                 <h1>{{ __('Coming trips') }}</h1>
