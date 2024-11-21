@@ -14,7 +14,7 @@
         </div>
     </div>
     <div id="block-avatar-public">
-        <img width="500px" height="500px" class="img-fluid" src="https://placehold.co/500x500">
+        <img width="500px" height="500px" class="img-fluid" src="{{ Vite::asset('resources/images/avatar/user-avatar.jpg') }}">
     </div>
     <div id="block-user-info" class="container">
         <div class="row">

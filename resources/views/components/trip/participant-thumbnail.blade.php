@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-2 d-flex align-items-center">
             <a href="{{ route('profile.show', $user) }}">
-                <img width="50px" height="50px" class="rounded-circle" src="https://placehold.co/50x50" alt="{{ $user->username }}">
+                <img width="50px" height="50px" class="rounded-circle" src="{{ Vite::asset('resources/images/avatar/user-avatar.jpg') }}" alt="{{ $user->username }}">
             </a>
         </div>
         <div class="col-10 d-flex align-items-center">

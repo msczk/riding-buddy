@@ -22,7 +22,7 @@
     <div id="block-avatar" class="row text-center">
         <div id="avatar" class="col-12">
             <a href="{{ route('profile.show', Auth::user()) }}">
-                <img width="75px" height="75px" class="avatar-img" src="https://placehold.co/300x300">
+                <img width="75px" height="75px" class="avatar-img" src="{{ Vite::asset('resources/images/avatar/user-avatar.jpg') }}">
             </a>
         </div>
         <div id="username" class="col-12">

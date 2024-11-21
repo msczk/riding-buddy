@@ -3,7 +3,7 @@
         <div class="row row-author">
             <div class="col-12 d-flex align-items-center">
                 <a href="{{ route('profile.show', $trip->user) }}">
-                    <img width="28px" height="28px" class="rounded-circle" src="https://placehold.co/28x28" alt="{{ $trip->user->username }}">
+                    <img width="28px" height="28px" class="rounded-circle" src="{{ Vite::asset('resources/images/avatar/user-avatar.jpg') }}" alt="{{ $trip->user->username }}">
                 </a>
             
                 <div class="d-flex flex-column align-items-start ps-2">
@@ -64,61 +64,3 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    {{-- @if (!$trip->trashed() && $trip->public_after_over)
-        <a class="d-block" href="{{ route('trip.show', $trip) }}">
-    @else
-        <div>
-    @endif
-        <div>
-            <img class="w-100" src="https://placehold.co/300x180" alt="{{ $trip->name }}">
-        </div>
-
-        <div>{{ $trip->name }}</div>
-
-        <div>
-            <span>{{ $trip->distance }} km</span> - <span>{{ $trip->duration }} h</span> - <span>{{ $trip->approvedUsers()->count() }} / {{ $trip->max_participants }}</span>
-        </div>
-
-        <div>Le {{ date_format($trip->start_at, 'd-m-Y')  }} à {{ date_format($trip->start_at, 'H:i')  }} par {{ $trip->user->username }}</div>
-        @if (!$trip->trashed() && $trip->public_after_over)
-            </a>
-        @else
-            </div>
-        @endif
-    @if($showEdit)
-        <a class="btn btn-success" href="{{ route('trip.edit', $trip) }}">{{ __('Edit') }}</a>
-    @endif
-    @if($showTrash && !$trip->isOver())
-        <form method="POST" action="{{ route('trip.destroy', $trip) }}">
-            @csrf
-            @method('delete')
-            <button class="btn btn-danger" type="submit">{{ __('Delete') }}</button>
-        </form>
-    @endif
-     @if ($trip->isOver() && !$trip->trashed())
-    <form method="POST" action="{{ route('trip.visibility', $trip) }}">
-        @csrf
-        @method('put')
-        @if($trip->public_after_over)
-            <button class="btn btn-success" type="submit">{{ __('Visible') }}</button>
-        @else
-            <button class="btn btn-danger" type="submit">{{ __('Hidden') }}</button>
-        @endif
-    </form>
-    @endif --}}
-
