@@ -1,4 +1,4 @@
-<div class="trip-miniature col-12 col-md-6">
+<div wire:click="view" class="trip-miniature col-12 col-md-6">
     <div class="d-block background-miniature">
         <div class="row row-author">
             <div class="col-12 d-flex align-items-center">

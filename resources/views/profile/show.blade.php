@@ -60,7 +60,7 @@
                     </div>
                     <div id="coming-trips" class="row">
                         @foreach ($coming_trips as $trip)
-                            <x-Trip.TripThumbnail :trip=$trip />
+                            @livewire('trip.thumbnail', ['trip' => $trip])
                         @endforeach
                     </div>
                 </div>
@@ -81,32 +81,4 @@
             </div>
         @endif
     </div>
-        {{-- <div class="row mt-2">
-            <h2>{{ __('His coming trips') }}</h2>
-            @forelse ($coming_trips as $trip)
-                <x-Trip.TripThumbnail :trip=$trip />
-            @empty
-                <div class="col">
-                <p class="text-center">{{ __('No trips for the moment') }}</p>
-                </div>
-            @endforelse
-        </div>
-        <div class="row mt-2">
-            <h2>{{ __('His past trips') }}</h2>
-            @forelse ($past_trips as $trip)
-            <x-Trip.TripThumbnail :trip=$trip />
-            @empty
-            <div class="col">
-                <p class="text-center">{{ __('No trips for the moment') }}</p>
-            </div>
-            @endforelse
-        </div>
-        @if (!$user->bikes->isEmpty())
-            <div class="row">
-                <h2>{{ __('His bikes') }}</h2>
-                @foreach ($user->bikes as $bike)
-                    <x-Bike.BikeThumbnail :bike=$bike />
-                @endforeach
-            </div>
-        @endif --}}
 @endsection

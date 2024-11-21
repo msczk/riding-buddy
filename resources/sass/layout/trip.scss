@@ -198,14 +198,19 @@
 .trip-miniature{
     margin-top: 10px;
     margin-bottom: 10px;
+
+    
     .background-miniature{
+        cursor: pointer;
         text-decoration: none;
         border-radius: 16px;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: contain;
         background-color: #000;
-        padding: 20px;
+        padding: 350px 20px 20px 20px;
+        height: 490px;
+        background-image: url(@/../images/backgrounds/bg-thumbnail-trip.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
 
         .row-title{
             .title{

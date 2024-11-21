@@ -19,7 +19,7 @@
         </div>
         <div class="row">
             @forelse ($coming_trips as $coming_trip)
-              <x-Trip.TripThumbnail :trip=$coming_trip />
+              @livewire('trip.thumbnail', ['trip' => $coming_trip])
             @empty
               <div class="col">
                 <p class="text-center">{{ __('No coming trips for the moment') }}</p>

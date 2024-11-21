@@ -1,4 +1,4 @@
-<div class="d-md-none" id="fixed-menu">
+<div id="fixed-menu">
     <div class="d-flex align-items-center justify-content-around w-100">
         <a class="menu-item" href="{{ route('home') }}">
             <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">

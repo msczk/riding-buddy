@@ -51,7 +51,7 @@
             <div class="row">
                 @if(!$trips->isEmpty())
                     @foreach ($trips as $trip)
-                        <x-Trip.TripThumbnail :trip=$trip :showEdit=true :showTrash=true />
+                        @livewire('trip.thumbnail', ['trip' => $trip])
                     @endforeach
                 @else
                     <div id="no-trip-yet" class="col-12 text-center">
@@ -80,7 +80,7 @@
             <div class="row">
                 @if(!$participations->isEmpty())
                     @foreach ($participations as $participation)
-                        <x-Trip.TripThumbnail :trip=$participation />
+                        @livewire('trip.thumbnail', ['trip' => $participation])
                     @endforeach
                 @else
                     <div id="no-trip-yet" class="col-12 text-center">
