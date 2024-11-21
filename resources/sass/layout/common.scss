@@ -16,6 +16,44 @@ body{
             }
         }
 
+        #searchbar{
+            #search-place{
+                padding: 0;
+            }
+
+            #searchQueryModal{
+                padding: 0;
+
+                #searchQueryModalLabel{
+                    color: $black;
+                    font-weight: 700;
+                    text-align: center;
+                }
+
+                #searchQueryModalClose{
+                    color: $red;
+                    font-weight: 600;
+                    font-size: $small-font-size;
+                    text-decoration: none;
+                }
+
+                .modal-body{
+                    overflow-y: unset;
+
+                    .searchQueryModalResultList{
+                        margin-top: 20px;
+                        .searchQueryModalResult{
+                            cursor: pointer;
+                            color: $black;
+                            font-size: $small-font-size;
+                            font-weight: 600;
+                            padding: 5px 0;
+                        }
+                    }
+                }
+            }
+        }
+
         #fixed-menu{
             position: fixed;
             bottom: 0;
@@ -39,41 +77,6 @@ body{
                 }
             }
         }    
-
-        #search-wrapper{
-            #searchbar-result-wrapper{
-                position: relative;
-        
-                #searchbar-result{
-                    position: absolute;
-                    width: 100%;
-                    left: 0;
-                    top: 0;
-                    display: none;
-                    background-color: #ffffff;
-                    border: solid 1px $border-color;
-                    &.open{
-                        display: block;
-                    }
-                    ul{
-                        margin: 0;
-                        padding: 0;
-                        li{
-                            list-style-type: none;
-                            padding: 5px 10px;
-                            &:hover{
-                                background-color: $gray-400;
-                                cursor: pointer;;
-                            }
-                        }
-                    }
-                }
-            }
-        
-            @include media-breakpoint-down(md) {
-                margin: 20px 0;
-              }
-        }
 
         .custom-nav-tabs{
             &.nav-tabs{
@@ -111,5 +114,18 @@ body{
                 min-height: 150px;;
             }
         } 
+
+        #no-trip-yet{
+            padding-top: 100px;
+            padding-bottom: 100px;
+
+            h2{
+                margin: 15px 0;
+            }
+
+            .btn-primary{
+                margin: 20px 0;
+            }
+        }
     }
 }
