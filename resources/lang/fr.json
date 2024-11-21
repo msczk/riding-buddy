@@ -185,5 +185,7 @@
     ":duration hours" : ":duration heures",
     "Estimation" : "Estimation",
     "Edit a trip" : "Modifier une balade",
-    "Recommended riding level" : "Niveau de conduite conseillé"
+    "Recommended riding level" : "Niveau de conduite conseillé",
+    "Cancel" : "Annuler",
+    "Search a place, a city ..." : "Rechercher un lieu, une ville ..."
 }

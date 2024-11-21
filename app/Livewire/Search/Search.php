@@ -57,7 +57,11 @@ class Search extends Component
 
         if (isset($response['features'])) {
             foreach ($response['features'] as $feature) {
-                $this->results[] = $feature['place_name'];
+                $this->results[] = [
+                    'name' => $feature['place_name'],
+                    'lat' => $feature['geometry']['coordinates'][1],
+                    'long' => $feature['geometry']['coordinates'][0]
+                ];
             }
         }
 
@@ -69,9 +73,11 @@ class Search extends Component
         return view('components.livewire.search.search');
     }
 
-    public function search()
+    public function search(float $lat, float $long)
     {
-        return to_route('trip.search', ['query' => $this->query]);
+        $this->lat = $lat;
+        $this->long = $long;
+        return to_route('trip.search', ['place' => $this->query, 'lat' => $this->lat, 'long' => $this->long, 'radius' => $this->radius]);
     }
 
     public function showModal()

@@ -16,21 +16,30 @@
             <div class="modal-dialog modal-fullscreen">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-4" id="searchQueryModalLabel">Full screen modal</h1>
-                        <button wire:click="hideModal" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <div class="offset-4 col-4">
+                            <div id="searchQueryModalLabel">{{ __('Search') }}</div>
+                        </div>
+                        <div class="col-4 d-flex justify-content-end">
+                            <button wire:click="hideModal" type="button" id="searchQueryModalClose" class="btn btn-link" data-bs-dismiss="modal" aria-label="Close">{{ __('Cancel') }}</button>
+                        </div>
                     </div>
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-12">
-                                <input class="form-control" type="text" wire:model.live="query">
+                                <input class="form-control" placeholder="{{ __('Search a place, a city ...') }}" type="text" wire:model.live="query">
                             </div>
                         </div>
                         @if (!empty($results))
-                        <div class="row">
+                        <div class=" searchQueryModalResultList">
                             @foreach ($results as $result)
-                                <div class="col-12">
-                                    {{ $result }}
-                                </div>
+                                    <div wire:click="search({{ $result['lat'] }}, {{ $result['long'] }})" class="searchQueryModalResult">
+                                        {{ $result['name'] }} 
+                                        <span class="float-end">
+                                            <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M0.590088 10.59L5.17009 6L0.590088 1.41L2.00009 0L8.00009 6L2.00009 12L0.590088 10.59Z" fill="#2F2F2F"/>
+                                            </svg>
+                                        </span>
+                                    </div>
                             @endforeach
                         </div>
                         @endif

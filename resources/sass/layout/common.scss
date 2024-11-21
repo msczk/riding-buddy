@@ -23,6 +23,34 @@ body{
 
             #searchQueryModal{
                 padding: 0;
+
+                #searchQueryModalLabel{
+                    color: $black;
+                    font-weight: 700;
+                    text-align: center;
+                }
+
+                #searchQueryModalClose{
+                    color: $red;
+                    font-weight: 600;
+                    font-size: $small-font-size;
+                    text-decoration: none;
+                }
+
+                .modal-body{
+                    overflow-y: unset;
+
+                    .searchQueryModalResultList{
+                        margin-top: 20px;
+                        .searchQueryModalResult{
+                            cursor: pointer;
+                            color: $black;
+                            font-size: $small-font-size;
+                            font-weight: 600;
+                            padding: 5px 0;
+                        }
+                    }
+                }
             }
         }
 

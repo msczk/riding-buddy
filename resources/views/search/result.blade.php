@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col">
                 <h1>{{ __('Search for a trip') }}</h1>
-                <x-Trip.SearchBar :place=$place :radius=$radius :lat=$lat :long=$long :full=true />
+                {{-- <x-Trip.SearchBar :place=$place :radius=$radius :lat=$lat :long=$long :full=true /> --}}
             </div>
         </div>
     </div>

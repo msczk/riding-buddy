@@ -29,7 +29,7 @@ class SearchController extends Controller
             + sin ( radians(?) )
             * sin( radians( coordinates_start_lat ) )
             )
-        ) <= '.$radius, [$search_lat, $search_long, $search_lat])->orderBy('start_at', 'ASC')->get();
+        ) <= ' . $radius, [$search_lat, $search_long, $search_lat])->orderBy('start_at', 'ASC')->get();
 
         return view('search.result')->with(['trips' => $trips, 'place' => $place, 'radius' => $radius, 'lat' => $search_lat, 'long' => $search_long]);
     }
