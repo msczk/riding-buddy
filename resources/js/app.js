@@ -9,3 +9,7 @@ import './trip';
 //import './geocoding';
 
 import './common';
+
+import.meta.glob([
+    '../images/**',
+  ]);
