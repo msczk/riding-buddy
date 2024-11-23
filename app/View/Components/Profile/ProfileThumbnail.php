@@ -23,6 +23,6 @@ class ProfileThumbnail extends Component
      */
     public function render(): View
     {
-        return view('components.profile.profile-miniature')->with('user', $this->user);
+        return view('components.profile.profile-thumbnail')->with('user', $this->user);
     }
 }
