@@ -5,7 +5,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col">
+        <div class="col col-lg-4 offset-lg-4">
             <h1 class="heading-title">{{ __('Let\'s get started') }}</h1>
             <p class="small mid-neutral-n80">{{ __('Before we start, we need a few information.') }}</p>
         </div>

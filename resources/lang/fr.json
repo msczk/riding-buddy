@@ -34,7 +34,7 @@
     "Beginer" : "Débutant",
     "Intermediate" : "Intermédiaire",
     "Expert" : "Expert",
-    "Description" : "Description",
+    "Description" : "Déscription",
     "Birthday" : "Date d'anniversaire",
     "Save" : "Enregistrer",
     "Profile updated successfully !" : "Le profil a été mis à jour avec succès !",
@@ -169,7 +169,7 @@
     "Trips" : "Balades",
     "Invalid credentials" : "Informations d'identification incorrectes",
     "Ask for participaton" : "Demander à participer",
-    "Trip details" : "Détail de la balade",
+    "Trip details" : "Détails balade",
     "Details" : "Détails",
     "Discussion" : "Discussion",
     "Start date and time" : "Date et heure de départ",
@@ -187,5 +187,8 @@
     "Edit a trip" : "Modifier une balade",
     "Recommended riding level" : "Niveau de conduite conseillé",
     "Cancel" : "Annuler",
-    "Search a place, a city ..." : "Rechercher un lieu, une ville ..."
+    "Search a place, a city ..." : "Rechercher un lieu, une ville ...",
+    "You cannot rate your own trip" : "Vous ne pouvez pas noter votre propre balade",
+    "stars" : "étoiles",
+    "star" : "étoile"
 }
