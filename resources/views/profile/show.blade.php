@@ -28,7 +28,7 @@
         <div class="row">
             <div class="col-4 text-center">{{ $user->riding_level }}</div>
             <div class="col-4 text-center">{{ $user->riding_level }}</div>
-            <div class="col-4 text-center">5 étoiles</div>
+            <div class="col-4 text-center">{{ $user->getRating() }}</div>
         </div>
     </div>
     <div id="block-user-more-info" class="container">

@@ -173,4 +173,28 @@ class User extends Authenticatable
     {
         return $this->hasMany(Bike::class);
     }
+
+    /**
+     * Get the User average rating based on his rated trips
+     *
+     * @return string
+     */
+    public function getRating(): string
+    {
+        $rate_value = 0;
+        $rate_number = 0;
+
+        foreach ($this->createdTrips as $trip) {
+            foreach ($trip->users as $user) {
+                if ($user->pivot->rate) {
+                    $rate_number++;
+                    $rate_value += $user->pivot->rate;
+                }
+            }
+        }
+
+        $rate = round($rate_value / $rate_number, 1);
+
+        return $rate . ' ' . ($rate > 1 ? __('stars') : __('star'));
+    }
 }
