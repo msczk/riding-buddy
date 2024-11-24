@@ -60,7 +60,20 @@
                     {{ $trip->approvedUsers()->count() }} / {{$trip->max_participants}}
                 </span>
             </div>
-            
         </div>
+        @if($editable)
+        <div class="action">
+            @if($editable === true)
+                <a class="btn btn-success" href="{{ route('trip.edit', $trip) }}">{{ __('Edit') }}</a>
+            @endif
+            {{-- @if($deletable)
+            <form method="POST" action="{{ route('trip.destroy', $trip) }}">
+                @csrf
+                @method('delete')
+                <button class="btn btn-danger" type="submit">{{ __('Delete') }}</button>
+            </form>
+            @endif --}}
+        </div>    
+    @endif
     </div>
 </div>

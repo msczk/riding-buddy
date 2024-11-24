@@ -51,7 +51,7 @@
             <div class="row">
                 @if(!$trips->isEmpty())
                     @foreach ($trips as $trip)
-                        @livewire('trip.thumbnail', ['trip' => $trip])
+                        @livewire('trip.thumbnail', ['trip' => $trip, 'editable' => true, 'deletable' => true])
                     @endforeach
                 @else
                     <div id="no-trip-yet" class="col-12 text-center">

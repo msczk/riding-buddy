@@ -198,9 +198,9 @@
 .trip-miniature{
     margin-top: 10px;
     margin-bottom: 10px;
-
     
-    .background-miniature{
+    .background-miniature{  
+        position: relative;
         cursor: pointer;
         text-decoration: none;
         border-radius: 16px;
@@ -219,5 +219,18 @@
                 color: $white;
             }
         }
+
+        .action{
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display: flex;
+
+            .btn:first-child{
+                margin-right: 10px;
+            }
+        }
     }
+
+    
 }
