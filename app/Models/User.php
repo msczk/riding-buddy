@@ -193,7 +193,12 @@ class User extends Authenticatable
             }
         }
 
-        $rate = round($rate_value / $rate_number, 1);
+        if ($rate_number > 0) {
+            $rate = round($rate_value / $rate_number, 1);
+        } else {
+            return __('This user has no rating yet');
+        }
+
 
         return $rate . ' ' . ($rate > 1 ? __('stars') : __('star'));
     }

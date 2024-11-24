@@ -190,5 +190,6 @@
     "Search a place, a city ..." : "Rechercher un lieu, une ville ...",
     "You cannot rate your own trip" : "Vous ne pouvez pas noter votre propre balade",
     "stars" : "étoiles",
-    "star" : "étoile"
+    "star" : "étoile",
+    "This user has no rating yet" : "Cet utilisateur n'a pas encore de note"
 }
