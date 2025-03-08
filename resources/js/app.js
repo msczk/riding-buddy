@@ -1,4 +1,4 @@
-const maptiler_apikey = '9ovJ9pHnRLTUSPO0OEvP';
+const maptiler_apikey = import.meta.env.VITE_MAPTILER_API_KEY;
 
 export {maptiler_apikey};
 
